@@ -1,0 +1,88 @@
+[
+    {
+      "img": "/images/character1.png",
+      "nickname": "병아리",
+      "userId": "ajyslsbx",
+      "major": "디지털 공예과",
+      "grade": "4학년",
+      "gender": "같은 성별만",
+      "mealType": "가벼운 수다",
+      "type": "천천히 먹는 편",
+      "goal": "친목/친구 사귀기",
+      "fav": "한식",
+      "msg": "꼭 함께 하고 싶음",
+      "type2": "채식/비건" 
+    },
+    {
+      "img": "/images/character2.png",
+      "nickname": "병아리",
+      "userId": "ajyslsbx",
+      "major": "디지털 공예과",
+      "grade": "4학년",
+      "gender": "같은 성별만",
+      "mealType": "가벼운 수다",
+      "type": "천천히 먹는 편",
+      "goal": "친목/친구 사귀기",
+      "fav": "한식",
+      "msg": "꼭 함께 하고 싶음",
+      "type2": "채식/비건"
+    },
+    {
+      "img": "/images/character3.png",
+      "nickname": "닉네임",
+      "userId": "sjindclwjs",
+      "major": "디지털 공예과",
+      "grade": "4학년",
+      "gender": "같은 성별만",
+      "mealType": "가벼운 수다",
+      "type": "천천히 먹는 편",
+      "goal": "친목/친구 사귀기",
+      "fav": "한식",
+      "msg": "꼭 함께 하고 싶음",
+      "type2": "채식/비건"
+    },
+    {
+        "img": "/images/character3.png",
+        "nickname": "닉네임",
+        "userId": "sjindclwjs",
+        "major": "디지털 공예과",
+        "grade": "4학년",
+        "gender": "같은 성별만",
+        "mealType": "가벼운 수다",
+        "type": "천천히 먹는 편",
+        "goal": "친목/친구 사귀기",
+        "fav": "한식",
+        "msg": "꼭 함께 하고 싶음",
+        "type2": "채식/비건"
+      }
+      ,
+    {
+        "img": "/images/character3.png",
+        "nickname": "닉네임",
+        "userId": "sjindclwjs",
+        "major": "디지털 공예과",
+        "grade": "4학년",
+        "gender": "같은 성별만",
+        "mealType": "가벼운 수다",
+        "type": "천천히 먹는 편",
+        "goal": "친목/친구 사귀기",
+        "fav": "한식",
+        "msg": "꼭 함께 하고 싶음",
+        "type2": "채식/비건"
+      }
+      ,
+    {
+        "img": "/images/character3.png",
+        "nickname": "닉네임",
+        "userId": "sjindclwjs",
+        "major": "디지털 공예과",
+        "grade": "4학년",
+        "gender": "같은 성별만",
+        "mealType": "가벼운 수다",
+        "type": "천천히 먹는 편",
+        "goal": "친목/친구 사귀기",
+        "fav": "한식",
+        "msg": "꼭 함께 하고 싶음",
+        "type2": "채식/비건"
+      }
+  ]  
