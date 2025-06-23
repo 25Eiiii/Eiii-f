@@ -31,6 +31,7 @@ refactor/matching-service<br>
 | `fix` | 버그 수정 |
 | `docs` | 문서 수정 (README 등) |
 | `style` | 코드 포맷팅, 세미콜론 누락 등 |
+| `Design` | CSS 등 사용자 UI 디자인 변경 |
 | `refactor` | 코드 리팩토링 |
 | `test` | 테스트 코드 추가/수정 |
 | `chore` | 기타 설정, 빌드 파일 수정 등 |
