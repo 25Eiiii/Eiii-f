@@ -7,6 +7,7 @@ import ChatList from './pages/ChatList';
 import Request from './pages/ChatRequest';
 import Notice from './pages/Notice';
 import Community from './pages/Community';
+import Write from './pages/Write';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/chat-request" element={<Request />}/>
         <Route path="/notice" element={<Notice />}/>
         <Route path="/community" element={<Community />}/>
+        <Route path="/community-write" element={<Write />}/>
       </Routes>
     </BrowserRouter>
   );

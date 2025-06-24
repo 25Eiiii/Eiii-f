@@ -42,7 +42,7 @@ export const Search = styled.div`
 
 `
 
-export const Title = styled.div`
+export const Title = styled.input`
     width: 130px;
     height: 32px;
     flex-shrink: 0;
