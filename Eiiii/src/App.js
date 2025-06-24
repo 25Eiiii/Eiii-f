@@ -6,6 +6,7 @@ import Match from './pages/Match';
 import ChatList from './pages/ChatList';
 import Request from './pages/ChatRequest';
 import Notice from './pages/Notice';
+import Community from './pages/Community';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/chat-list" element={<ChatList />}/>
         <Route path="/chat-request" element={<Request />}/>
         <Route path="/notice" element={<Notice />}/>
+        <Route path="/community" element={<Community />}/>
       </Routes>
     </BrowserRouter>
   );
