@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import data from "./data.json"
 import Match from './pages/Match';
-import Chat from './pages/Chat';
+import ChatList from './pages/ChatList';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Match dataList={dataList} />} />
-        <Route path="/chat" element={<Chat />}/>
+        <Route path="/chat" element={<ChatList />}/>
       </Routes>
     </BrowserRouter>
   );
