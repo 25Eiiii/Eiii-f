@@ -9,7 +9,7 @@ const Community = () => {
             <M.Back>
                 <img 
                     id="search"
-                    src={`${process.env.PUBLIC_URL}/images/search.svg`}
+                    src={`${process.env.PUBLIC_URL}/images/back.svg`}
                     alt="search"
                 />
             </M.Back>
@@ -28,53 +28,106 @@ const Community = () => {
             </M.Title>
         </M.Header>
         <M.Wrapper>
-            <M.Profile>
-                <M.Pic></M.Pic>
-                <M.Info>
-                    <M.Name>밥먹는 하마</M.Name>
-                    <M.Time>방금</M.Time>
-                </M.Info>
-                <M.Info2>
-                성악과 22학번
-                <img 
-                src={`${process.env.PUBLIC_URL}/images/dote.svg`}
-                />
-                23살
-                </M.Info2>
-                
-            </M.Profile>
-            <M.Content>
-                가나다라마바사 아자차카 타파아 글을써보십다
-                두줄까진 허용입니다. 더이상 보고싶으면 더보기를 클릭DSADASD
-                <M.Etc>더보기</M.Etc>
-            </M.Content>
-            <M.Bottom>
+            <M.Item>
+                <M.Profile>
+                    <M.Pic>
+                        <img 
+                        src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
+                        />
+                    </M.Pic>
+                    <M.Infos>
+                        <M.Info1>
+                            <M.Name>밥먹는 하마</M.Name>
+                            <M.Time>방금</M.Time>
+                        </M.Info1>
+                        <M.Info2>
+                            성악과 22학번
+                            <img 
+                            src={`${process.env.PUBLIC_URL}/images/dote.svg`}
+                            />
+                            23살
+                    </M.Info2>
+                    </M.Infos>
+                 
+                    
+                </M.Profile>
+                <M.Content>
+                    <M.Big>0993학번 있나요?</M.Big>
+                    가나다라마바사 아자차카 타파아 글을써보십다 
+                    두줄까진 허용입니다. 더이상 보고싶으면 더보기를 클릭
+                    <M.Etc>더보기</M.Etc>
+                </M.Content>
+                <M.Bottom>
                 <M.Like>
-                    <img 
-                    src={`${process.env.PUBLIC_URL}/images/heart.svg`}
-                    />
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/heart.svg`} />
                     5
                 </M.Like>
                 <M.Comment>
-                    <img 
-                    src={`${process.env.PUBLIC_URL}/images/comment.svg`}
-                    />
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/comment.svg`} />
                     5
                 </M.Comment>
                 <M.Scrap>
-                    <img 
-                    src={`${process.env.PUBLIC_URL}/images/scrap.svg`}
-                    />
-                    5   
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/scrap.svg`} />
+                    5
                 </M.Scrap>
                 <M.More>
-                    <img 
-                    src={`${process.env.PUBLIC_URL}/images/more.svg`}
-                    />
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/more.svg`} />
+                    
                 </M.More>
-            </M.Bottom>
+                </M.Bottom>
+            </M.Item>
+            <M.Line></M.Line>
+            <M.Item>
+                <M.Profile>
+                    <M.Pic>
+                        <img 
+                        src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
+                        />
+                    </M.Pic>
+                    <M.Infos>
+                        <M.Info1>
+                            <M.Name>밥먹는 하마</M.Name>
+                            <M.Time>방금</M.Time>
+                        </M.Info1>
+                        <M.Info2>
+                            성악과 22학번
+                            <img 
+                            src={`${process.env.PUBLIC_URL}/images/dote.svg`}
+                            />
+                            23살
+                    </M.Info2>
+                    </M.Infos>
+                 
+                    
+                </M.Profile>
+                <M.Content>
+                    <M.Big>0993학번 있나요?</M.Big>
+                    가나다라마바사 아자차카 타파아 글을써보십다 
+                    두줄까진 허용입니다. 더이상 보고싶으면 더보기를 클릭
+                    <M.Etc>더보기</M.Etc>
+                </M.Content>
+                <M.Bottom>
+                <M.Like>
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/heart.svg`} />
+                    5
+                </M.Like>
+                <M.Comment>
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/comment.svg`} />
+                    5
+                </M.Comment>
+                <M.Scrap>
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/scrap.svg`} />
+                    5
+                </M.Scrap>
+                <M.More>
+                    <M.IconImg src={`${process.env.PUBLIC_URL}/images/more.svg`} />
+                    
+                </M.More>
+                </M.Bottom>
+            </M.Item>
+           <M.Line></M.Line>
         </M.Wrapper>
-        <M.Btn>글쓰기</M.Btn>
+        <M.WriteBtn>글쓰기</M.WriteBtn>
         <NavBar></NavBar>
         </M.Container>
     )
