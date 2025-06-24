@@ -42,7 +42,7 @@ const ChatList = () => {
             <C.List>
                 {messages.map((msg, index) => (
                     <C.Item key={index}>
-                        <C.Profile src={msg.avater} alt="avatar" />
+                        <C.Profile src={msg.avatar} alt="avatar" />
                         <C.Text>
                             <C.Line1>
                                 <C.Name>{msg.nickname}</C.Name>
