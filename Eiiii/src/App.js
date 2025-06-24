@@ -5,6 +5,7 @@ import data from "./data.json"
 import Match from './pages/Match';
 import ChatList from './pages/ChatList';
 import Request from './pages/ChatRequest';
+import Notice from './pages/Notice';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Match dataList={dataList} />} />
         <Route path="/chat-list" element={<ChatList />}/>
         <Route path="/chat-request" element={<Request />}/>
+        <Route path="/notice" element={<Notice />}/>
       </Routes>
     </BrowserRouter>
   );
