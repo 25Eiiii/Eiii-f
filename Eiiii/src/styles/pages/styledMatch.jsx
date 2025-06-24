@@ -24,7 +24,7 @@ export const Box = styled.div`
     gap: 105px;
     display: flex;
     align-items: center;
-    margin: 60px 27px -20px 27px;
+    margin: 60px 27px 17px 27px;
 `
 
 export const Btn = styled.div`
@@ -55,6 +55,7 @@ export const CardWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr); // 두 열
     gap: 15px;
+    margin-bottom: 19px;
 `
 export const Card = styled.div`
     width: 180.686px;
@@ -159,27 +160,28 @@ export const BackgroundOverlay = styled.div`
 `;
 
 export const ButtonGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 11;
-  margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 11;
+    margin-top: -175px;
 `;
 
 export const ApplyBtn = styled.div`
-width: 305px;
-height: 46px;
-flex-shrink: 0;
-border-radius: 11px;
-background: #F99505;
-color: #ffffff;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F99505;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
 `
 
 export const ExtBtn = styled.div`
@@ -196,4 +198,5 @@ font-size: 24px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+cursor: pointer;
 `

@@ -1,5 +1,5 @@
 import React from "react";
-import * as M from "../styles/styledMatch"; 
+import * as M from "../styles/pages/styledMatch"; 
 
 const MatchCard = ({ img, nickname, userId, major, grade, gender, mealType, onClick }) => {
   return (
