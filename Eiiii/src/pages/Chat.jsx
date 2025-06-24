@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar";
 import * as C from "../styles/pages/styledChat"
+import Header from "../components/Header";
 
 const messages = Array(9).fill({
     nickname: "밥먹는 고라파덕",
@@ -13,23 +14,11 @@ const messages = Array(9).fill({
 const Chat = () => {
     return(
         <C.Container>
-            <C.Header>
-                <C.Btn>
-                    <img
-                        id="back"
-                        src={`${process.env.PUBLIC_URL}/images/back.svg`}
-                        alt="back"
-                    />
-                </C.Btn>
-                <C.Title>쪽지 목록</C.Title>
-                <C.Btn>
-                    <img
-                        id="ring"
-                        src={`${process.env.PUBLIC_URL}/images/ring.svg`}
-                        alt="ring"
-                    />
-                </C.Btn>
-            </C.Header>
+            <Header 
+                titleText="쪽지 목록" 
+                leftIcon="back"
+                rightIcon="ring"
+            />
             <C.SearchBar>
                 <img
                     id="search"
