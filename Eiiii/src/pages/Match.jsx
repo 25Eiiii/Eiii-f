@@ -1,9 +1,10 @@
 
 import { useNavigate } from "react-router-dom";
-import * as M from "../styles/styledMatch";
+import * as M from "../styles/pages/styledMatch";
 import MatchCard from "../components/MatchCard";
 import DetailCard from "../components/DetailCard";
 import React, { useState } from "react";
+import NavBar from "../components/NavBar";
 
 
 const Match = ({ dataList }) => {
@@ -44,10 +45,6 @@ const Match = ({ dataList }) => {
             />
         </M.Btn>
       </M.Box>
-        <>
-      {/* 배경 흐림 처리 */}
-      {selectedUser && <M.BackgroundOverlay onClick={handleCloseDetail} />}
-        <M.Box> {/* 헤더 영역 */} </M.Box>
         <M.CardWrapper>
           {dataList.map((user, idx) => (
             <MatchCard
@@ -57,7 +54,12 @@ const Match = ({ dataList }) => {
             />
           ))}
         </M.CardWrapper>
+        <NavBar></NavBar>
+        <>
+      {/* 배경 흐림 처리 */}
+      {selectedUser && <M.BackgroundOverlay onClick={handleCloseDetail} />}
 
+        
       {/* 상세 카드 */}
       {selectedUser && (
         <DetailCard user={selectedUser} onClose={handleCloseDetail} />

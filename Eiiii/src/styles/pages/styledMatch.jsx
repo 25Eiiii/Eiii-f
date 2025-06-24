@@ -24,7 +24,7 @@ export const Box = styled.div`
     gap: 105px;
     display: flex;
     align-items: center;
-    margin: 60px 27px -20px 27px;
+    margin: 60px 27px 17px 27px;
 `
 
 export const Btn = styled.div`
@@ -55,6 +55,7 @@ export const CardWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr); // 두 열
     gap: 15px;
+    margin-bottom: 19px;
 `
 export const Card = styled.div`
     width: 180.686px;
@@ -180,6 +181,7 @@ font-size: 24px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+cursor: pointer;
 `
 
 export const ExtBtn = styled.div`
@@ -196,4 +198,5 @@ font-size: 24px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+cursor: pointer;
 `

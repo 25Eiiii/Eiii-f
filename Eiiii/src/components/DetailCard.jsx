@@ -1,5 +1,5 @@
 import React from "react";
-import * as M from "../styles/styledDetailCard";
+import * as M from "../styles/components/styledDetailCard";
 
 const DetailCard = ({ user, onClose }) => {
   return (
