@@ -8,6 +8,7 @@ import Request from './pages/ChatRequest';
 import Notice from './pages/Notice';
 import Community from './pages/Community';
 import Write from './pages/Write';
+import Detail from './pages/CmDetail';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         <Route path="/notice" element={<Notice />}/>
         <Route path="/community" element={<Community />}/>
         <Route path="/community-write" element={<Write />}/>
+        <Route path="/community-detail" element={<Detail />}/>
+
       </Routes>
     </BrowserRouter>
   );
