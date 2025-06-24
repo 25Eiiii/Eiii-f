@@ -164,7 +164,7 @@ export const ButtonGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    margin-top: -175px;
+    margin-top: -105px;
 `;
 
 export const ApplyBtn = styled.div`
