@@ -79,25 +79,52 @@ export const Badge = styled.div`
 `
 
 export const ReqWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+    margin-top: 28px;
 
 `
 
 export const Item = styled.div`
-
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
 `
 
 export const Profile = styled.div`
-
+    width: 54px;
+    height: 49px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    background: #FFD667;
 `
 
 export const Content = styled.div`
-
+    display: flex;
+    width: 331.545px;
+    height: 45.035px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    background: #FFD667;
+    align-items: center;
+    justify-content: center;
+    gap: 23px;
 `
 
 export const Info = styled.div`
-
+    color: #666666;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 `
 
 export const Del = styled.div`
-
+    width: 29.233px;
+    height: 28px;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    border-radius: 50%;
 `
