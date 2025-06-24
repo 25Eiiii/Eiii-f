@@ -7,7 +7,7 @@ const messages = Array(9).fill({
     major: "컴퓨터공학과",
     grade: "23",
     time: "어제 09:05pm",
-    message: "훠궈 4인팟 구하고 있는데 혹시 생각 있으시...",
+    message: "훠궈 4인팟 구하고 있는데 혹시 생각 있으시..",
     avatar: `${process.env.PUBLIC_URL}/images/avatar.svg`,
   });
 
