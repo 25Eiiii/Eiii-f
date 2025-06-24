@@ -1,10 +1,10 @@
 import React from "react";
 import * as M from "../styles/components/styledDetailCard";
 
-const DetailCard = ({ user, onClose }) => {
+const DetailCard = ({ text, user, onClose }) => {
   return (
     <M.DetailCard>
-      <M.Text>대화 신청을 해보세요!</M.Text>
+      <M.Text>{text}</M.Text>
       <M.ProfileImg src={user.img} />
       <M.Profile1>
         <M.Nickname>{user.nickname}</M.Nickname>
