@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import data from "./data.json"
 import Match from './pages/Match';
 import ChatList from './pages/ChatList';
+import Request from './pages/ChatRequest';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Match dataList={dataList} />} />
-        <Route path="/chat" element={<ChatList />}/>
+        <Route path="/chat-list" element={<ChatList />}/>
+        <Route path="/chat-request" element={<Request />}/>
       </Routes>
     </BrowserRouter>
   );
