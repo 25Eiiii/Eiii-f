@@ -1,5 +1,5 @@
 import NavBar from "../components/NavBar";
-import * as C from "../styles/pages/styledChat"
+import * as C from "../styles/pages/styledChatList"
 import Header from "../components/Header";
 
 const messages = Array(9).fill({
@@ -11,7 +11,7 @@ const messages = Array(9).fill({
     avatar: `${process.env.PUBLIC_URL}/images/avatar.svg`,
   });
 
-const Chat = () => {
+const ChatList = () => {
     return(
         <C.Container>
             <Header 
@@ -42,7 +42,7 @@ const Chat = () => {
             <C.List>
                 {messages.map((msg, index) => (
                     <C.Item key={index}>
-                        <C.Profile src={msg.avater} alt="avatar" />
+                        <C.Profile src={msg.avatar} alt="avatar" />
                         <C.Text>
                             <C.Line1>
                                 <C.Name>{msg.nickname}</C.Name>
@@ -61,4 +61,4 @@ const Chat = () => {
     )
 }
 
-export default Chat
+export default ChatList

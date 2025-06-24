@@ -97,18 +97,18 @@ export const Tab = styled.div`
 `
 
 export const Badge = styled.div`
-width: 20px;
-height: 20px;
-flex-shrink: 0;
-background: #FF3E3E;
-border-radius: 50%;
-position: absolute;
-top: -6px;
-right: -3px;
-color: #FFFFFF;
-display: flex;
-align-items: center;
-justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    background: #FF3E3E;
+    border-radius: 50%;
+    position: absolute;
+    top: -6px;
+    right: -3px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 export const List = styled.div`
