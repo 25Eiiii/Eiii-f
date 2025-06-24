@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import * as R from "../styles/pages/styledChatRequest"
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
+import DetailCard from "../components/DetailCard";
 
 const requests = Array(9).fill({
-    nickname: "김치찌개 원숭이",
+    nickname: "병아리",
     major: "컴퓨터공학과",
     grade: "21",
     avatar: `${process.env.PUBLIC_URL}/images/avatar.svg`
   });
 
 const Request = () => {
+    const [selectedUser, setSelectedUser] = useState(null); 
+
+    const handleCardClick = (user) => {
+        setSelectedUser(user);
+    }
+
+    const handleCloseDetail = () => {
+        setSelectedUser(null)
+    }
+
     return (
         <R.Container>
             <Header 
@@ -39,7 +50,10 @@ const Request = () => {
             </R.Tabs>
             <R.ReqWrapper>
             {requests.map((req, index) => (
-                <R.Item key={index}>
+                <R.Item key={index}
+                        {...req}
+                        onClick={() => handleCardClick(req)}>
+
                     <R.Profile src={req.avatar} alt="avatar" />
                     <R.Content>
                         <R.Info>{req.nickname}/{req.major} {req.grade}</R.Info>
@@ -55,6 +69,18 @@ const Request = () => {
             ))}
             </R.ReqWrapper>
             <NavBar></NavBar>
+
+        {selectedUser && <R.BackgroundOverlay onClick={handleCloseDetail} />}
+        {selectedUser && ( 
+            <DetailCard user={selectedUser} onClose={handleCloseDetail} />
+        )}
+        {selectedUser && (
+        <R.ButtonGroup>
+            <R.Ok>수락</R.Ok>
+            <R.Rej>거절</R.Rej>
+        </R.ButtonGroup>
+        )
+        }
         </R.Container>
     );
 };

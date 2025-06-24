@@ -119,6 +119,7 @@ export const Info = styled.div`
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    cursor: pointer;
 `
 
 export const Del = styled.div`
@@ -127,4 +128,57 @@ export const Del = styled.div`
     flex-shrink: 0;
     background: #FFFFFF;
     border-radius: 50%;
+`
+
+export const BackgroundOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #888376;
+    opacity: 0.7;
+    z-index: 10;
+`;
+
+export const ButtonGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 11;
+    margin-top: -105px;
+`;
+
+export const Ok = styled.div`
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F8B621;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+`
+
+export const Rej = styled.div`
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F8B621;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
 `

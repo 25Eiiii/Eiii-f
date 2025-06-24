@@ -5,7 +5,6 @@ import MatchCard from "../components/MatchCard";
 import DetailCard from "../components/DetailCard";
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
-import Header from "../components/Header";
 
 
 const Match = ({ dataList }) => {
@@ -22,22 +21,40 @@ const Match = ({ dataList }) => {
 
   return (
     <M.Container>
-      <Header 
-        titleText="즉석 밥약" 
-        titleImg="meal"
-        leftIcon="back"
-        rightIcon="ring"
-      />
-      <M.CardWrapper>
-        {dataList.map((user, idx) => (
-          <MatchCard
-            key={idx}
-            {...user}
-            onClick={() => handleCardClick(user)}
-          />
-        ))}
-      </M.CardWrapper>
-      <NavBar></NavBar>
+      <M.Box>
+        <M.Btn>
+            <img
+                id="back"
+                src={`${process.env.PUBLIC_URL}/images/back.svg`}
+                alt="back"
+            />
+        </M.Btn>
+        <M.Title>
+            즉석 밥약
+            <img 
+                id="meal"
+                src={`${process.env.PUBLIC_URL}/images/meal.svg`}
+                alt="meal"
+            />
+        </M.Title>
+        <M.Btn>
+            <img
+                id="ring"
+                src={`${process.env.PUBLIC_URL}/images/ring.svg`}
+                alt="ring"
+            />
+        </M.Btn>
+      </M.Box>
+        <M.CardWrapper>
+          {dataList.map((user, idx) => (
+            <MatchCard
+              key={idx}
+              {...user}
+              onClick={() => handleCardClick(user)}
+            />
+          ))}
+        </M.CardWrapper>
+        <NavBar></NavBar>
         <>
       {/* 배경 흐림 처리 */}
       {selectedUser && <M.BackgroundOverlay onClick={handleCloseDetail} />}
@@ -45,7 +62,7 @@ const Match = ({ dataList }) => {
         
       {/* 상세 카드 */}
       {selectedUser && (
-        <DetailCard user={selectedUser} onClose={handleCloseDetail} />
+        <DetailCard text="대화 신청을 해보세요!" user={selectedUser} onClose={handleCloseDetail} />
       )} 
 
       {selectedUser && (
