@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Header = ({ titleText, titleImg, leftIcon, rightIcon }) => {
+const Header = ({ titleText, titleImg, leftIcon, rightIcon, rightText }) => {
   return (
     <Wrapper>
       <Btn>
@@ -16,6 +16,9 @@ const Header = ({ titleText, titleImg, leftIcon, rightIcon }) => {
       <Btn>
         <img src={`${process.env.PUBLIC_URL}/images/${rightIcon}.svg`} alt="right" />
       </Btn>
+      <Text>
+        {rightText}
+      </Text>
     </Wrapper>
   );
 };
@@ -54,3 +57,16 @@ const Title = styled.div`
     font-weight: 600;
     line-height: normal;
 `;
+
+const Text = styled.div`
+    width: 113px;
+    height: 32px;
+    flex-shrink: 0;
+    color: #F8B621;
+    text-align: center;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+`
