@@ -160,28 +160,28 @@ export const BackgroundOverlay = styled.div`
 `;
 
 export const ButtonGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 11;
-  margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 11;
+    margin-top: -175px;
 `;
 
 export const ApplyBtn = styled.div`
-width: 305px;
-height: 46px;
-flex-shrink: 0;
-border-radius: 11px;
-background: #F99505;
-color: #ffffff;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-cursor: pointer;
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F99505;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
 `
 
 export const ExtBtn = styled.div`

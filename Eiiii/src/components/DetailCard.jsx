@@ -3,7 +3,7 @@ import * as M from "../styles/components/styledDetailCard";
 
 const DetailCard = ({ user, onClose }) => {
   return (
-    <M.DetailCardWrapper>
+    <M.DetailCard>
       <M.Text>대화 신청을 해보세요!</M.Text>
       <M.ProfileImg src={user.img} />
       <M.Profile1>
@@ -21,8 +21,7 @@ const DetailCard = ({ user, onClose }) => {
         <M.Detail>{user.msg}</M.Detail>
         <M.Detail>{user.type2}</M.Detail>
       </M.Profile2>
-
-    </M.DetailCardWrapper>
+    </M.DetailCard>
   );
 };
 
