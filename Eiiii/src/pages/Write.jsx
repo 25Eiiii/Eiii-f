@@ -24,13 +24,9 @@ const Write = () => {
                     />
                 </W.Category>
                 <W.Line></W.Line>
-                <W.Title>
-                    <p>제목을 입력해 주세요.</p>
-                </W.Title>
+                <W.Title placeholder="제목을 입력해주세요."></W.Title>
                 <W.Line></W.Line>
-                <W.Content>
-                    내용을 입력해주세요.
-                </W.Content>
+                <W.Content placeholder="내용을 입력해주세요."></W.Content>
             </W.Box>
             <W.Cam>
                 <img 

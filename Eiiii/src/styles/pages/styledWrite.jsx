@@ -58,18 +58,17 @@ export const Box = styled.div`
 
 export const Category = styled.div`
     display: flex;
-    margin-left: 10px;
+    margin-left: 30px;
     color: #949494;
     font-family: "Spoqa Han Sans Neo";
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-left: 30px;
     gap: 147px;
 `
 
-export const Title = styled.div`
+export const Title = styled.input`
 color: #949494;
 font-family: "Spoqa Han Sans Neo";
 font-size: 20px;
@@ -77,6 +76,9 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 margin-left: 30px;
+border: none;
+padding: 16px 0px;
+outline: none;
 `
 
 export const Line = styled.div`
@@ -85,15 +87,21 @@ height: 1px;
 background: #EFBE78;
 `
 
-export const Content = styled.div`
+export const Content = styled.textarea`
     margin-left: 30px;
+    margin-right: 40px;
     margin-top: 21px;
+    height: 600px;
     color: #B3B3B3;
     font-family: "Spoqa Han Sans Neo";
     font-size: 19px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    border: none;
+    outline: none;
+    resize: none;
+
 `
 
 export const Cam = styled.div`
