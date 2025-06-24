@@ -5,6 +5,9 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    bottom: 15px;
+    position: fixed;
+    background: #FFFFFF;
 `
 
 export const Line = styled.div`
