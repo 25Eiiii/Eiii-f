@@ -38,21 +38,21 @@ const Request = () => {
                 </R.TabWrapper>
             </R.Tabs>
             <R.ReqWrapper>
-                {requests.map((req, index) => (
-                    <R.Item key={index}>
-                        <R.Profile src={req.avatar} alt="avatar" />
-                        <R.Content>
-                            <R.Info>{req.nickname}/{req.major} {req.grade}</R.Info>
-                            <R.Del>
-                                <img 
-                                    id="del"
-                                    src={`${process.env.PUBLIC_URL}/images/trash`}
-                                    alt="delete"
-                                />
-                            </R.Del>
-                        </R.Content>
-                    </R.Item>
-                ))}
+            {requests.map((req, index) => (
+                <R.Item key={index}>
+                    <R.Profile src={req.avatar} alt="avatar" />
+                    <R.Content>
+                        <R.Info>{req.nickname}/{req.major} {req.grade}</R.Info>
+                        <R.Del>
+                            <img 
+                            id="del"
+                            src={`${process.env.PUBLIC_URL}/images/trash`}
+                            alt="delete"
+                            />
+                        </R.Del>
+                    </R.Content>
+                </R.Item>
+            ))}
             </R.ReqWrapper>
             <NavBar></NavBar>
         </R.Container>
