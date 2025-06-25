@@ -1,7 +1,9 @@
 import * as D from "../styles/pages/styledCmDetail";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DetailCard from "../components/DetailCard"
 import styled from "styled-components";
+import Header from "../components/Header";
 
 
 // Button
@@ -41,29 +43,16 @@ const Detail = () => {
         setSelectedApply(null)
     }
 
+    const navigate = useNavigate()
+
     return (
         <D.Container>
-            <D.Header>
-                <D.Back>
-                    <img 
-                        id="back"
-                        src={`${process.env.PUBLIC_URL}/images/back.svg`}
-                        alt="back"
-                    />
-                </D.Back>
-                    <img 
-                        id="search"
-                        src={`${process.env.PUBLIC_URL}/images/search.svg`}
-                        alt="search"
-                    />
-                <D.Title>선후배 밥약
-                    <img 
-                        id="meal"
-                        src={`${process.env.PUBLIC_URL}/images/meal.svg`}
-                        alt="meal"
-                    />
-                </D.Title>
-            </D.Header>
+            <Header 
+                onClickLeft={() => navigate(-1)}
+                titleImg="meal"
+                titleText="선후배 밥약"
+                rightIcon="search"
+            />
             <D.Detail>
                 <D.Profile>
                     <D.Pic>
@@ -186,10 +175,12 @@ const Detail = () => {
             </D.Comments>
             <D.Line2></D.Line2>
             <D.Write>
+                <D.Cam>
                 <img 
                     src={`${process.env.PUBLIC_URL}/images/cam.svg`}
                     alt="cam"
                 />
+                </D.Cam>
                 <D.Here placeholder="댓글을 입력해 주세요."></D.Here>
                 <D.Btn>등록</D.Btn>
             </D.Write>
