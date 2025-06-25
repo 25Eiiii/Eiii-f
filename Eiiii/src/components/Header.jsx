@@ -1,24 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
-const Header = ({ titleText, titleImg, leftIcon, rightIcon, rightText }) => {
+const Header = ({ titleText, titleImg, rightIcon, rightText, onClickLeft, onClickRight }) => {
   return (
     <Wrapper>
-      <Btn>
-        <img src={`${process.env.PUBLIC_URL}/images/${leftIcon}.svg`} alt="left" />
-      </Btn>
+      <LeftGroup>
+        <Btn onClick={onClickLeft}>
+          <img src={`${process.env.PUBLIC_URL}/images/back.svg`} alt="back" />
+        </Btn>
+      </LeftGroup>
       <Title>
         {titleText}
         {titleImg && (
           <img src={`${process.env.PUBLIC_URL}/images/${titleImg}.svg`} alt="title-icon" />
         )}
       </Title>
-      <Btn>
-        <img src={`${process.env.PUBLIC_URL}/images/${rightIcon}.svg`} alt="right" />
-      </Btn>
-      <Text>
-        {rightText}
-      </Text>
+      <RightGroup onClick={onClickRight}>
+      {rightIcon && (
+        <Btn>
+          <img src={`${process.env.PUBLIC_URL}/images/${rightIcon}.svg`} alt="right" />
+        </Btn>
+      )}
+      {rightText && <Text>{rightText}</Text>}
+    </RightGroup>
     </Wrapper>
   );
 };
@@ -26,11 +30,24 @@ const Header = ({ titleText, titleImg, leftIcon, rightIcon, rightText }) => {
 export default Header;
 
 const Wrapper = styled.div`
-    flex-shrink: 0;
-    gap: 105px;
     display: flex;
-    justify-content: center;
-    margin: 60px 27px 17px 27px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 27px 17px 27px;
+    gap: 110px;
+`;
+
+const LeftGroup = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+`;
+
+const RightGroup = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
 `;
 
 const Btn = styled.button`
@@ -43,9 +60,12 @@ const Btn = styled.button`
     justify-content: center;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 `;
 
 const Title = styled.div`
+    display: flex;
+    justify-content: center;
     width: 113px;
     height: 32px;
     flex-shrink: 0;
@@ -59,8 +79,6 @@ const Title = styled.div`
 `;
 
 const Text = styled.div`
-    width: 113px;
-    height: 32px;
     flex-shrink: 0;
     color: #F8B621;
     text-align: center;

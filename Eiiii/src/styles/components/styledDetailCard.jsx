@@ -85,7 +85,7 @@ export const DetailCard = styled.div`
     border-radius: 18px;
     border: 4px solid #FFF;
     background: linear-gradient(180deg, #FFE8AA 0%, #FCBD14 100%);
-    z-index: 11;
+    z-index: 12;
     display: flex;
     flex-direction: column;
     align-items: center;
