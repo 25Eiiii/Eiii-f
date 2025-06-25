@@ -9,6 +9,7 @@ import Notice from './pages/Notice';
 import Community from './pages/Community';
 import Write from './pages/Write';
 import Detail from './pages/CmDetail';
+import Plan from './pages/Plan';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Route path="/community" element={<Community />}/>
         <Route path="/community-write" element={<Write />}/>
         <Route path="/community-detail" element={<Detail />}/>
-
+        <Route path="/plan" element={<Plan />}/>
       </Routes>
     </BrowserRouter>
   );
