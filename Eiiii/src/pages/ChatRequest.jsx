@@ -66,12 +66,12 @@ const Request = () => {
                 <R.Item key={index}
                         {...req}
                         onClick={() => handleCardClick(req)}>
-                    <R.Profile>
+                    <R.ProfileImg>
                         <img 
                             src={req.img}
                             alt="pic"
                         />
-                    </R.Profile>
+                    </R.ProfileImg>
                     <R.Content>
                         <R.Info>{req.nickname} /{req.major} {req.grade}</R.Info>
                         <R.Del>
@@ -93,8 +93,8 @@ const Request = () => {
         )}
         {selectedUser && (
         <R.ButtonGroup>
-            <R.Ok>수락</R.Ok>
-            <R.Rej>거절</R.Rej>
+            <R.Ok onClick={handleCloseDetail}>수락</R.Ok>
+            <R.Rej onClick={handleCloseDetail}>거절</R.Rej>
         </R.ButtonGroup>
         )
         }

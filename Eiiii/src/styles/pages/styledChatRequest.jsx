@@ -91,7 +91,7 @@ export const Item = styled.div`
     gap: 14px;
 `
 
-export const Profile = styled.div`
+export const ProfileImg = styled.div`
     width: 54px;
     height: 49px;
     flex-shrink: 0;
@@ -100,6 +100,9 @@ export const Profile = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+`
+
+export const Img = styled.div`
 `
 
 export const Content = styled.div`
