@@ -12,6 +12,7 @@ import Detail from './pages/CmDetail';
 import Plan from './pages/Plan';
 import Scrap from './pages/Scrap';
 import Like from './pages/Like';
+import MComments from './pages/MyComments';
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -33,6 +34,7 @@ function App() {
         <Route path="/plan" element={<Plan />}/>
         <Route path="/scrap" element={<Scrap />}/>
         <Route path="/like" element={<Like />}/>
+        <Route path="/my-comments" element={<MComments />}/>
       </Routes>
     </BrowserRouter>
   );
