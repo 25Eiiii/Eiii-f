@@ -4,6 +4,8 @@ import * as R from "../styles/pages/styledChatRequest"
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import DetailCard from "../components/DetailCard";
+import { PageContainer } from "../styles/common/styledConainer";
+import { BackgroundOverlay } from "../styles/common/styledBackground";
 
 const requests = Array(9).fill({
     nickname: "김치찌개 원숭이",
@@ -34,7 +36,7 @@ const Request = () => {
     const navigate = useNavigate();
 
     return (
-        <R.Container>
+        <PageContainer>
             <Header 
                 titleText="쪽지 요청"
                 leftIcon="back"
@@ -87,7 +89,7 @@ const Request = () => {
             </R.ReqWrapper>
             <NavBar></NavBar>
 
-        {selectedUser && <R.BackgroundOverlay />}
+        {selectedUser && <BackgroundOverlay />}
         {selectedUser && ( 
             <DetailCard user={selectedUser}/>
         )}
@@ -98,7 +100,7 @@ const Request = () => {
         </R.ButtonGroup>
         )
         }
-        </R.Container>
+        </PageContainer>
     );
 };
 
