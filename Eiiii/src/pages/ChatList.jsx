@@ -2,6 +2,7 @@ import NavBar from "../components/NavBar";
 import * as C from "../styles/pages/styledChatList"
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import { PageContainer } from "../styles/common/styledConainer";
 
 const messages = Array(9).fill({
     nickname: "밥먹는 고라파덕",
@@ -16,7 +17,7 @@ const ChatList = () => {
     const navigate = useNavigate()
 
     return(
-        <C.Container>
+        <PageContainer>
             <Header 
                 titleText="쪽지 목록" 
                 leftIcon="back"
@@ -68,7 +69,7 @@ const ChatList = () => {
                 ))}
             </C.List>
             <NavBar></NavBar>
-        </C.Container>
+        </PageContainer>
     )
 }
 
