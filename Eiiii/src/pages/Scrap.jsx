@@ -62,11 +62,12 @@ export const Detail = styled.div`
 `
 
 const Menu = () => {
+  const navigate = useNavigate()
   return (
     <Tab>
         <Btn active="true">스크랩</Btn>
-        <Btn>좋아요</Btn>
-        <Btn>내댓글</Btn>
+        <Btn onClick={() => navigate("/like")}>좋아요</Btn>
+        <Btn onClick={() => navigate("/my-comments")}>내댓글</Btn>
     </Tab>
   )
 }
