@@ -1,6 +1,6 @@
 [
     {
-      "img": "/images/character1.png",
+      "img": "/images/avatars/c1.svg",
       "nickname": "병아리",
       "userId": "ajyslsbx",
       "major": "디지털 공예과",
@@ -14,7 +14,7 @@
       "type2": "채식/비건" 
     },
     {
-      "img": "/images/character2.png",
+      "img": "/images/avatars/c2.svg",
       "nickname": "병아리",
       "userId": "ajyslsbx",
       "major": "디지털 공예과",
@@ -28,7 +28,7 @@
       "type2": "채식/비건"
     },
     {
-      "img": "/images/character3.png",
+      "img": "/images/avatars/c2.svg",
       "nickname": "닉네임",
       "userId": "sjindclwjs",
       "major": "디지털 공예과",
@@ -42,7 +42,7 @@
       "type2": "채식/비건"
     },
     {
-        "img": "/images/character3.png",
+        "img": "/images/avatars/c2.svg",
         "nickname": "닉네임",
         "userId": "sjindclwjs",
         "major": "디지털 공예과",
@@ -57,7 +57,7 @@
       }
       ,
     {
-        "img": "/images/character3.png",
+        "img": "/images/avatars/c1.svg",
         "nickname": "닉네임",
         "userId": "sjindclwjs",
         "major": "디지털 공예과",
@@ -72,7 +72,7 @@
       }
       ,
     {
-        "img": "/images/character3.png",
+        "img": "/images/avatars/c1.svg",
         "nickname": "닉네임",
         "userId": "sjindclwjs",
         "major": "디지털 공예과",

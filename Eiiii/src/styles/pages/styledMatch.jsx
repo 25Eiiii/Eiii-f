@@ -71,7 +71,6 @@ export const Card = styled.div`
 `
 
 export const ProfileImg = styled.div`
-    background-image: url(${props => props.src});
     width: 125px;
     height: 125px;
     background: #FFFFFF;
