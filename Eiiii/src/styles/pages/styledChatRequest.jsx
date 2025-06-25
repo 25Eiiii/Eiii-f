@@ -102,9 +102,6 @@ export const ProfileImg = styled.div`
     justify-content: center;
 `
 
-export const Img = styled.div`
-`
-
 export const Content = styled.div`
     display: flex;
     width: 311.545px;
