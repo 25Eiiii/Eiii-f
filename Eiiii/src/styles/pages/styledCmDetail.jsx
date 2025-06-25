@@ -281,7 +281,7 @@ export const BackgroundOverlay = styled.div`
     top: 0;
     left: 0;
     width: 440px;
-    height: 100vh;
+    height: 956px;
     background: #888376;
     opacity: 0.7;
     z-index: 10;

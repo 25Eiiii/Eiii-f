@@ -1,6 +1,34 @@
 import * as D from "../styles/pages/styledCmDetail";
 import React, { useState } from "react";
 import DetailCard from "../components/DetailCard"
+import styled from "styled-components";
+
+
+// Button
+const Apply = ({ user, onClick }) => {
+    return (
+        <Ex onClick={() => onClick(user)}>대화 신청</Ex>
+    )
+};
+
+export const Ex = styled.div`
+    display: inline-flex;
+    padding: 6px 12px;
+    align-items: center;
+    border-radius: 999px;
+    background: #F99505;
+    color: var(--Font-White, #FFFFFF);
+    text-align: center;
+    font-family: "Spoqa Han Sans Neo";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 12px */
+    letter-spacing: -0.12px;
+    position: absolute;
+    right: 27px;
+    cursor: pointer;
+`
 
 const Detail = () => {
     const [selectedApply, setSelectedApply] = useState(null); 
@@ -53,7 +81,7 @@ const Detail = () => {
                             정보통계학과 21학번 / 24살
                         </D.Info2>
                     </D.Infos>
-                    <D.Apply onClick={() => handleApplyClick({name: "오리고기 먹고싶다"})}>대화 신청</D.Apply>
+                    <Apply user={{name: "오리고기 먹고싶다"}} onClick={handleApplyClick}></Apply>
                 </D.Profile>
                 <D.Big>새로 생긴 훠궈집 같이 가실 분 4분 구해요!</D.Big>
                 <D.Content>
@@ -98,7 +126,7 @@ const Detail = () => {
                             성악과26
                         </D.Info2>
                     </D.Infos>
-                    <D.Apply onClick={() => handleApplyClick({name: "김치 삽겹살"})}>대화 신청</D.Apply>
+                    <Apply user={{name: "김치 삼겹살"}} onClick={handleApplyClick}></Apply>
                 </D.Profile>
                 <D.Content variant="cmt">
                     <p>
@@ -140,7 +168,7 @@ const Detail = () => {
                             정보통계학과21
                         </D.Info2>
                     </D.Infos>
-                    <D.Apply onClick={() => handleApplyClick({name: "오리고기 먹고싶다"})}>대화 신청</D.Apply>
+                    <Apply user={{name: "오리고기 먹고싶다"}} onClick={handleApplyClick}></Apply>
                 </D.Profile>
                 <D.Content variant="cmt">
                     <p>오 대박! 너무 좋죠 !!!!!!!! 대화 신청 걸게요!!!</p>
