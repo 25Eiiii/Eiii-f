@@ -14,12 +14,15 @@ export const Text = styled.div`
     margin-top: 20px;
 `
 
-export const ProfileImg = styled.img`
+export const ProfileImg = styled.div`
     background-image: url(${`${process.env.PUBLIC_URL}/images/circle.svg`});
     width: 188.766px;
     height: 188.766px;
     flex-shrink: 0;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 export const Profile1 = styled.div`
     width: 66.89px;
@@ -104,6 +107,9 @@ export const Detail = styled.div`
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 `
 
