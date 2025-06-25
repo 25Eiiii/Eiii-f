@@ -43,12 +43,12 @@ const Request = () => {
             </R.SearchBar>
             <R.Tabs>
                 <R.TabWrapper>
-                    <R.Tab active>
+                    <R.Tab active="false" onClick={() => navigate('/chat-list')}>
                         보관함 <R.Badge>15</R.Badge>
                     </R.Tab>
                 </R.TabWrapper>
                 <R.TabWrapper>
-                    <R.Tab>
+                    <R.Tab active="true">
                         요청 <R.Badge>3</R.Badge>
                     </R.Tab>
                 </R.TabWrapper>
@@ -65,7 +65,7 @@ const Request = () => {
                         <R.Del>
                             <img 
                             id="del"
-                            src={`${process.env.PUBLIC_URL}/images/trash`}
+                            src={`${process.env.PUBLIC_URL}/images/trash.svg`}
                             alt="delete"
                             />
                         </R.Del>

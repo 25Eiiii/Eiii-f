@@ -44,13 +44,11 @@ export const TabWrapper = styled.div`
 `
 
 export const Tab = styled.div`
-    background: ${(props) => (props.active ? "#ffffff" : "transparent")};
-    border: ${(props) => (props.active ? "1px solid #d59b00" : "none")};
+    border: ${(props) => (props.active === "true" ? "2px solid #F28C26" : "1px solid #F8B621")};
     width: 64.4px;
     height: 23px;
     flex-shrink: 0;
     border-radius: 10px;
-    border: 2px solid #F28C26;
     background: #FFFFFF;
     color: #F28C26;
     font-family: Inter;
@@ -61,6 +59,7 @@ export const Tab = styled.div`
     justify-content: center;
     display: flex;
     align-items: center;
+    cursor: pointer;
 `
 
 export const Badge = styled.div`

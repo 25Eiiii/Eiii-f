@@ -29,7 +29,7 @@ export const Ex = styled.div`
     right: 27px;
     cursor: pointer;
 `
-
+// Detail page
 const Detail = () => {
     const [selectedApply, setSelectedApply] = useState(null); 
 
