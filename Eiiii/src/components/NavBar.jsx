@@ -30,7 +30,7 @@ const NavBar = () => {
                     alt="user-group"
                 />
                 </N.Icon>
-            <N.Icon onClick={() => navigate("/")}>
+            <N.Icon onClick={() => navigate("/scrap")}>
                 <img
                     id="star"
                     src={`${process.env.PUBLIC_URL}/images/star.svg`}
