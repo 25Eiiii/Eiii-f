@@ -1,6 +1,17 @@
-import * as D from "../styles/pages/styledCmDetail"
+import * as D from "../styles/pages/styledCmDetail";
+import React, { useState } from "react";
+import DetailCard from "../components/DetailCard"
 
 const Detail = () => {
+    const [selectedApply, setSelectedApply] = useState(null); 
+
+    const handleApplyClick = (user) => {
+        setSelectedApply(user);
+    }
+
+    const handleCloseApply = () => {
+        setSelectedApply(null)
+    }
 
     return (
         <D.Container>
@@ -42,7 +53,7 @@ const Detail = () => {
                             정보통계학과 21학번 / 24살
                         </D.Info2>
                     </D.Infos>
-                    <D.Apply>대화 신청</D.Apply>
+                    <D.Apply onClick={() => handleApplyClick({name: "오리고기 먹고싶다"})}>대화 신청</D.Apply>
                 </D.Profile>
                 <D.Big>새로 생긴 훠궈집 같이 가실 분 4분 구해요!</D.Big>
                 <D.Content>
@@ -87,7 +98,7 @@ const Detail = () => {
                             성악과26
                         </D.Info2>
                     </D.Infos>
-                    <D.Apply>대화 신청</D.Apply>
+                    <D.Apply onClick={() => handleApplyClick({name: "김치 삽겹살"})}>대화 신청</D.Apply>
                 </D.Profile>
                 <D.Content variant="cmt">
                     <p>
@@ -129,7 +140,7 @@ const Detail = () => {
                             정보통계학과21
                         </D.Info2>
                     </D.Infos>
-                    <D.Apply>대화 신청</D.Apply>
+                    <D.Apply onClick={() => handleApplyClick({name: "오리고기 먹고싶다"})}>대화 신청</D.Apply>
                 </D.Profile>
                 <D.Content variant="cmt">
                     <p>오 대박! 너무 좋죠 !!!!!!!! 대화 신청 걸게요!!!</p>
@@ -154,6 +165,17 @@ const Detail = () => {
                 <D.Here placeholder="댓글을 입력해 주세요."></D.Here>
                 <D.Btn>등록</D.Btn>
             </D.Write>
+
+            {selectedApply && (
+             <>
+                <D.BackgroundOverlay />
+                <DetailCard user={selectedApply}></DetailCard>
+                <D.BtnGroup>
+                    <D.Send>대화 신청</D.Send>
+                    <D.Cancle onClick={handleCloseApply}>나가기</D.Cancle>
+                </D.BtnGroup>
+            </>
+            )}
         </D.Container>
 
     );

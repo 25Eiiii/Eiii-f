@@ -132,6 +132,7 @@ export const Apply = styled.div`
     letter-spacing: -0.12px;
     position: absolute;
     right: 27px;
+    cursor: pointer;
 `
 
 export const Content = styled.div`
@@ -271,6 +272,63 @@ export const Btn = styled.div`
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+`
+
+export const BackgroundOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 440px;
+    height: 100vh;
+    background: #888376;
+    opacity: 0.7;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+`;
+
+export const BtnGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 11;
+    margin-top: -105px;
+`;
+
+export const Send = styled.div`
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F8B621;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+`
+
+export const Cancle = styled.div`
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F8B621;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
     line-height: normal;
     cursor: pointer;
 `

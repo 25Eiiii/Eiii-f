@@ -48,8 +48,6 @@ const Community = () => {
                             23살
                     </M.Info2>
                     </M.Infos>
-                 
-                    
                 </M.Profile>
                 <M.Content>
                     <M.Big>0993학번 있나요?</M.Big>
