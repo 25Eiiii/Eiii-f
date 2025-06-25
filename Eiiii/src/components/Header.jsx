@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 60px 27px 17px 27px;
-    gap: 110px;
+    gap: 90px;
 `;
 
 const LeftGroup = styled.div`
@@ -66,7 +66,7 @@ const Btn = styled.button`
 const Title = styled.div`
     display: flex;
     justify-content: center;
-    width: 113px;
+    width: 150px;
     height: 32px;
     flex-shrink: 0;
     color: #F8B621;

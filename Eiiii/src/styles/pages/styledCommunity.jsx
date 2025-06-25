@@ -65,6 +65,7 @@ export const Item  = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 18px;
+    cursor: pointer;
 `
 export const Profile = styled.div`
     display: flex;
@@ -178,28 +179,29 @@ export const Bottom = styled.div`
 `
 
 export const IconImg = styled.img`
-margin-right: 3px;
+    margin-right: 3px;
 `
 
 export const WriteBtn =  styled.div`
-width: 64.4px;
-height: 23px;
-flex-shrink: 0;
-border-radius: 10px;
-border: 1px solid #F8B621;
-background: #FEE790;
-color: #F8B621;
-font-family: Inter;
-font-size: 10px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-display: flex;
-align-items: center;
-justify-content: center;
-position: absolute;
-right: 18.6px;
-bottom: 100px
+    width: 64.4px;
+    height: 23px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #F8B621;
+    background: #FEE790;
+    color: #F8B621;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 18.6px;
+    bottom: 100px;
+    cursor: pointer;
 `
 
 export const Like =  styled.div`
@@ -221,7 +223,7 @@ export const More = styled.div`
 `
 
 export const Line = styled.div`
-width: 442px;
-height: 1px;
-background: #EFBE78;
+    width: 442px;
+    height: 1px;
+    background: #EFBE78;
 `

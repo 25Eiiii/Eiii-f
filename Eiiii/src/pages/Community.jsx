@@ -1,32 +1,19 @@
 import * as M from "../styles/pages/styledCommunity"
 import NavBar from "../components/NavBar"
+import Header from "../components/Header"
+import { useNavigate } from "react-router-dom"
 
 const Community = () => {
+    const navigate = useNavigate()
 
     return (
         <M.Container>
-        <M.Header>
-            <M.Back>
-                <img 
-                    id="search"
-                    src={`${process.env.PUBLIC_URL}/images/back.svg`}
-                    alt="search"
-                />
-            </M.Back>
-            <M.Search>
-                <img 
-                    id="search"
-                    src={`${process.env.PUBLIC_URL}/images/search.svg`}
-                    alt="search"
-                />
-            </M.Search>
-            <M.Title>선후배 밥약
-                <img 
-                    id="meal"
-                    src={`${process.env.PUBLIC_URL}/images/meal.svg`}
-                />
-            </M.Title>
-        </M.Header>
+        <Header
+            onClickLeft={() => navigate(-1)}
+            rightIcon="search"
+            titleText="선후배 밥약"
+            titleImg="meal"
+        />
         <M.Wrapper>
             <M.Item>
                 <M.Profile>
@@ -49,7 +36,7 @@ const Community = () => {
                     </M.Info2>
                     </M.Infos>
                 </M.Profile>
-                <M.Content>
+                <M.Content onClick={() => navigate("/community-detail")}>
                     <M.Big>0993학번 있나요?</M.Big>
                     가나다라마바사 아자차카 타파아 글을써보십다 
                     두줄까진 허용입니다. 더이상 보고싶으면 더보기를 클릭
@@ -98,12 +85,12 @@ const Community = () => {
                  
                     
                 </M.Profile>
-                <M.Content>
+                <M.Content onClick={() => navigate("/community-detail")}>
                     <M.Big>0993학번 있나요?</M.Big>
                     가나다라마바사 아자차카 타파아 글을써보십다 
                     두줄까진 허용입니다. 더이상 보고싶으면 더보기를 클릭
                     <M.Etc>더보기</M.Etc>
-                </M.Content>
+                </M.Content >
                 <M.Bottom>
                 <M.Like>
                     <M.IconImg src={`${process.env.PUBLIC_URL}/images/heart.svg`} />
@@ -125,7 +112,7 @@ const Community = () => {
             </M.Item>
            <M.Line></M.Line>
         </M.Wrapper>
-        <M.WriteBtn>글쓰기</M.WriteBtn>
+        <M.WriteBtn onClick={() => navigate("/community-write")}>글쓰기</M.WriteBtn>
         <NavBar></NavBar>
         </M.Container>
     )
