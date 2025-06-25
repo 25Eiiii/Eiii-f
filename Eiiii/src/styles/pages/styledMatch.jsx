@@ -166,23 +166,7 @@ export const ButtonGroup = styled.div`
     margin-top: -105px;
 `;
 
-export const ApplyBtn = styled.div`
-    width: 305px;
-    height: 46px;
-    flex-shrink: 0;
-    border-radius: 11px;
-    background: #F99505;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    cursor: pointer;
-`
-
-export const ExtBtn = styled.div`
+export const ApplyBtn = styled.button`
     width: 305px;
     height: 46px;
     flex-shrink: 0;
@@ -196,4 +180,28 @@ export const ExtBtn = styled.div`
     font-weight: 600;
     line-height: normal;
     cursor: pointer;
+    border: none;
+     &:active {
+        background: #F99505;
+    };
+`
+
+export const ExtBtn = styled.button`
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F8B621;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+    border: none;
+     &:active {
+        background: #F99505;
+    };
 `

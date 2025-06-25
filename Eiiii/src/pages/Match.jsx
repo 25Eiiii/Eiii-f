@@ -50,7 +50,7 @@ const Match = ({ dataList }) => {
 
       {selectedUser && (
       <M.ButtonGroup>
-        <M.ApplyBtn>대화 신청</M.ApplyBtn>
+        <M.ApplyBtn onClick={handleCloseDetail}>대화 신청</M.ApplyBtn>
         <M.ExtBtn onClick={handleCloseDetail}>나가기</M.ExtBtn>
       </M.ButtonGroup>
       )}
