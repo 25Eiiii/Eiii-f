@@ -24,7 +24,6 @@ export const SearchBar = styled.div`
     flex-shrink: 0;
     border-radius: 10px;
     background: #FEE790;
-    margin-top: 9px;
 
     #search {
         margin-left: 10px;
@@ -44,13 +43,12 @@ export const TabWrapper = styled.div`
 `
 
 export const Tab = styled.div`
-    background: ${(props) => (props.active ? "#ffffff" : "transparent")};
-    border: ${(props) => (props.active ? "1px solid #d59b00" : "none")};
+    border: ${(props) => (props.active === "true" ? "2px solid #F28C26" : "1px solid #F8B621")};
+    box-sizing: border-box;
     width: 64.4px;
     height: 23px;
     flex-shrink: 0;
     border-radius: 10px;
-    border: 2px solid #F28C26;
     background: #FFFFFF;
     color: #F28C26;
     font-family: Inter;
@@ -61,6 +59,7 @@ export const Tab = styled.div`
     justify-content: center;
     display: flex;
     align-items: center;
+    cursor: pointer;
 `
 
 export const Badge = styled.div`
@@ -98,18 +97,21 @@ export const Profile = styled.div`
     flex-shrink: 0;
     border-radius: 18px;
     background: #FFD667;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 export const Content = styled.div`
     display: flex;
-    width: 331.545px;
+    width: 311.545px;
     height: 45.035px;
     flex-shrink: 0;
     border-radius: 18px;
     background: #FFD667;
     align-items: center;
-    justify-content: center;
-    gap: 23px;
+    justify-content: space-between;
+    padding: 0 17px;
 `
 
 export const Info = styled.div`
@@ -128,6 +130,9 @@ export const Del = styled.div`
     flex-shrink: 0;
     background: #FFFFFF;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const BackgroundOverlay = styled.div`
@@ -149,36 +154,40 @@ export const ButtonGroup = styled.div`
     margin-top: -105px;
 `;
 
-export const Ok = styled.div`
+export const Ok = styled.button`
     width: 305px;
     height: 46px;
     flex-shrink: 0;
     border-radius: 11px;
     background: #F8B621;
     color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     cursor: pointer;
+    border: none;
+    &:active {
+        background: #F99505;
+    };
+
 `
 
-export const Rej = styled.div`
+export const Rej = styled.button`
     width: 305px;
     height: 46px;
     flex-shrink: 0;
     border-radius: 11px;
     background: #F8B621;
     color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     cursor: pointer;
+    border: none;
+    &:active {
+        background: #F99505;
+    };
+
 `
