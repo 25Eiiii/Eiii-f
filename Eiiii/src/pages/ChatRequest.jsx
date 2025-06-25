@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as R from "../styles/pages/styledChatRequest"
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
@@ -22,12 +23,16 @@ const Request = () => {
         setSelectedUser(null)
     }
 
+    const navigate = useNavigate();
+
     return (
         <R.Container>
             <Header 
                 titleText="쪽지 요청"
                 leftIcon="back"
                 rightIcon="ring"
+                onClickLeft={() => navigate(-1)}
+                onClickRight={() => navigate('/notice')}
             />
             <R.SearchBar>
                 <img
