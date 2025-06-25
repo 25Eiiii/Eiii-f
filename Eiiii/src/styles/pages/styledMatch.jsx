@@ -71,7 +71,6 @@ export const Card = styled.div`
 `
 
 export const ProfileImg = styled.div`
-    background-image: url(${props => props.src});
     width: 125px;
     height: 125px;
     background: #FFFFFF;
@@ -176,7 +175,6 @@ export const ApplyBtn = styled.div`
     color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -193,7 +191,6 @@ export const ExtBtn = styled.div`
     color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;

@@ -4,7 +4,12 @@ import * as M from "../styles/pages/styledMatch";
 const MatchCard = ({ img, nickname, userId, major, grade, gender, mealType, onClick }) => {
   return (
     <M.Card onClick={onClick}>
-      <M.ProfileImg src={img} alt="캐릭터" />
+      <M.ProfileImg>
+        <img
+          src={img}
+          alt="profile"
+        />
+      </M.ProfileImg>
       <M.InfoWrapper>
         <M.Profile1>
             <M.Nickname>{nickname}</M.Nickname>
@@ -17,6 +22,7 @@ const MatchCard = ({ img, nickname, userId, major, grade, gender, mealType, onCl
         <M.Detail>{mealType}</M.Detail>
         </M.Profile2>
       </M.InfoWrapper>
+      
     </M.Card>
   );
 };

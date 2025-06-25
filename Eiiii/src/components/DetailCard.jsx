@@ -5,7 +5,12 @@ const DetailCard = ({ text, user, onClose }) => {
   return (
     <M.DetailCard>
       <M.Text>{text}</M.Text>
-      <M.ProfileImg src={user.img} />
+      <M.ProfileImg>
+        <img
+          src={user.img} 
+          alt="profile"
+        />
+      </M.ProfileImg>
       <M.Profile1>
         <M.Nickname>{user.nickname}</M.Nickname>
         <M.UserId>@{user.userId}</M.UserId>
