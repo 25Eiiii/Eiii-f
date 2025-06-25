@@ -44,6 +44,7 @@ export const TabWrapper = styled.div`
 
 export const Tab = styled.div`
     border: ${(props) => (props.active === "true" ? "2px solid #F28C26" : "1px solid #F8B621")};
+    box-sizing: border-box;
     width: 64.4px;
     height: 23px;
     flex-shrink: 0;

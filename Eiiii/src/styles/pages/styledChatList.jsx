@@ -56,7 +56,6 @@ export const SearchBar = styled.div`
     flex-shrink: 0;
     border-radius: 10px;
     background: #FEE790;
-    margin-top: 9px;
 
     #search {
         margin-left: 10px;
@@ -77,13 +76,12 @@ export const TabWrapper = styled.div`
 `
 
 export const Tab = styled.div`
-    background: ${(props) => (props.active ? "#ffffff" : "transparent")};
-    border: ${(props) => (props.active ? "1px solid #d59b00" : "none")};
+    border: ${(props) => (props.active === "true" ? "2px solid #F28C26" : "1px solid #F8B621")};
+    box-sizing: border-box;
     width: 64.4px;
     height: 23px;
     flex-shrink: 0;
     border-radius: 10px;
-    border: 2px solid #F28C26;
     background: #FFFFFF;
     color: #F28C26;
     font-family: Inter;
@@ -94,6 +92,7 @@ export const Tab = styled.div`
     justify-content: center;
     display: flex;
     align-items: center;
+    cursor: pointer;
 `
 
 export const Badge = styled.div`
@@ -114,17 +113,21 @@ export const Badge = styled.div`
 export const List = styled.div`
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #EFBE78;
     margin-top: 15px;
 `
 
+
 export const Item = styled.div`
     display: flex;
-    padding: 12px 16px;
-    border-bottom: 1px solid #EFBE78;
+    flex-directon: row;
+    padding: 12px;
+    border-top: 1px solid #EFBE78;
+    width: 449px;
+    margin-left: 34px;
+    gap: 13px;
 `
 
-export const Profile = styled.img`
+export const Profile = styled.div`
     width: 54px;
     height: 49px;
     flex-shrink: 0;
@@ -136,7 +139,8 @@ export const Profile = styled.img`
 `
 
 export const Text = styled.div`
-    margin-left: 13px;
+margin-right: 10px;
+padding: 7px 0;
 `
 
 export const Line1 = styled.div`
@@ -147,7 +151,7 @@ export const Line1 = styled.div`
 `
 
 export const Name = styled.div`
-    color: #000;
+    color: #000000;
     font-family: Pretendard;
     font-size: 16px;
     font-style: normal;

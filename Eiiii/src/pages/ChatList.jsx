@@ -1,6 +1,7 @@
 import NavBar from "../components/NavBar";
 import * as C from "../styles/pages/styledChatList"
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 const messages = Array(9).fill({
     nickname: "밥먹는 고라파덕",
@@ -8,16 +9,20 @@ const messages = Array(9).fill({
     grade: "23",
     time: "어제 09:05pm",
     message: "훠궈 4인팟 구하고 있는데 혹시 생각 있으시..",
-    avatar: `${process.env.PUBLIC_URL}/images/avatar.svg`,
+    img: `${process.env.PUBLIC_URL}/images/avatar.svg`,
   });
 
 const ChatList = () => {
+    const navigate = useNavigate()
+
     return(
         <C.Container>
             <Header 
                 titleText="쪽지 목록" 
                 leftIcon="back"
                 rightIcon="ring"
+                onClickLeft={() => navigate(-1)}
+                onClickRight={() => navigate('/notice')}
             />
             <C.SearchBar>
                 <img
@@ -28,12 +33,12 @@ const ChatList = () => {
             </C.SearchBar>
             <C.Tabs>
                 <C.TabWrapper>
-                    <C.Tab active>
+                    <C.Tab active="true">
                         보관함 <C.Badge>15</C.Badge>
                     </C.Tab>
                 </C.TabWrapper>
             <C.TabWrapper>
-                    <C.Tab>
+                    <C.Tab active="false" onClick={() => navigate('/chat-request')}>
                         요청 <C.Badge>3</C.Badge>
                     </C.Tab>
             </C.TabWrapper>
@@ -41,11 +46,17 @@ const ChatList = () => {
 
             <C.List>
                 {messages.map((msg, index) => (
+                    
                     <C.Item key={index}>
-                        <C.Profile src={msg.avatar} alt="avatar" />
+                        <C.Profile>
+                            <img 
+                                src={msg.img}
+                                alt="pic"
+                            />
+                        </C.Profile>
                         <C.Text>
                             <C.Line1>
-                                <C.Name>{msg.nickname}</C.Name>
+                            <C.Name>{msg.nickname}</C.Name>
                                 <C.Info>
                                     {msg.major} {msg.grade}
                                 </C.Info>
