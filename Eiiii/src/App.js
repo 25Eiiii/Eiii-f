@@ -11,6 +11,7 @@ import Write from './pages/Write';
 import Detail from './pages/CmDetail';
 import Plan from './pages/Plan';
 import Scrap from './pages/Scrap';
+import Like from './pages/Like';
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -31,6 +32,7 @@ function App() {
         <Route path="/community-detail" element={<Detail />}/>
         <Route path="/plan" element={<Plan />}/>
         <Route path="/scrap" element={<Scrap />}/>
+        <Route path="/like" element={<Like />}/>
       </Routes>
     </BrowserRouter>
   );
