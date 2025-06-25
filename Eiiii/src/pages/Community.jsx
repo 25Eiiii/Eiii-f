@@ -10,9 +10,9 @@ const Community = () => {
         <M.Container>
         <Header
             onClickLeft={() => navigate(-1)}
-            rightIcon="search"
             titleText="선후배 밥약"
             titleImg="meal"
+            rightIcon="ring"
         />
         <M.Wrapper>
             <M.Item>

@@ -176,7 +176,6 @@ export const ApplyBtn = styled.div`
     color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -193,7 +192,6 @@ export const ExtBtn = styled.div`
     color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
