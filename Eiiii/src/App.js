@@ -13,6 +13,7 @@ import Plan from './pages/Plan';
 import Scrap from './pages/Scrap';
 import Like from './pages/Like';
 import MComments from './pages/MyComments';
+import Login from "./pages/Login";
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -35,6 +36,7 @@ function App() {
         <Route path="/scrap" element={<Scrap />}/>
         <Route path="/like" element={<Like />}/>
         <Route path="/my-comments" element={<MComments />}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   );
