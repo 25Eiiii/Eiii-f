@@ -21,7 +21,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Match dataList={dataList} />} />
+        <Route path="/match" element={<Match dataList={dataList} />} />
         <Route path="/chat-list" element={<ChatList />}/>
         <Route path="/chat-request" element={<Request />}/>
         <Route path="/notice" element={<Notice />}/>
