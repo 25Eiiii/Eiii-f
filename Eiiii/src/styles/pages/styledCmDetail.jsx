@@ -286,21 +286,6 @@ export const Btn = styled.button`
     background: none;
 `
 
-export const BackgroundOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 440px;
-    height: 956px;
-    background: #888376;
-    opacity: 0.7;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 30px;
-`;
-
 export const BtnGroup = styled.div`
     display: flex;
     flex-direction: column;
