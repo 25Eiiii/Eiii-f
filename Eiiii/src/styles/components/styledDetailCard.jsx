@@ -78,7 +78,7 @@ export const Profile2 = styled.div`
 `
 // 상세 카드 전체 박스
 export const DetailCard = styled.div`
-    position: fixed;
+    position: absolute;
     top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
