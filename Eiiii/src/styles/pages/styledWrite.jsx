@@ -80,22 +80,22 @@ export const Category = styled.div`
 `
 
 export const Title = styled.input`
-color: #949494;
-font-family: "Spoqa Han Sans Neo";
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-margin-left: 30px;
-border: none;
-padding: 16px 0px;
-outline: none;
+    color: #949494;
+    font-family: "Spoqa Han Sans Neo";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 30px;
+    border: none;
+    padding: 16px 0px;
+    outline: none;
 `
 
 export const Line = styled.div`
-width: 450px;
-height: 1px;
-background: #EFBE78;
+    width: 450px;
+    height: 1px;
+    background: #EFBE78;
 `
 
 export const Content = styled.textarea`
