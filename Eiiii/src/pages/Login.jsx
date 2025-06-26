@@ -1,6 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import * as L from "../styles/styledLogin";
+import * as L from "../styles/pages/styledLogin";
 
 const Login = () =>{
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Login = () =>{
         <L.Container onClick={goLogin}>
             <L.Logo>
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/밥짝.svg`}
+                    src={`${process.env.PUBLIC_URL}/images/biglogo.svg`}
                     alt="logo"
                     width="148px"
                 />
