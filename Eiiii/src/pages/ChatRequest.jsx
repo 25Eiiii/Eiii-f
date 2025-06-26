@@ -67,7 +67,7 @@ const Request = () => {
             {requests.map((req, index) => (
                 <R.Item key={index}
                         {...req}
-                        onClick={() => handleCardClick(req)}>
+                        >
                     <R.ProfileImg>
                         <img 
                             src={req.img}
@@ -75,7 +75,7 @@ const Request = () => {
                         />
                     </R.ProfileImg>
                     <R.Content>
-                        <R.Info>{req.nickname} /{req.major} {req.grade}</R.Info>
+                        <R.Info onClick={() => handleCardClick(req)}>{req.nickname} /{req.major} {req.grade}</R.Info>
                         <R.Del>
                             <img 
                             id="del"
