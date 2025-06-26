@@ -168,9 +168,6 @@ export const Info = styled.div`
     line-height: 100%; /* 11px */
 `
 
-export const Line2 = styled.div`
-`
-
 export const Msg = styled.div`
     color: #BAAEA5;
     font-family: "Spoqa Han Sans Neo";

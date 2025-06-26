@@ -10,8 +10,8 @@ export const Container = styled.div`
     position: absolute;
     justify-content: space-around;
     background: #FFFFFF;
-      border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 `
 
 export const Line = styled.div`
