@@ -23,6 +23,10 @@ import Home from "./pages/Home";
 import Test5 from "./pages/Test5";
 =======
 import Test4 from "./pages/Test4";
+<<<<<<< feat/teststep6
+import Test6 from "./pages/Test6";
+=======
+>>>>>>> develop
 >>>>>>> develop
 
 function App() {
@@ -56,6 +60,10 @@ function App() {
         <Route path="/test/step5" element={<Test5/>}/>
 =======
         <Route path="/test/step4" element={<Test4/>}/>
+<<<<<<< feat/teststep6
+        <Route path="/test/step6" element={<Test6/>}/>
+=======
+>>>>>>> develop
 >>>>>>> develop
       </Routes>
     </BrowserRouter>
