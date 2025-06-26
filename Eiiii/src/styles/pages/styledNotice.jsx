@@ -57,14 +57,14 @@ export const Text = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    margin-left: 27px;
+    margin-left: 40px;
+    display: flex;
+    width: 100%
 `
 
 export const NoticeWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 13px;
-    gap: 13px;
 `
 
 export const Item = styled.div`
@@ -73,7 +73,8 @@ export const Item = styled.div`
     align-items: center;
     border-bottom: 1px solid #EFBE78;
     gap: 8px;
-    padding: 12px 21px;
+    padding: 18px 21px;
+    width: 100vw;
 `
 
 export const Icon = styled.div`
