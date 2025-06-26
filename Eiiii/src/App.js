@@ -19,7 +19,11 @@ import Login1 from "./pages/Login1";
 import Test3 from "./pages/Test3";
 import Test2 from "./pages/Test2";
 import Home from "./pages/Home";
+<<<<<<< feat/teststep5
 import Test5 from "./pages/Test5";
+=======
+import Test4 from "./pages/Test4";
+>>>>>>> develop
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -48,7 +52,11 @@ function App() {
         <Route path="/test/step3" element={<Test3/>}/>
         <Route path="/test/step2" element={<Test2/>}/>
         <Route path="/home" element={<Home/>}/>
+<<<<<<< feat/teststep5
         <Route path="/test/step5" element={<Test5/>}/>
+=======
+        <Route path="/test/step4" element={<Test4/>}/>
+>>>>>>> develop
       </Routes>
     </BrowserRouter>
   );
