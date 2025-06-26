@@ -15,6 +15,7 @@ import Like from './pages/Like';
 import MComments from './pages/MyComments';
 import Login from "./pages/Login";
 import Test from "./pages/Test";
+import Login1 from "./pages/Login1";
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -26,7 +27,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Match dataList={dataList} />} />
+        <Route path="/match" element={<Match dataList={dataList} />} />
         <Route path="/chat-list" element={<ChatList />}/>
         <Route path="/chat-request" element={<Request />}/>
         <Route path="/notice" element={<Notice />}/>
@@ -38,10 +39,11 @@ function App() {
         <Route path="/like" element={<Like />}/>
         <Route path="/my-comments" element={<MComments />}/>
         <Route path="/login" element={<Login/>}/>
-         <Route path="/test" element={<Test/>}/>
+        <Route path="/test" element={<Test/>}/>
+        <Route path="/login1" element={<Login1/>}/>
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
