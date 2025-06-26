@@ -24,6 +24,7 @@ import Test4 from "./pages/Test4";
 import Test6 from "./pages/Test6";
 import Test7 from "./pages/Test7";
 import Test8 from "./pages/Test8";
+import TestComplete from "./pages/TestComplete";
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -57,6 +58,7 @@ function App() {
         <Route path="/test/step6" element={<Test6/>}/>
         <Route path="/test/step7" element={<Test7/>}/>
         <Route path="/test/step8" element={<Test8/>}/>
+        <Route path="/test/complete" element={<TestComplete/>}/>
       </Routes>
     </BrowserRouter>
   );
