@@ -19,7 +19,7 @@ import Login1 from "./pages/Login1";
 import Test3 from "./pages/Test3";
 import Test2 from "./pages/Test2";
 import Home from "./pages/Home";
-
+import Test4 from "./pages/Test4";
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -48,6 +48,7 @@ function App() {
         <Route path="/test/step3" element={<Test3/>}/>
         <Route path="/test/step2" element={<Test2/>}/>
         <Route path="/home" element={<Home/>}/>
+        <Route path="/test/step4" element={<Test4/>}/>
       </Routes>
     </BrowserRouter>
   );
