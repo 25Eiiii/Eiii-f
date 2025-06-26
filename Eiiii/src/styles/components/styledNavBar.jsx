@@ -6,8 +6,12 @@ export const Container = styled.div`
     gap: 10px;
     align-items: center;
     bottom: 15px;
-    position: fixed;
+    width: 100%;
+    position: absolute;
+    justify-content: space-around;
     background: #FFFFFF;
+      border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 `
 
 export const Line = styled.div`

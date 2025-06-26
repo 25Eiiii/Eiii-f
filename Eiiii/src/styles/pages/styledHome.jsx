@@ -190,6 +190,7 @@ width: 418px;
 height: 1px;
 background: #EFBE78;
 margin-top: 28px;
+margin-bottom:
 `;
 
 export const Navigation = styled.div`

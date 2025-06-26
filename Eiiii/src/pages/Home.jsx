@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import '../styles/pages/custom.css';
 import moment from "moment";
+import NavBar from "../components/NavBar";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -173,44 +174,7 @@ const Home = () => {
                     width="44px"
                 />
             </H.Photo>
-            <H.LongLine></H.LongLine>
-            <H.Navigation>
-                <H.Home>
-                    <img
-                        src={`${process.env.PUBLIC_URL}/images/home.svg`}
-                        alt="logo"
-                        width="44px"
-                    />
-                </H.Home>
-                <H.Talk>
-                    <img
-                        src={`${process.env.PUBLIC_URL}/images/talk.svg`}
-                        alt="logo"
-                        width="44px"
-                    />
-                </H.Talk>
-                <H.Group>
-                    <img
-                        src={`${process.env.PUBLIC_URL}/images/user-group.svg`}
-                        alt="logo"
-                        width="44px"
-                    />
-                </H.Group>
-                <H.Star>
-                    <img
-                        src={`${process.env.PUBLIC_URL}/images/star.svg`}
-                        alt="logo"
-                        width="44px"
-                    />
-                </H.Star>
-                <H.Me onClick={goProfile}>
-                    <img
-                        src={`${process.env.PUBLIC_URL}/images/user.svg`}
-                        alt="logo"
-                        width="44px"
-                    />
-                </H.Me>
-            </H.Navigation>
+            <NavBar></NavBar>
         </H.Container>
     );
 };
