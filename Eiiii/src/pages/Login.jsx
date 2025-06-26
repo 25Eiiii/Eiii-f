@@ -11,7 +11,7 @@ const Login = () =>{
         <L.Container onClick={goLogin}>
             <L.Logo>
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/밥짝.svg`}
+                    src={`${process.env.PUBLIC_URL}/images/biglogo.svg`}
                     alt="logo"
                     width="148px"
                 />
