@@ -65,34 +65,5 @@ export const Text = styled.div`
 export const NoticeWrapper = styled.div`
     display: flex;
     flex-direction: column;
-`
-
-export const Item = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #EFBE78;
-    gap: 8px;
-    padding: 18px 21px;
-    width: 100vw;
-`
-
-export const Icon = styled.div`
-width: 34px;
-height: 34px;
-flex-shrink: 0;
-background: #F8B621;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-`
-
-export const Content = styled.div`
-    color: #4B4B4B;
-    font-family: "Spoqa Han Sans Neo";
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    width: 440px;
 `

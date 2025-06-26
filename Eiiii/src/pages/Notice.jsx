@@ -88,7 +88,7 @@ export const Item = styled.div`
     align-items: center;
     border-bottom: 1px solid #EFBE78;
     gap: 0px;
-    width: 100vw;
+    width: 440px;
     background: ${(props) => props.$color || "#FFFFFF"};
     height: 71px;
 `
@@ -115,7 +115,6 @@ export const Content = styled.div`
     line-height: normal;
     width: 350px;
     margin-left: 40px;
-
 `
 
 //Notice Page 

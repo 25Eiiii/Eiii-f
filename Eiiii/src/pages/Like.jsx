@@ -1,4 +1,4 @@
-import * as L from "../styles/pages/styledLike"
+import * as L from "../styles/pages/styledScrap"
 import NavBar from "../components/NavBar"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
@@ -129,7 +129,7 @@ export const Detail = styled.div`
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: 100%; /* 12px */
+    line-height: 1.5;
     letter-spacing: -0.12px;
 `
 // Menu component

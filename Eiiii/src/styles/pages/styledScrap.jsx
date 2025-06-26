@@ -52,7 +52,7 @@ export const Date = styled.p`
 `
 
 export const Line = styled.div`
-width: 527px;
+width: 440px;
 height: 17px;
 flex-shrink: 0;
 background: #FEE790;
@@ -62,10 +62,11 @@ font-size: 10px;
 font-style: normal;
 font-weight: 600;
 line-height: 100%; /* 10px */
-padding-left: 140px;
 margin: 8px 0 9px;
 display: flex;
 align-items: center;
+box-sizing: border-box;
+padding-left: 27px;
 `
 
 export const ScrapWrapper = styled.div`
@@ -74,7 +75,7 @@ flex-direction: column;
 width: 100%;
 `
 export const Line2 = styled.div`
-width: 442px;
+width: 440px;
 height: 1px;
 background: #EFBE78;
 margin: 7.8px 0 15px;
