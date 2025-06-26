@@ -18,43 +18,6 @@ export const Container = styled.div`
     overflow: hidden;
 `
 
-export const Header = styled.div`
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    align-self: flex-start;
-    margin: 60px 0px 17px 19px;
-    gap: 10px;
-`
-
-export const Back = styled.div`
-    width: 32px;
-    height: 31px;
-    flex-shrink: 0;
-    background: #F8B621;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-`
-
-export const Search = styled.div`
-
-`
-
-export const Title = styled.input`
-    width: 130px;
-    height: 32px;
-    flex-shrink: 0;
-    color: #F8B621;
-    text-align: center;
-    font-family: Inter;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    margin-left: 69.63px;
-`
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -127,9 +90,7 @@ export const Content = styled.div`
     margin-top: 20.44px;
     display: flex;
     flex-direction: column;
-    width: 328.533px;
     flex-shrink: 0;
-    gap: 18.77px;
     font-family: "Spoqa Han Sans Neo";
     font-size: 14px;
     font-style: normal;
@@ -149,11 +110,13 @@ export const Big = styled.div`
     font-weight: 700;
     line-height: 100%; /* 16px */
     letter-spacing: -0.16px;
+    margin-bottom: 18px;
 `
 export const Etc = styled.div`
     align-self: flex-end;
     position: relative;
-    bottom: 34px;
+    bottom: 15px;
+    right: 30px;
     width: 38.72px;
     height: 14.08px;
     flex-shrink: 0;

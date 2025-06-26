@@ -1,7 +1,10 @@
 import * as D from "../styles/pages/styledCmDetail";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DetailCard from "../components/DetailCard"
 import styled from "styled-components";
+import { PageContainer } from "../styles/common/styledConainer";
+import { BackgroundOverlay } from "../styles/common/styledBackground";
 
 
 // Button
@@ -29,6 +32,77 @@ export const Ex = styled.div`
     right: 27px;
     cursor: pointer;
 `
+
+// Header Component
+const Header = () => {
+  const navigate = useNavigate()
+
+  return (
+    <Wrapper>
+        <Back onClick={() => navigate(-1)}>
+            <img
+                src={`${process.env.PUBLIC_URL}/images/back.svg`}
+                alt="back"
+            />
+        </Back>
+        <Search>
+            <img
+                src={`${process.env.PUBLIC_URL}/images/search.svg`}
+                alt="search"
+            />
+        </Search>
+        <Title>선후배 밥약
+                <img
+                src={`${process.env.PUBLIC_URL}/images/meal.svg`}
+                alt="meal"
+            />
+        </Title>
+    </Wrapper>
+  )
+}
+
+export const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 60px 27px 17px;
+    width: 100%;
+`
+
+export const Back = styled.div`
+    width: 32px;
+    height: 31px;
+    flex-shrink: 0;
+    background: #F8B621;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 23px;
+`
+
+export const Search = styled.div`
+    margin-left: 10px;
+`
+export const Title = styled.div`
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    flex-shrink: 0;
+    color: #F8B621;
+    text-align: center;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    gap: 5px;
+    align-items: center;
+    margin-left: 69px;
+`
+
+
 // Detail page
 const Detail = () => {
     const [selectedApply, setSelectedApply] = useState(null); 
@@ -41,29 +115,11 @@ const Detail = () => {
         setSelectedApply(null)
     }
 
+    const navigate = useNavigate()
+
     return (
-        <D.Container>
-            <D.Header>
-                <D.Back>
-                    <img 
-                        id="back"
-                        src={`${process.env.PUBLIC_URL}/images/back.svg`}
-                        alt="back"
-                    />
-                </D.Back>
-                    <img 
-                        id="search"
-                        src={`${process.env.PUBLIC_URL}/images/search.svg`}
-                        alt="search"
-                    />
-                <D.Title>선후배 밥약
-                    <img 
-                        id="meal"
-                        src={`${process.env.PUBLIC_URL}/images/meal.svg`}
-                        alt="meal"
-                    />
-                </D.Title>
-            </D.Header>
+        <PageContainer>
+            <Header />
             <D.Detail>
                 <D.Profile>
                     <D.Pic>
@@ -186,17 +242,19 @@ const Detail = () => {
             </D.Comments>
             <D.Line2></D.Line2>
             <D.Write>
+                <D.Cam>
                 <img 
                     src={`${process.env.PUBLIC_URL}/images/cam.svg`}
                     alt="cam"
                 />
+                </D.Cam>
                 <D.Here placeholder="댓글을 입력해 주세요."></D.Here>
                 <D.Btn>등록</D.Btn>
             </D.Write>
 
             {selectedApply && (
              <>
-                <D.BackgroundOverlay />
+                <BackgroundOverlay></BackgroundOverlay>
                 <DetailCard user={selectedApply}></DetailCard>
                 <D.BtnGroup>
                     <D.Send>대화 신청</D.Send>
@@ -204,7 +262,7 @@ const Detail = () => {
                 </D.BtnGroup>
             </>
             )}
-        </D.Container>
+        </PageContainer>
 
     );
 };

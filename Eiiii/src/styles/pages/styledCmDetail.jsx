@@ -79,7 +79,8 @@ export const Infos = styled.div`
 
 export const Info1 = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    gap: 5px;
 `
 
 export const Name = styled.div`
@@ -89,7 +90,6 @@ export const Name = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    width: 97px;
     height: 16px;
     flex-shrink: 0;
 `
@@ -174,6 +174,7 @@ export const Bottom = styled.div`
     font-weight: 400;
     line-height: 100%; /* 12px */
     margin-left: -8px;
+    color: #F8B621;
 `
 
 export const IconImg = styled.img`
@@ -182,11 +183,12 @@ export const IconImg = styled.img`
 export const Like =  styled.div`
     display: flex;
     align-items: center;
+    
 `
 export const Comment =  styled.div`
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 4px;
 `
 export const Share =  styled.div`
     display: flex;
@@ -224,7 +226,7 @@ export const CBtm = styled.div`
 export const Good = styled.div`
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 4px;
 `
 
 export const Line2 = styled.div`
@@ -252,6 +254,12 @@ export const Write = styled.div`
     gap: 10px;
 `
 
+export const Cam = styled.button`
+    border: none;
+    background: none;
+    
+`
+
 export const Here = styled.input`
     flex: 1;
     font-family: Inter;
@@ -266,7 +274,7 @@ export const Here = styled.input`
     }
 `
 
-export const Btn = styled.div`
+export const Btn = styled.button`
     color: #F8B621;
     font-family: Inter;
     font-size: 14px;
@@ -274,22 +282,9 @@ export const Btn = styled.div`
     font-weight: 700;
     line-height: normal;
     cursor: pointer;
+    border: none;
+    background: none;
 `
-
-export const BackgroundOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 440px;
-    height: 956px;
-    background: #888376;
-    opacity: 0.7;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 30px;
-`;
 
 export const BtnGroup = styled.div`
     display: flex;
@@ -314,6 +309,9 @@ export const Send = styled.div`
     font-weight: 600;
     line-height: normal;
     cursor: pointer;
+        &:active {
+        background: #F99505;
+    };
 `
 
 export const Cancle = styled.div`
@@ -331,4 +329,7 @@ export const Cancle = styled.div`
     font-weight: 600;
     line-height: normal;
     cursor: pointer;
+        &:active {
+        background: #F99505;
+    };
 `

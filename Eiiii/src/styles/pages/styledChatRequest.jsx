@@ -91,7 +91,7 @@ export const Item = styled.div`
     gap: 14px;
 `
 
-export const Profile = styled.div`
+export const ProfileImg = styled.div`
     width: 54px;
     height: 49px;
     flex-shrink: 0;

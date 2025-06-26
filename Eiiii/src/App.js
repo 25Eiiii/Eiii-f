@@ -9,7 +9,12 @@ import Notice from './pages/Notice';
 import Community from './pages/Community';
 import Write from './pages/Write';
 import Detail from './pages/CmDetail';
-
+import Plan from './pages/Plan';
+import Scrap from './pages/Scrap';
+import Like from './pages/Like';
+import MComments from './pages/MyComments';
+import Login from "./pages/Login";
+import Login1 from "./pages/Login1";
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -28,7 +33,12 @@ function App() {
         <Route path="/community" element={<Community />}/>
         <Route path="/community-write" element={<Write />}/>
         <Route path="/community-detail" element={<Detail />}/>
-
+        <Route path="/plan" element={<Plan />}/>
+        <Route path="/scrap" element={<Scrap />}/>
+        <Route path="/like" element={<Like />}/>
+        <Route path="/my-comments" element={<MComments />}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/login1" element={<Login1/>}/>
       </Routes>
     </BrowserRouter>
   );

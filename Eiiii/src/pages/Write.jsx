@@ -1,12 +1,14 @@
 import * as W from "../styles/pages/styledWrite"
-import Header from "../components/Header"
+import { PageContainer } from "../styles/common/styledConainer"
+import { useNavigate } from "react-router-dom"
 
 const Write = () => {
+    const navigate = useNavigate()
 
     return (
-        <W.Container>
+        <PageContainer>
         <W.Header>
-            <W.Cancle>
+            <W.Cancle onClick={() => navigate(-1)}>
                 <img 
                     id="cancle"
                     src={`${process.env.PUBLIC_URL}/images/cancle.svg`}
@@ -14,7 +16,7 @@ const Write = () => {
                 />
             </W.Cancle>
             <W.Name>글 쓰기</W.Name>
-            <W.Regist>등록</W.Regist>
+            <W.Regist onClick={() => navigate("/community")}>등록</W.Regist>
         </W.Header>
             <W.Box>
                 <W.Category>
@@ -33,7 +35,7 @@ const Write = () => {
                     src={`${process.env.PUBLIC_URL}/images/cam.svg`}
                 />
             </W.Cam>
-        </W.Container>
+        </PageContainer>
     )
 }
 

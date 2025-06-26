@@ -18,41 +18,52 @@ export const Container = styled.div`
     overflow: hidden;
 `
 export const Header = styled.div`
-    flex-shrink: 0;
-    gap: 105px;
     display: flex;
-    justify-content: center;
-    margin: 60px 27px 17px 27px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 27px 17px 27px;
+    gap: 102px;
 ` 
 
 export const Cancle = styled.div`
-
+    width: 32px;
+    height: 31px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 `
 export const Name = styled.div`
-width: 102px;
-height: 30px;
-flex-shrink: 0;
-color: #F8B621;
-text-align: center;
-font-family: Inter;
-font-size: 21px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+    width: 102px;
+    height: 30px;
+    flex-shrink: 0;
+    color: #F8B621;
+    text-align: center;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 `
-export const Regist = styled.div`
-color: #949494;
-font-family: Inter;
-font-size: 19px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+export const Regist = styled.button`
+    color: #949494;
+    font-family: Inter;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
 `
 
 export const Box = styled.div`
     display: flex;
     flex-direction: column;
-    
     margin-left: 10px;
 `
 

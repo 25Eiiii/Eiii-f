@@ -4,6 +4,8 @@ import * as R from "../styles/pages/styledChatRequest"
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import DetailCard from "../components/DetailCard";
+import { PageContainer } from "../styles/common/styledConainer";
+import { BackgroundOverlay } from "../styles/common/styledBackground";
 
 const requests = Array(9).fill({
     nickname: "김치찌개 원숭이",
@@ -34,7 +36,7 @@ const Request = () => {
     const navigate = useNavigate();
 
     return (
-        <R.Container>
+        <PageContainer>
             <Header 
                 titleText="쪽지 요청"
                 leftIcon="back"
@@ -65,15 +67,15 @@ const Request = () => {
             {requests.map((req, index) => (
                 <R.Item key={index}
                         {...req}
-                        onClick={() => handleCardClick(req)}>
-                    <R.Profile>
+                        >
+                    <R.ProfileImg>
                         <img 
                             src={req.img}
                             alt="pic"
                         />
-                    </R.Profile>
+                    </R.ProfileImg>
                     <R.Content>
-                        <R.Info>{req.nickname} /{req.major} {req.grade}</R.Info>
+                        <R.Info onClick={() => handleCardClick(req)}>{req.nickname} /{req.major} {req.grade}</R.Info>
                         <R.Del>
                             <img 
                             id="del"
@@ -87,18 +89,18 @@ const Request = () => {
             </R.ReqWrapper>
             <NavBar></NavBar>
 
-        {selectedUser && <R.BackgroundOverlay />}
+        {selectedUser && <BackgroundOverlay />}
         {selectedUser && ( 
             <DetailCard user={selectedUser}/>
         )}
         {selectedUser && (
         <R.ButtonGroup>
-            <R.Ok>수락</R.Ok>
-            <R.Rej>거절</R.Rej>
+            <R.Ok onClick={handleCloseDetail}>수락</R.Ok>
+            <R.Rej onClick={handleCloseDetail}>거절</R.Rej>
         </R.ButtonGroup>
         )
         }
-        </R.Container>
+        </PageContainer>
     );
 };
 
