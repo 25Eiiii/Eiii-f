@@ -16,6 +16,7 @@ import MComments from './pages/MyComments';
 import Login from "./pages/Login";
 import Test from "./pages/Test";
 import Login1 from "./pages/Login1";
+import Test3 from "./pages/Test3";
 import Test2 from "./pages/Test2";
 import Home from "./pages/Home";
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/test" element={<Test/>}/>
         <Route path="/login1" element={<Login1/>}/>
+        <Route path="/test/step3" element={<Test3/>}/>
         <Route path="/test/step2" element={<Test2/>}/>
         <Route path="/home" element={<Home/>}/>
       </Routes>
