@@ -30,7 +30,7 @@ const Home = () => {
     return(
         <H.Container>
             <H.Header>
-                <H.BackBtn>
+                <H.BackBtn onClick={() => navigate(-1)}>
                     <img
                         src={`${process.env.PUBLIC_URL}/images/yellowback2.svg`}
                         alt="logo"
@@ -46,7 +46,7 @@ const Home = () => {
                         width="22px"
                     />
                 </H.Center>
-                <H.BellBtn>
+                <H.BellBtn onClick={() => navigate("/notice")}>
                      <img
                         src={`${process.env.PUBLIC_URL}/images/bell.svg`}
                         alt="logo"
@@ -67,7 +67,7 @@ const Home = () => {
             </H.Label>
             <H.Icons>
                 <H.IconDiv1>
-                    <H.Icon1>
+                    <H.Icon1 onClick={() => navigate('/match')}>
                         <img
                             src={`${process.env.PUBLIC_URL}/images/whiteicon.svg`}
                             alt="logo"
@@ -79,7 +79,7 @@ const Home = () => {
                     </H.Text>
                 </H.IconDiv1>
                 <H.IconDiv2>
-                    <H.Icon2>
+                    <H.Icon2 onClick={() => navigate('/community')}>
                         <img
                             src={`${process.env.PUBLIC_URL}/images/icon2.svg`}
                             alt="logo"

@@ -5,6 +5,8 @@ import MatchCard from "../components/MatchCard";
 import DetailCard from "../components/DetailCard";
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
+import { PageContainer } from "../styles/common/styledConainer";
+import { BackgroundOverlay } from "../styles/common/styledBackground";
 
 
 const Match = ({ dataList }) => {
@@ -20,7 +22,7 @@ const Match = ({ dataList }) => {
       };
 
   return (
-    <M.Container>
+    <PageContainer>
       <Header
         titleImg="meal"
         titleText="즉석 밥약"
@@ -40,7 +42,7 @@ const Match = ({ dataList }) => {
         <NavBar></NavBar>
         <>
       {/* 배경 흐림 처리 */}
-      {selectedUser && <M.BackgroundOverlay/>}
+        {selectedUser && <BackgroundOverlay></BackgroundOverlay>}
 
         
       {/* 상세 카드 */}
@@ -56,7 +58,7 @@ const Match = ({ dataList }) => {
       )}
 
     </>
-    </M.Container>
+    </PageContainer>
   );
 };
 

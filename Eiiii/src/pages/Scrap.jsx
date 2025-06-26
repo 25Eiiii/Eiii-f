@@ -130,7 +130,7 @@ export const Detail = styled.div`
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: 100%; /* 12px */
+    line-height: 1.5;
     letter-spacing: -0.12px;
 `
 // Menu Component
@@ -171,7 +171,7 @@ export const Btn = styled.button`
     justify-content: center;
     align-items: center;
 `
-
+// Scrap Page
 const Scrap = () => {
   const navigate = useNavigate()
 

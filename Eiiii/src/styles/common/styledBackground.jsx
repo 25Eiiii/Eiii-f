@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const BackgroundOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    background: #888376;
-    opacity: 0.7;
-    z-index: 10;
-    overflow: hidden;
+width: 100%;
+height: 100%;
+background: rgba(136, 131, 118, 0.7);
+position: absolute;
+top: 0px;
+left: 0px;
+z-index: 10;
+overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 30px;
 `;

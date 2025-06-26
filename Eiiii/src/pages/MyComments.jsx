@@ -1,4 +1,4 @@
-import * as C from "../styles/pages/styledMyComments"
+import * as C from "../styles/pages/styledScrap"
 import NavBar from "../components/NavBar"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"

@@ -2,6 +2,7 @@ import * as M from "../styles/pages/styledCommunity"
 import NavBar from "../components/NavBar"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import { PageContainer } from "../styles/common/styledConainer"
 
 // Header Component
 const Header = () => {
@@ -76,7 +77,7 @@ const Community = () => {
     const navigate = useNavigate()
 
     return (
-        <M.Container>
+        <PageContainer>
         <Header />
         <M.Wrapper>
             <M.Item>
@@ -221,7 +222,7 @@ const Community = () => {
         </M.Wrapper>
         <M.WriteBtn onClick={() => navigate("/community-write")}>글쓰기</M.WriteBtn>
         <NavBar></NavBar>
-        </M.Container>
+        </PageContainer>
     )
 }
 

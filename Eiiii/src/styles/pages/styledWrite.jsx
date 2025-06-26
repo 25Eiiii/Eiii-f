@@ -64,7 +64,6 @@ export const Regist = styled.button`
 export const Box = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
 `
 
 export const Category = styled.div`
@@ -93,7 +92,7 @@ outline: none;
 `
 
 export const Line = styled.div`
-width: 450px;
+width: 440px;
 height: 1px;
 background: #EFBE78;
 `

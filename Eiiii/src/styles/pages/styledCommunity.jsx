@@ -186,7 +186,7 @@ export const More = styled.div`
 `
 
 export const Line = styled.div`
-    width: 442px;
+    width: 440px;
     height: 1px;
     background: #EFBE78;
 `

@@ -9,7 +9,7 @@ const NavBar = () => {
     <N.Container>
         <N.Line></N.Line>
         <N.Group>
-            <N.Icon onClick={() => navigate("/")}>
+            <N.Icon onClick={() => navigate("/home")}>
                 <img
                     id="home"
                     src={`${process.env.PUBLIC_URL}/images/home.svg`}
@@ -37,7 +37,7 @@ const NavBar = () => {
                     alt="star"
                 />
             </N.Icon>
-            <N.Icon onClick={() => navigate("/")}>
+            <N.Icon onClick={() => navigate("/profile")}>
                 <img
                     id="user"
                     src={`${process.env.PUBLIC_URL}/images/user.svg`}
