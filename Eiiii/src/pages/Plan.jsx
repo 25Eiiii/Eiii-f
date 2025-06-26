@@ -1,8 +1,62 @@
 import * as P from "../styles/pages/styledPlan"
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
-import Header from "../components/Header"
 import NavBar from "../components/NavBar"
+import { PageContainer } from "../styles/common/styledConainer"
+
+// Header Component
+const Header = () => {
+    const navigate = useNavigate()
+  
+    return (
+      <Wrapper>
+          <Back onClick={() => navigate(-1)}>
+              <img
+                  src={`${process.env.PUBLIC_URL}/images/back.svg`}
+                  alt="back"
+              />
+          </Back>
+          <Center>약속 보관함</Center>
+      </Wrapper>
+    )
+  }
+  
+  export const Wrapper = styled.div`
+      display: flex;
+      align-items: center;
+      padding: 60px 27px 17px;
+      width: 100%;
+      gap: 110px;
+  `
+  
+  export const Back = styled.div`
+      width: 32px;
+      height: 31px;
+      flex-shrink: 0;
+      background: #F8B621;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      margin-left: 23px;
+  `
+  export const Center = styled.div`
+      display: flex;
+      justify-content: center;
+      height: 32px;
+      flex-shrink: 0;
+      color: #F8B621;
+      text-align: center;
+      font-family: Inter;
+      font-size: 21px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      gap: 5px;
+      align-items: center;
+  `
 
 // 약속 컴포넌트
 const List = () => {
@@ -123,11 +177,8 @@ const Plan = () => {
   const navigate = useNavigate()
 
   return (
-    <P.Container>
-        <Header 
-            onClickLeft={() => navigate(-1)}
-            titleText="약속 보관함"
-        />
+    <PageContainer>
+        <Header />
         <P.SearchBar>
             <img
                 id="search"
@@ -144,7 +195,7 @@ const Plan = () => {
             <List></List>
         </P.PlanWrapper>
         <NavBar></NavBar>
-    </P.Container>
+    </PageContainer>
   );
 };
 

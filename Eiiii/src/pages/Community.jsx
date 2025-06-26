@@ -1,19 +1,83 @@
 import * as M from "../styles/pages/styledCommunity"
 import NavBar from "../components/NavBar"
-import Header from "../components/Header"
 import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
+
+// Header Component
+const Header = () => {
+    const navigate = useNavigate()
+  
+    return (
+      <Wrapper>
+          <Back onClick={() => navigate(-1)}>
+              <img
+                  src={`${process.env.PUBLIC_URL}/images/back.svg`}
+                  alt="back"
+              />
+          </Back>
+          <Search>
+              <img
+                  src={`${process.env.PUBLIC_URL}/images/search.svg`}
+                  alt="search"
+              />
+          </Search>
+          <Title>선후배 밥약
+                  <img
+                  src={`${process.env.PUBLIC_URL}/images/meal.svg`}
+                  alt="meal"
+              />
+          </Title>
+      </Wrapper>
+    )
+  }
+  
+  export const Wrapper = styled.div`
+      display: flex;
+      align-items: center;
+      padding: 60px 27px 17px;
+      width: 100%;
+  `
+  
+  export const Back = styled.div`
+      width: 32px;
+      height: 31px;
+      flex-shrink: 0;
+      background: #F8B621;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      margin-left: 23px;
+  `
+  
+  export const Search = styled.div`
+      margin-left: 10px;
+  `
+  export const Title = styled.div`
+      display: flex;
+      justify-content: center;
+      height: 32px;
+      flex-shrink: 0;
+      color: #F8B621;
+      text-align: center;
+      font-family: Inter;
+      font-size: 21px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      gap: 5px;
+      align-items: center;
+      margin-left: 69px;
+  `
 
 const Community = () => {
     const navigate = useNavigate()
 
     return (
         <M.Container>
-        <Header
-            onClickLeft={() => navigate(-1)}
-            titleText="선후배 밥약"
-            titleImg="meal"
-            rightIcon="search"
-        />
+        <Header />
         <M.Wrapper>
             <M.Item>
                 <M.Profile>
