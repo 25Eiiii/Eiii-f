@@ -67,7 +67,7 @@ const Home = () => {
             </H.Label>
             <H.Icons>
                 <H.IconDiv1>
-                    <H.Icon1>
+                    <H.Icon1 onClick={() => navigate("/match")}>
                         <img
                             src={`${process.env.PUBLIC_URL}/images/whiteicon.svg`}
                             alt="logo"
@@ -79,7 +79,7 @@ const Home = () => {
                     </H.Text>
                 </H.IconDiv1>
                 <H.IconDiv2>
-                    <H.Icon2>
+                    <H.Icon2 onClick={() => navigate("/match")}>
                         <img
                             src={`${process.env.PUBLIC_URL}/images/icon2.svg`}
                             alt="logo"
