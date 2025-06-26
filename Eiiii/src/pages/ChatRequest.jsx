@@ -91,7 +91,50 @@ const Request = () => {
 
         {selectedUser && <BackgroundOverlay />}
         {selectedUser && ( 
-            <DetailCard user={selectedUser}/>
+            <R.PreviewBox>
+                <R.Text>
+                    미리 보기
+                </R.Text>
+                <R.PhotoFrame>
+                    <R.Photo>
+                        <img
+                            src={`${process.env.PUBLIC_URL}/images/chick.svg`}
+                            alt="logo"
+                            width="109px"
+                        />
+                    </R.Photo>
+                </R.PhotoFrame>
+                <R.Name>
+                    밥먹는 하마
+                </R.Name>
+                <R.PreviewId>
+                    @uoyhmn
+                </R.PreviewId>
+                <R.PreviewInfo>
+                    디지털 공예과 / 22
+                </R.PreviewInfo>
+                <R.PreviewInfo>
+                    같은 성별만
+                </R.PreviewInfo>
+                <R.PreviewInfo>
+                    가벼운 수다
+                </R.PreviewInfo>
+                <R.PreviewInfo>
+                    천천히 먹는 편
+                </R.PreviewInfo>
+                <R.PreviewInfo>
+                    친목 / 친구 사귀기
+                </R.PreviewInfo>
+                <R.PreviewInfo>
+                    한식
+                </R.PreviewInfo>
+                <R.PreviewInfo>
+                    꼭 함께 하고 싶음
+                </R.PreviewInfo>
+                <R.PreviewInfo>
+                    채식/ 비건
+                </R.PreviewInfo>
+        </R.PreviewBox>
         )}
         {selectedUser && (
         <R.ButtonGroup>

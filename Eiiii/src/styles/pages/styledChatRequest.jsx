@@ -191,3 +191,114 @@ export const Rej = styled.button`
     };
 
 `
+
+export const PreviewBox = styled.div`
+margin-left: 40px;
+margin-top: 130px;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 353px;
+height: 631.859px;
+flex-shrink: 0;
+border-radius: 18px;
+border: 4px solid #FFF;
+background: linear-gradient(180deg, #FFE8AA 0%, #FCBD14 100%);
+`;
+
+export const Text = styled.div`
+color: #F8B621;
+text-align: center;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+width: 98px;
+height: 32px;
+flex-shrink: 0;
+
+`;
+
+export const Name = styled.div`
+width: 117.298px;
+height: 27.665px;
+flex-shrink: 0;
+border-radius: 21px;
+border: 2px solid #FFBC24;
+background: #FFF;
+color: #5D5A50;
+font-family: Inter;
+font-size: 13px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+bottom: 540px;
+`;
+
+export const PreviewId = styled.div`
+width: 136.11px;
+height: 27.665px;
+flex-shrink: 0;
+border-radius: 21px;
+border: 2px solid #FFBC24;
+background: #FFF;
+color: #5D5A50;
+font-family: Inter;
+font-size: 13px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 8px;
+margin-bottom: 26px;
+`;
+
+export const PreviewInfo = styled.div`
+width: 251px;
+height: 23px;
+flex-shrink: 0;
+border-radius: 11.5px;
+background: #FFF;
+color: #8E8B80;
+text-align: center;
+font-family: Inter;
+font-size: 13px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+margin-bottom: 11px;
+`;
+
+export const PhotoFrame = styled.div`
+width: 217px;
+height: 217px;
+flex-shrink: 0;
+background: linear-gradient(180deg, #FFCBCB 0%, #F99505 100%);
+border-radius: 100%;
+display:flex;
+justify-content: center;
+align-items: center;
+margin-top: 28px;
+position: relative;
+`;
+
+export const Photo = styled.div`
+width: 196px;
+height: 196px;
+flex-shrink: 0;
+background: #FFDA79;
+border: 3px solid #FFF;
+border-radius: 100%;
+display:flex;
+justify-content: center;
+align-items: center;
+`;

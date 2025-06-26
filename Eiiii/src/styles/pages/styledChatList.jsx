@@ -122,8 +122,7 @@ export const Item = styled.div`
     flex-directon: row;
     padding: 12px;
     border-top: 1px solid #EFBE78;
-    width: 449px;
-    margin-left: 34px;
+    width: 416px;
     gap: 13px;
 `
 
@@ -166,9 +165,6 @@ export const Info = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 11px */
-`
-
-export const Line2 = styled.div`
 `
 
 export const Msg = styled.div`
