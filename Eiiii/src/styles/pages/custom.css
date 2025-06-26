@@ -1,0 +1,14 @@
+.react-calendar{
+    border: none;
+    
+}
+.react-calendar__navigation{
+    background-color: #FFDA79;
+    border-radius: 10px;
+    margin-top: 7px;
+    margin-bottom: 8px;
+}
+.react-calendar__viewContainer{
+    background-color: #FFDA79;
+    border-radius: 10px;
+}
