@@ -15,6 +15,7 @@ import Like from './pages/Like';
 import MComments from './pages/MyComments';
 import Login from "./pages/Login";
 import Test from "./pages/Test";
+import Test1 from "./pages/Test1";
 import Login1 from "./pages/Login1";
 import Test3 from "./pages/Test3";
 import Test2 from "./pages/Test2";
@@ -65,6 +66,7 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/profileEdit" element={<ProfileEdit/>}/>
         <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/test/step1" element={<Test1/>}/>
       </Routes>
     </BrowserRouter>
   );
