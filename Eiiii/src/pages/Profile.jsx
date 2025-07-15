@@ -8,7 +8,7 @@ const Profile = () => {
         navigate(`/ProfileEdit`)
     }
     const goBack = () => {
-        navigate(`/home`)
+        navigate(-1)
     }
     const [isClick,setClick] = useState(false);
     return (
