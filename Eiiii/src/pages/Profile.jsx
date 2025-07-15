@@ -5,7 +5,7 @@ import * as P from "../styles/pages/styledProfile"
 const Profile = () => {
     const navigate = useNavigate();
     const goEdit = () => {
-        navigate(`/ProfileEdit`)
+        navigate(`/ProfileEdit`,{replace:true});
     }
     const goBack = () => {
         navigate(-1)
