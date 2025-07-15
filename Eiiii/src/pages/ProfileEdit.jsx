@@ -12,7 +12,7 @@ const ProfileEdit = () => {
             <P.Header>
                 <P.BackBtn onClick={goBack}>
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/whiteback.svg`}
+                        src={`${process.env.PUBLIC_URL}/images/back.svg`}
                         alt="logo"
                         width="11px"
                     
@@ -21,14 +21,14 @@ const ProfileEdit = () => {
                 <P.Center>
                     profile
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/yellowbowl.svg`}
+                        src={`${process.env.PUBLIC_URL}/images/meal.svg`}
                         alt="logo"
                         width="22px"
                     />
                 </P.Center>
                 <P.BellBtn>
                      <img
-                        src={`${process.env.PUBLIC_URL}/images/whitebell.svg`}
+                        src={`${process.env.PUBLIC_URL}/images/ring.svg`}
                         alt="logo"
                         width="28px"
                     />

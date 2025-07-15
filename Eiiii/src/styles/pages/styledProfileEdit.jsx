@@ -110,6 +110,7 @@ margin-top: 13px;
 display: flex;
 justify-content: center;
 align-items: center;
+margin-bottom: 2px;
 `;
 
 export const FirstDiv = styled.div`
@@ -117,6 +118,7 @@ display: flex;
 `;
 
 export const Id = styled.input`
+
 width: 165px;
 height: 51px;
 flex-shrink: 0;
@@ -130,11 +132,16 @@ font-weight: 600;
 line-height: normal;
 border: none;
 outline: none;
-margin-right: 20px;
+margin-right: 16px;
 text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
+border: 2px solid #FFF;
 
 &::placeholder{
-    color: #5D5A50;
+color: #5D5A50;
 font-family: Inter;
 font-size: 16px;
 font-style: normal;
@@ -144,8 +151,8 @@ line-height: normal;
 `;
 
 export const Preview = styled.button`
-width: 165px;
-height: 51px;
+width: 169px;
+height: 55px;
 flex-shrink: 0;
 border-radius: 11px;
 background: #FFD138;
@@ -157,6 +164,8 @@ font-weight: 600;
 line-height: normal;
 border: none;
 outline: none;
+border: 2px solid #FFF;
+padding: 0;
 `;
 
 export const Label = styled.div`
@@ -168,8 +177,8 @@ font-style: normal;
 font-weight: 600;
 line-height: normal;
 margin-left: 35px;
-margin-top: 7px;
-margin-bottom: 7px;
+margin-top: 5px;
+margin-bottom: 5px;
 `;
 
 export const SecDiv = styled.div`
@@ -191,8 +200,10 @@ font-size: 14px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
-margin-bottom: 10px;
+margin-bottom: 7px;
 padding-left: 10px;
+border: 2px solid #FFF;
+
 `;
 
 export const Input = styled.input`
@@ -205,5 +216,21 @@ border: none;
 outline: none;
 text-align: center;
 margin-right: 19px;
+box-sizing: border-box;
+font-family: Inter;
+font-size: 13px;
+font-weight: 600;
+line-height: normal;
+padding: 0 0 2px 0;
+
+&::placeholder{
+color: #8E8E8E;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-align: center;
+}
 `;
 
