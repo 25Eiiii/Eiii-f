@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import * as L from "../styles/pages/styledLogin";
+import axios from "axios";
 
 const Main = () =>{
     const navigate = useNavigate(); 
@@ -9,8 +10,29 @@ const Main = () =>{
     const [id,setId] = useState("");
     const [password,setPassword] = useState("");
 
-    const goLogin = () => {
-        navigate(`/test`)
+    const goLogin = async() => { 
+        try{
+            const response = await axios.post(
+                "/api/accounts/login/",
+                {
+                    "username": id,
+                    "password": password
+                },
+                {
+                    headers:{
+                       "Content-Type": "application/json"
+                    }
+                }
+            );
+            localStorage.setItem("accessToken",response.data.access);
+            localStorage.setItem("refreshToken",response.data.refresh);
+            navigate(`/test`)
+
+        }catch(error){
+            if(error.response.status===401)
+                alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+        }
+       
     }
     const goSignup =() => {
         navigate(`/signup`)
