@@ -53,13 +53,17 @@ const SignUp = () => {
             navigate(`/`);
 
         }catch(error){
-            console.log("전체 에러:", error);
             if(error.response && error.response.data){
-                console.log("서버 에러 응답:", error.response.data);
                 const serverErrors = error.response.data;
                 const newErrors = {};
 
-                if(serverErrors.username) newErrors.id = serverErrors.username;
+                if(serverErrors.username){
+                    const usernameMsg = serverErrors.username;
+
+                    if(usernameMsg.includes("custom user with this username already exists.")){
+                        newErrors.id = "이 사용자 아이디는 이미 존재합니다."
+                    }
+                } 
                 if(serverErrors.password) newErrors.password = serverErrors.password;
                 if(serverErrors.password2) newErrors.passwordCheck = serverErrors.password2[0];
                 if(serverErrors.email) {
