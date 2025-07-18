@@ -3,16 +3,50 @@ import {useNavigate} from "react-router-dom";
 import * as T from "../styles/pages/styledTest7";
 
 const Test7 = () => {
-    const nevigate = useNavigate();
-        
+    const navigate = useNavigate();
+    const savedData = JSON.parse(sessionStorage.getItem("profileData")) || {};
+    const foodMap = {
+        1:"한식",
+        2:"중식",
+        3: "일식",
+        4: "양식",
+        5: "분식",
+        6: "디저트/ 카페",
+        7: "상관 없음"
+    }
+    const reverseFoodMap = {};
+    for(const key in foodMap){
+        const value = foodMap[key];
+        reverseFoodMap[value] = parseInt(key);
+    }
     const goBack = () => {
-         nevigate(`/test/step6`)
+         navigate(`/test/step6`)
     }
     const goNext = () => {
-        nevigate(`/test/step8`)
+        const preferred_menu = [];
+
+        for(let i=0; i<selected.length;i++){
+            const text = foodMap[selected[i]];
+            preferred_menu.push(text);
+        }
+
+        const newData = {};
+        for(const key in savedData){
+            newData[key] = savedData[key];
+        }
+        newData.preferred_menu = preferred_menu;
+        sessionStorage.setItem("profileData",JSON.stringify(newData));
+        navigate(`/test/step8`)
     }
         
-    const [selected,setSelected] = useState([]);
+    const [selected,setSelected] = useState(() =>{
+        if(savedData.preferred_menu){
+            return savedData.preferred_menu.map(item=>reverseFoodMap[item]);
+        }
+        return [];
+    }
+       
+    );
     const selectOption = (num) => {
         if(selected.includes(num)){
             const newSelected = [];

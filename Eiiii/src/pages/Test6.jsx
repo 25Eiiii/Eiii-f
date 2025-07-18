@@ -3,16 +3,32 @@ import {useNavigate} from "react-router-dom";
 import * as T from "../styles/pages/styledTest6";
 
 const Test6 = () => {
-    const nevigate = useNavigate();
-        
+    const navigate = useNavigate();
+    const savedData = JSON.parse(sessionStorage.getItem("profileData")) || {};
     const goBack = () => {
-         nevigate(`/test/step5`)
+         navigate(`/test/step5`)
     }
     const goNext = () => {
-        nevigate(`/test/step7`)
+        let dessert = "";
+        if(selected===1) dessert="꼭 함께 하고 싶음"
+        else if(selected===2) dessert="상황 봐서 가능"
+        else if(selected===3) dessert="식사만 하고 마무리"
+
+        const newData = {};
+        for(const key in savedData){
+            newData[key] =  savedData[key];
+        }
+        newData.dessert =  dessert;
+
+        sessionStorage.setItem("profileData",JSON.stringify(newData));
+        navigate(`/test/step7`)
     }
         
-    const [selected,setSelected] = useState();
+    const [selected,setSelected] = useState(
+        savedData.dessert==="꼭 함께 하고 싶음" ? 1:
+        savedData.dessert==="상황 봐서 가능" ? 2:
+        savedData.dessert==="식사만 하고 마무리" ? 3: null
+    );
     return(
         <T.Container>
             <T.Progress>
