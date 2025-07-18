@@ -3,16 +3,33 @@ import {useNavigate} from "react-router-dom";
 import * as T from "../styles/pages/styledTest3";
 
 const Test3 = () => {
-    const nevigate = useNavigate();
+    const navigate = useNavigate();
         
+    const savedData = JSON.parse(sessionStorage.getItem("profileData")) || {};
     const goBack = () => {
-         nevigate(`/test/step2`)
+         navigate(`/test/step2`)
     }
     const goNext = () => {
-        nevigate(`/test/step4`)
+        let dining_style = "";
+        if(selected===1) dining_style="조용히 식사만";
+        else if(selected===2) dining_style="가벼운 수다";
+        else if(selected===3) dining_style="상관 없음";
+
+        const newData = {};
+        for(const key in savedData){
+            newData[key] = savedData[key];
+        }
+        newData.dining_style = dining_style;
+
+        sessionStorage.setItem("profileData",JSON.stringify(newData));
+        navigate(`/test/step4`)
     }
         
-    const [selected,setSelected] = useState();
+    const [selected,setSelected] = useState(
+        savedData.dining_style==="조용히 식사만" ? 1 :
+        savedData.dining_style==="가벼운 수다" ? 2 :
+        savedData.dining_style==="상관 없음" ? 3 : null
+    );
     return(
         <T.Container>
             <T.Progress>
@@ -29,7 +46,7 @@ const Test3 = () => {
                 가벼운 수다
             </T.Option2>
             <T.Option3 selected={selected===3} onClick={()=>setSelected(3)}>
-                상관없음
+                상관 없음
             </T.Option3>
             <T.Btn>
                 <T.BackBtn onClick={goBack}>

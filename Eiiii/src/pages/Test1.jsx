@@ -1,14 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 import {useNavigate} from "react-router-dom";
 import * as T from "../styles/pages/styledTest1";
 
 const Test1 = () => {
     const nevigate = useNavigate();
 
+    const savedData = JSON.parse(sessionStorage.getItem("profileData")) || {};
+    const [major,setMajor] = useState(savedData.major||"");
+    const [year, setYear] = useState(savedData.year||"");
+
     const goBack = () => {
         nevigate(`/test`)
     }
     const goNext = () => {
+        const newData = {};
+        for(const key in savedData){
+            newData[key] = savedData[key];
+        }
+        newData.major=major;
+        newData.year=year;
+        sessionStorage.setItem("profileData",JSON.stringify(newData));
         nevigate(`/test/step2`)
     }
     return(
@@ -27,6 +38,8 @@ const Test1 = () => {
                 학과를 입력해주세요.
             </T.Major>
             <T.Input
+                value={major}
+                onChange={(e)=>setMajor(e.target.value)}
                 placeholder="내용을 입력해주세요"
             />
             <T.IdNum>
@@ -36,6 +49,8 @@ const Test1 = () => {
                 </T.Ex>
             </T.IdNum>
             <T.Input
+                value={year}
+                onChange={(e)=>setYear(e.target.value)}
                 placeholder="내용을 입력해주세요"
             />
             <T.Btn>

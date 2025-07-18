@@ -26,11 +26,26 @@ const Main = () =>{
             );
             localStorage.setItem("accessToken",response.data.access);
             localStorage.setItem("refreshToken",response.data.refresh);
-            navigate(`/test`)
+
+            const hasProfile = await axios.get(
+                "/api/accounts/profile/me/",
+                {
+                    headers:{
+                        Authorization: `Bearer ${response.data.access}`,
+                        "Content-Type": "application/json"
+                    }
+                },
+            );
+
+            if(hasProfile.status===200){
+                navigate(`/home`);
+            }
 
         }catch(error){
             if(error.response.status===401)
                 alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+            else if(error.response.status===500)
+                navigate(`/test`);
         }
        
     }
