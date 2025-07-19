@@ -243,6 +243,7 @@ flex-shrink: 0;
 border-radius: 18px;
 border: 4px solid #FFF;
 background: linear-gradient(180deg, #FFE8AA 0%, #FCBD14 100%);
+position: relative;
 `;
 
 export const Text = styled.div`
@@ -277,7 +278,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: absolute;
-bottom: 750px;
+top: 250px;
 `;
 
 export const PreviewId = styled.div`
