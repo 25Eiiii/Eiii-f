@@ -22,7 +22,7 @@ const Match = ({ dataList }) => {
   useEffect(() => {
     const fetchMatchList = async () => {
       try {
-        const res = await axios.get("api/accounts/match", {
+        const res = await axios.get("api/accounts/match/", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -67,12 +67,8 @@ const Match = ({ dataList }) => {
         onClickRight={() => navigate("/notice")}
       />
         <M.CardWrapper>
-          {matchList.map((user, idx) => (
-            <MatchCard
-              key={idx}
-              {...user}
-              onClick={() => handleCardClick(user)}
-            />
+          {matchList.map((user) => (
+            <MatchCard user={user} onClick={() => handleCardClick(user)} />
           ))}
         </M.CardWrapper>
         <NavBar></NavBar>
