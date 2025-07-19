@@ -116,7 +116,6 @@ export const List = styled.div`
     margin-top: 15px;
 `
 
-
 export const Item = styled.div`
     display: flex;
     flex-directon: row;

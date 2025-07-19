@@ -20,5 +20,3 @@ position: relative;
     border-radius: 0;
   }
 `;
-
-
