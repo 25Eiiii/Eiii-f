@@ -99,25 +99,35 @@ height: 32px;
 flex-shrink: 0;
 border-radius: 21px;
 background: #F9970E;
-color: #FFF;
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-text-align: center;
 margin-top: 13px;
 display: flex;
 justify-content: center;
 align-items: center;
 margin-bottom: 2px;
 `;
-
+export const NicknameInput = styled.input`
+width: 138px;
+height: 18px;
+flex-shrink: 0;
+border:none;
+outline:none;
+background: #F9970E;
+text-align: center;
+color: #FFF;
+&::placeholder{
+color: #FFF;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+`;
 export const FirstDiv = styled.div`
 display: flex;
 `;
 
-export const Id = styled.input`
+export const Id = styled.div`
 
 width: 165px;
 height: 51px;
@@ -139,7 +149,7 @@ align-items: center;
 justify-content: center;
 padding: 0;
 border: 2px solid #FFF;
-
+cursor: default;
 &::placeholder{
 color: #5D5A50;
 font-family: Inter;
@@ -166,6 +176,7 @@ border: none;
 outline: none;
 border: 2px solid #FFF;
 padding: 0;
+cursor: pointer;
 `;
 
 export const Label = styled.div`
