@@ -16,7 +16,7 @@ const Match = ({ dataList }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDetailLoading, setIsDetailLoading] = useState(false);
 
-  const accessToken = localStorage.getItem("access_token");
+  const accessToken = localStorage.getItem("accessToken");
 
   // 매칭 리스트 불러오기
   useEffect(() => {
