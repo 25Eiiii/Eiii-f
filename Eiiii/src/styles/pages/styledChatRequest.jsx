@@ -191,3 +191,4 @@ export const Rej = styled.button`
     };
 
 `
+
