@@ -3,23 +3,45 @@ import { useNavigate } from "react-router-dom";
 import * as M from "../styles/pages/styledMatch";
 import MatchCard from "../components/MatchCard";
 import DetailCard from "../components/DetailCard";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import { PageContainer } from "../styles/common/styledConainer";
 import { BackgroundOverlay } from "../styles/common/styledBackground";
+import axios from "axios";
 
 
 const Match = ({ dataList }) => {
   const navigate = useNavigate();
-    const [selectedUser, setSelectedUser] = useState(null);
+  const [matchList, setMatchList] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
 
-    const handleCardClick = (user) => {
-        setSelectedUser(user);
-      };
+  const accessToken = localStorage.getItem("access_token");
+
+  // 매칭 리스트 불러오기
+  useEffect(() => {
+    const fetchMatchList = async () => {
+      try {
+        const res = await axios.get("api/accounts/match", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        setMatchList(res.data);
+      } catch(err) {
+        console.error("매칭 리스트 불러오기 실패", err)
+      }
+    };
+
+    fetchMatchList();
+  }, [accessToken]);
+
+  const handleCardClick = (user) => {
+    setSelectedUser(user);
+  };
     
-      const handleCloseDetail = () => {
-        setSelectedUser(null);
-      };
+  const handleCloseDetail = () => {
+    setSelectedUser(null);
+  };
 
   return (
     <PageContainer>
