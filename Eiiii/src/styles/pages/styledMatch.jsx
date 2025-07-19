@@ -207,3 +207,6 @@ export const ExtBtn = styled.button`
         background: #F99505;
     };
 `
+
+export const LoadingText = styled.div`
+`

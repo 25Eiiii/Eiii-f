@@ -14,6 +14,7 @@ const Match = ({ dataList }) => {
   const navigate = useNavigate();
   const [matchList, setMatchList] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [isDetailLoading, setIsDetailLoading] = useState(false);
 
   const accessToken = localStorage.getItem("access_token");
 
@@ -35,8 +36,21 @@ const Match = ({ dataList }) => {
     fetchMatchList();
   }, [accessToken]);
 
-  const handleCardClick = (user) => {
-    setSelectedUser(user);
+  // 매칭 상세 카드 불러오기 
+  const handleCardClick = async (user) => {
+    try {
+      setIsDetailLoading(true);
+      const res = await axios.get(`/api/accounts/profile/${user.pk}/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setSelectedUser(res.data)
+    } catch(err) {
+      console.error("상세 카드 불러오기 실패", err);
+    } finally {
+      setIsDetailLoading(false);
+    }
   };
     
   const handleCloseDetail = () => {
@@ -53,7 +67,7 @@ const Match = ({ dataList }) => {
         onClickRight={() => navigate("/notice")}
       />
         <M.CardWrapper>
-          {dataList.map((user, idx) => (
+          {matchList.map((user, idx) => (
             <MatchCard
               key={idx}
               {...user}
@@ -68,9 +82,11 @@ const Match = ({ dataList }) => {
 
         
       {/* 상세 카드 */}
-      {selectedUser && (
+      {selectedUser && ! isDetailLoading && (
         <DetailCard text="대화 신청을 해보세요!" user={selectedUser}  />
       )} 
+
+      {isDetailLoading && <M.LoadingText>불러오는 중</M.LoadingText>}
 
       {selectedUser && (
       <M.ButtonGroup>
