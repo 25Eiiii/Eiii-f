@@ -64,10 +64,24 @@ export const Center = styled.div`
 // Item Component (스크랩 상태 토글 가능)
 const Item = ({ post }) => {
   const [scrapped, setScrapped] = useState(true); // 스크랩 목록이므로 기본 true
+  const accessToken = localStorage.getItem("accessToken");
+  const navigate = useNavigate();
 
-  const handleToggleScrap = () => {
-    
-    setScrapped((prev) => !prev);
+  const handleToggleScrap = async () => {
+    try {
+      await axios.post(`/api/communities/post/${post.id}/scrap/`, {}, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      setScrapped((prev) => !prev); // 상태 업데이트 (UI 토글)
+
+      // 🔄 선택사항: 페이지에서 아예 삭제하려면 아래처럼 구현 가능
+      // scrapList에서 제거하는 로직도 반영해야 함 (부모 컴포넌트에서 관리)
+    } catch (err) {
+      console.error("스크랩 해제 실패", err);
+    }
   };
 
   return (

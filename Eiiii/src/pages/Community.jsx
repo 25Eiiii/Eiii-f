@@ -9,73 +9,9 @@ import DetailCard from "../components/DetailCard"
 import { BackgroundOverlay } from "../styles/common/styledBackground"
 
 // Header Component
-const Header = () => {
-  const navigate = useNavigate()
 
-  return (
-      <Wrapper>
-          <Back onClick={() => navigate(-1)}>
-              <img
-                  src={`${process.env.PUBLIC_URL}/images/back.svg`}
-                  alt="back"
-              />
-          </Back>
-          <Search>
-              <img
-                  src={`${process.env.PUBLIC_URL}/images/search.svg`}
-                  alt="search"
-              />
-          </Search>
-          <Title>선후배 밥약
-                  <img
-                  src={`${process.env.PUBLIC_URL}/images/meal.svg`}
-                  alt="meal"
-              />
-          </Title>
-      </Wrapper>
-    )
-  }
   
-  export const Wrapper = styled.div`
-      display: flex;
-      align-items: center;
-      padding: 60px 27px 17px;
-      width: 100%;
-  `
-  
-  export const Back = styled.div`
-      width: 32px;
-      height: 31px;
-      flex-shrink: 0;
-      background: #F8B621;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      margin-left: 23px;
-  `
-  
-  export const Search = styled.div`
-      margin-left: 10px;
-  `
-  export const Title = styled.div`
-      display: flex;
-      justify-content: center;
-      height: 32px;
-      flex-shrink: 0;
-      color: #F8B621;
-      text-align: center;
-      font-family: Inter;
-      font-size: 21px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      gap: 5px;
-      align-items: center;
-      margin-left: 69px;
-  `
+
 
 // Community Page
 const Community = ({user, onClick}) => {
@@ -145,25 +81,30 @@ const Community = ({user, onClick}) => {
     // Scrap
     const handleScrap = async (postId) => {
         try {
-          const res = await axios.post(`/api/communities/post/${postId}/scrap/`, 
-            {},
-            {
+          const res = await axios.post(`/api/communities/post/${postId}/scrap/`, {}, {
             headers: {
-                Authorization: `Bearer ${accessToken}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           });
-
-          setPosts((prevPosts) => 
+      
+          setPosts((prevPosts) =>
             prevPosts.map((post) =>
-                post.id === postId
-                    ? { ...post, scraps: (post.scraps ?? 0) +1}
-                    : post
+              post.id === postId
+                ? {
+                    ...post,
+                    is_scrapped: !post.is_scrapped,
+                    scrap_count: post.is_scrapped
+                      ? (post.scrap_count ?? 1) - 1
+                      : (post.scrap_count ?? 0) + 1,
+                  }
+                : post
             )
-        )
+          );
         } catch (err) {
-            console.error("스크랩 실패", err);
+          console.error("스크랩 실패", err);
         }
-    };
+      };
+      
     // Like
     const handleLike = async (postId) => {
         try {
@@ -189,7 +130,27 @@ const Community = ({user, onClick}) => {
 
     return (
         <PageContainer>
-            <Header />
+            <M.Header>
+                <M.Back onClick={() => navigate(-1)}>
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/back.svg`}
+                        alt="back"
+                    />
+                </M.Back>
+                <M.Search>
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/search.svg`}
+                        alt="search"
+                    />
+                </M.Search>
+                <M.Title>
+                    {category}
+                        <img
+                        src={`${process.env.PUBLIC_URL}/images/meal.svg`}
+                        alt="meal"
+                    />
+                </M.Title>
+            </M.Header>
             {/* 게시글 목록 */}
             <M.Wrapper>
                 {posts.length > 0 ? (
@@ -228,7 +189,7 @@ const Community = ({user, onClick}) => {
                         </M.Comment>
                         <M.Scrap onClick={() => handleScrap(post.id)}>
                             <M.IconImg src={`${process.env.PUBLIC_URL}/images/scrap.svg`} />
-                            {post.scraps ?? 0}
+                            {post.scrap_count ?? 0}
                         </M.Scrap>
                         <M.More>
                         <M.IconImg src={`${process.env.PUBLIC_URL}/images/more.svg`} />
