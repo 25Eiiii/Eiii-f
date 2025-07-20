@@ -291,7 +291,7 @@ export const BtnGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    margin-top: -105px;
+    margin-top: 450px;
 `;
 
 export const Send = styled.div`
