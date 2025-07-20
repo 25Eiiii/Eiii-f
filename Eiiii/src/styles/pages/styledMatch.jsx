@@ -147,23 +147,12 @@ export const Detail = styled.div`
     justify-content: center;
 `
 
-export const BackgroundOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #888376;
-    opacity: 0.7;
-    z-index: 10;
-`;
-
 export const ButtonGroup = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    margin-top: 100px;
+    margin-top: -100px;
 `;
 
 export const ApplyBtn = styled.button`

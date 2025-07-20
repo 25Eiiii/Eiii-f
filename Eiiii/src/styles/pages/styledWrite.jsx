@@ -73,9 +73,44 @@ export const Category = styled.div`
     font-family: "Spoqa Han Sans Neo";
     font-size: 20px;
     font-style: normal;
-    font-weight: 500;
     line-height: normal;
-    gap: 147px;
+    position: relative;
+`
+
+export const SelectedCategory = styled.div`
+display: flex;
+align-items: center;
+position: relative;
+justify-content: space-between;
+width: 100%;
+padding: 12px 0px;
+    img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-right: 20px;
+    }
+`
+
+export const Dropdown = styled.div`
+display: flex;
+flex-direction: column;
+cursor: pointer;
+position: absolute;
+align-items: flex-end;
+margin-top: 40px;
+width: 100%;
+list-style: none;
+  li {
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #fff;
+    &:hover {
+      background: #fff7e0;
+    }
+  }
 `
 
 export const Title = styled.input`
