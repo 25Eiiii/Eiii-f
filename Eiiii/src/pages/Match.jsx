@@ -39,9 +39,9 @@ const Match = ({ dataList }) => {
         });
 
 
-        const matchList = [myProfile, ...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+        //const matchList = [myProfile, ...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
-        //const matchList =[...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+        const matchList = [...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
 
         setMatchList(matchList);
