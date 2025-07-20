@@ -28,6 +28,7 @@ import Profile from "./pages/Profile";
 import ProfileEdit from "./pages/ProfileEdit";
 import SignUp from "./pages/SignUp";
 import Main from "./pages/Main";
+import Chat from "./pages/Chatting"
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -64,6 +65,7 @@ function App() {
         <Route path="/profileEdit" element={<ProfileEdit/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/test/step1" element={<Test1/>}/>
+        <Route path="/chat" element={<Chat />}></Route>
         <Route path="/" element={<Main/>}/>
       </Routes>
     </BrowserRouter>
