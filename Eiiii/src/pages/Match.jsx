@@ -12,9 +12,9 @@ import axios from "axios";
 
 const Match = ({ dataList }) => {
   const navigate = useNavigate();
-  const [matchList, setMatchList] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [isDetailLoading, setIsDetailLoading] = useState(false);
+  const [matchList, setMatchList] = useState([]); // 매치 카드
+  const [selectedUser, setSelectedUser] = useState(null); // 유저
+  const [isDetailLoading, setIsDetailLoading] = useState(false); // 상세 카드 로딩
   const [selectedImg, setSelectedImg] = useState(null);
 
   const accessToken = localStorage.getItem("accessToken");
@@ -23,14 +23,20 @@ const Match = ({ dataList }) => {
   useEffect(() => {
     const fetchMatchList = async () => {
       try {
-        const res = await axios.get("api/accounts/match/", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+        const profileRes = await axios.get("/api/accounts/profile/me/", {
+          headers: { Authorization: `Bearer ${accessToken}` },
         });
-        setMatchList(res.data);
-      } catch(err) {
-        console.error("매칭 리스트 불러오기 실패", err)
+  
+        const matchRes = await axios.get("api/accounts/match/", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+  
+        // 내 프로필을 matchList 제일 앞에 삽입
+        const myProfile = { ...profileRes.data, isMe: true }; // isMe 플래그 추가 (선택)
+        setMatchList([myProfile, ...matchRes.data]);
+      } catch (err) {
+        console.error("매칭 리스트 불러오기 실패", err);
+      
       }
     };
 
@@ -77,11 +83,11 @@ const Match = ({ dataList }) => {
         </M.CardWrapper>
         <NavBar></NavBar>
         <>
-      {/* 배경 흐림 처리 */}
+      {/* 배경 흐리게 */}
         {selectedUser && <BackgroundOverlay></BackgroundOverlay>}
 
         
-      {/* 상세 카드 */}
+      {/* 상세 프로필 카드 모달 창 */}
       {selectedUser && ! isDetailLoading && (
         <DetailCard user={selectedUser}  img={selectedImg}/>
       )} 
