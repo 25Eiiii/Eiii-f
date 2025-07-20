@@ -15,6 +15,7 @@ const Match = ({ dataList }) => {
   const [matchList, setMatchList] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDetailLoading, setIsDetailLoading] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
 
   const accessToken = localStorage.getItem("accessToken");
 
@@ -37,15 +38,18 @@ const Match = ({ dataList }) => {
   }, [accessToken]);
 
   // 매칭 상세 카드 불러오기 
-  const handleCardClick = async (user) => {
+  const handleCardClick = async (user, image) => {
     try {
+      // debugging code
+      console.log(user);
       setIsDetailLoading(true);
-      const res = await axios.get(`/api/accounts/profile/${user.pk}/`, {
+      const res = await axios.get(`/api/accounts/profile/${user.id}/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
       setSelectedUser(res.data)
+      setSelectedImg(image)
     } catch(err) {
       console.error("상세 카드 불러오기 실패", err);
     } finally {
@@ -68,7 +72,7 @@ const Match = ({ dataList }) => {
       />
         <M.CardWrapper>
           {matchList.map((user) => (
-            <MatchCard user={user} onClick={() => handleCardClick(user)} />
+            <MatchCard user={user} onClick={handleCardClick} />
           ))}
         </M.CardWrapper>
         <NavBar></NavBar>
@@ -79,7 +83,7 @@ const Match = ({ dataList }) => {
         
       {/* 상세 카드 */}
       {selectedUser && ! isDetailLoading && (
-        <DetailCard text="대화 신청을 해보세요!" user={selectedUser}  />
+        <DetailCard user={selectedUser}  img={selectedImg}/>
       )} 
 
       {isDetailLoading && <M.LoadingText>불러오는 중</M.LoadingText>}
