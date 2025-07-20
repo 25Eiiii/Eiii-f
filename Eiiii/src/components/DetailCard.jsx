@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import * as M from "../styles/components/styledDetailCard";
 
-const DetailCard = ({ user }) => {
+const DetailCard = ({ user, img }) => {
 
   // 프로필을 랜덤 이미지로 설정
   const randomImg = useMemo(() => {
@@ -9,7 +9,7 @@ const DetailCard = ({ user }) => {
       "/images/profile1.svg",
       "/images/profile2.svg"
     ];
-    const randomIndex = Math.floor(Math.random()*imgList.length);
+    const randomIndex = Math.floor(Math.random() * imgList.length);
     return imgList[randomIndex];
   }, []);
 
@@ -17,7 +17,7 @@ const DetailCard = ({ user }) => {
     <M.DetailCard>
       <M.Text></M.Text>
       <M.ProfileImg>
-        <img src={randomImg} alt="profile" />
+        <img src={img} alt="profile" />
       </M.ProfileImg>
       <M.Profile1>
         <M.Nickname>{user.nickname}</M.Nickname>
