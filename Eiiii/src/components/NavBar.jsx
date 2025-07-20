@@ -23,7 +23,7 @@ const NavBar = () => {
                     alt="chat"
                 />  
             </N.Icon>
-            <N.Icon onClick={() => navigate("/community")}>
+            <N.Icon onClick={() => navigate("/community/mentoring")}>
                 <img
                     id="user-group"
                     src={`${process.env.PUBLIC_URL}/images/user-group.svg`}

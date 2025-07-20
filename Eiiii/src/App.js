@@ -44,7 +44,7 @@ function App() {
         <Route path="/chat-list" element={<ChatList />}/>
         <Route path="/chat-request" element={<Request />}/>
         <Route path="/notice" element={<Notice />}/>
-        <Route path="/community" element={<Community />}/>
+        <Route path="/community/:category" element={<Community />}/>
         <Route path="/community-write" element={<Write />}/>
         <Route path="/community-detail" element={<Detail />}/>
         <Route path="/plan" element={<Plan />}/>

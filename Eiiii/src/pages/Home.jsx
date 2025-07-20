@@ -79,7 +79,7 @@ const Home = () => {
                     </H.Text>
                 </H.IconDiv1>
                 <H.IconDiv2>
-                    <H.Icon2 onClick={() => navigate('/community')}>
+                    <H.Icon2 onClick={() => navigate('/community/mentoring')}>
                         <img
                             src={`${process.env.PUBLIC_URL}/images/icon2.svg`}
                             alt="logo"
@@ -92,7 +92,7 @@ const Home = () => {
                     </H.Text>
                 </H.IconDiv2>
                 <H.IconDiv3>
-                    <H.Icon3>
+                    <H.Icon3 onClick={() => navigate('/community/regular')}>
                         <img
                             src={`${process.env.PUBLIC_URL}/images/icon3.svg`}
                             alt="logo"
@@ -105,7 +105,7 @@ const Home = () => {
                     </H.Text>
                 </H.IconDiv3>
                 <H.IconDiv4>
-                    <H.Icon4>
+                    <H.Icon4 onClick={() => navigate('/community/classmate')}>
                         <img
                             src={`${process.env.PUBLIC_URL}/images/icon4.svg`}
                             alt="logo"

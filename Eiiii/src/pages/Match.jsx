@@ -12,9 +12,10 @@ import axios from "axios";
 
 const Match = ({ dataList }) => {
   const navigate = useNavigate();
-  const [matchList, setMatchList] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [isDetailLoading, setIsDetailLoading] = useState(false);
+  const [matchList, setMatchList] = useState([]); // 매치 카드
+  const [selectedUser, setSelectedUser] = useState(null); // 유저
+  const [isDetailLoading, setIsDetailLoading] = useState(false); // 상세 카드 로딩
+  const [selectedImg, setSelectedImg] = useState(null);
 
   const accessToken = localStorage.getItem("accessToken");
 
@@ -22,14 +23,26 @@ const Match = ({ dataList }) => {
   useEffect(() => {
     const fetchMatchList = async () => {
       try {
-        const res = await axios.get("api/accounts/match/", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+        const res = await axios.get("/api/accounts/match/", {
+          headers: { Authorization: `Bearer ${accessToken}` },
         });
-        setMatchList(res.data);
-      } catch(err) {
-        console.error("매칭 리스트 불러오기 실패", err)
+
+        const myRes = await axios.get(`/api/accounts/profile/me`, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+
+        const myProfile = {...myRes.data, isMe: true}
+
+        const matchRes = await axios.get("/api/accounts/match/", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+
+        const matchList =[myProfile, ...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
+        setMatchList(matchList);
+      } catch (err) {
+        console.error("매칭 리스트 불러오기 실패", err);
+      
       }
     };
 
@@ -37,15 +50,18 @@ const Match = ({ dataList }) => {
   }, [accessToken]);
 
   // 매칭 상세 카드 불러오기 
-  const handleCardClick = async (user) => {
+  const handleCardClick = async (user, image) => {
     try {
+      // debugging code
+      console.log(user);
       setIsDetailLoading(true);
-      const res = await axios.get(`/api/accounts/profile/${user.pk}/`, {
+      const res = await axios.get(`/api/accounts/profile/${user.id}/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
       setSelectedUser(res.data)
+      setSelectedImg(image)
     } catch(err) {
       console.error("상세 카드 불러오기 실패", err);
     } finally {
@@ -68,18 +84,18 @@ const Match = ({ dataList }) => {
       />
         <M.CardWrapper>
           {matchList.map((user) => (
-            <MatchCard user={user} onClick={() => handleCardClick(user)} />
+            <MatchCard user={user} onClick={handleCardClick} />
           ))}
         </M.CardWrapper>
         <NavBar></NavBar>
         <>
-      {/* 배경 흐림 처리 */}
+      {/* 배경 흐리게 */}
         {selectedUser && <BackgroundOverlay></BackgroundOverlay>}
 
         
-      {/* 상세 카드 */}
+      {/* 상세 프로필 카드 모달 창 */}
       {selectedUser && ! isDetailLoading && (
-        <DetailCard text="대화 신청을 해보세요!" user={selectedUser}  />
+        <DetailCard user={selectedUser}  img={selectedImg}/>
       )} 
 
       {isDetailLoading && <M.LoadingText>불러오는 중</M.LoadingText>}
