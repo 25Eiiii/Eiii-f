@@ -66,7 +66,7 @@ const Item = ({ post }) => {
   const [scrapped, setScrapped] = useState(true); // 스크랩 목록이므로 기본 true
 
   const handleToggleScrap = () => {
-    // 필요시 스크랩 취소 로직 추가
+    
     setScrapped((prev) => !prev);
   };
 
@@ -93,6 +93,8 @@ export const Box = styled.div`
   width: 100%;
   justify-content: flex-start;
   margin-left: 20px;
+  margin-bottom: 10px;
+
 `
 export const Icon = styled.button`
   border: none;
@@ -187,6 +189,9 @@ const Scrap = () => {
     fetchScraps();
   }, []);
 
+  // 날짜 추출
+  const formatDate = (isoString) => isoString.slice(0,10);
+
   return (
     <PageContainer>
       <Header />
@@ -201,13 +206,21 @@ const Scrap = () => {
         <S.Date>날짜</S.Date>
         <Menu />
       </S.Top>
-      <S.Line>어제</S.Line>
       <S.ScrapWrapper>
-        {scrapList.map((post) => (
-          <Item key={post.id} post={post} />
-        ))}
-      </S.ScrapWrapper>
-      <S.Line>05/08</S.Line>
+      {scrapList.map((post, idx) => {
+        const currentDate = formatDate(post.created_at);
+        const prevDate = idx > 0 ? formatDate(scrapList[idx - 1].created_at) : null;
+
+        const showDate = currentDate !== prevDate;
+
+        return (
+          <S.Post key={post.id}>
+            {showDate && <S.Line>{currentDate}</S.Line>}
+            <Item post={post} />
+          </S.Post>
+        );
+      })}
+    </S.ScrapWrapper>
       <NavBar />
     </PageContainer>
   )
