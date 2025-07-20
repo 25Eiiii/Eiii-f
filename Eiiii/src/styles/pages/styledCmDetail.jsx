@@ -298,8 +298,8 @@ export const BtnGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-        position: fixed;
-    bottom: 530px;
+    position: absolute;
+    bottom: 100px;
 `;
 
 export const Send = styled.div`

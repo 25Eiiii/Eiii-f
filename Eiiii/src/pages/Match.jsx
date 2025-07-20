@@ -27,14 +27,7 @@ const Match = ({ dataList }) => {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
 
-<<<<<<< HEAD
         const matchList =[...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
-=======
-
-        //const matchList = [myProfile, ...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
-
-        const matchList = [...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
->>>>>>> 4cc39a500afc832d5f8b386a9667aed84bd111be
 
 
         setMatchList(matchList);
