@@ -55,7 +55,10 @@ export const CardWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr); // 두 열
     gap: 15px;
-    margin-bottom: 19px;
+    height: 750px;
+        overflow-y: auto;
+    &::-webkit-scrollbar {
+    display: none;
 `
 export const Card = styled.div`
     width: 180.686px;
@@ -152,7 +155,7 @@ export const ButtonGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    margin-top: -100px;
+    margin-bottom: 100px;
 `;
 
 export const ApplyBtn = styled.button`

@@ -23,17 +23,23 @@ const Match = ({ dataList }) => {
   useEffect(() => {
     const fetchMatchList = async () => {
       try {
-        const profileRes = await axios.get("/api/accounts/profile/me/", {
+        const res = await axios.get("/api/accounts/match/", {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
-  
-        const matchRes = await axios.get("api/accounts/match/", {
+
+        const myRes = await axios.get(`/api/accounts/profile/me`, {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
-  
-        // 내 프로필을 matchList 제일 앞에 삽입
-        const myProfile = { ...profileRes.data, isMe: true }; // isMe 플래그 추가 (선택)
-        setMatchList([myProfile, ...matchRes.data]);
+
+        const myProfile = {...myRes.data, isMe: true}
+
+        const matchRes = await axios.get("/api/accounts/match/", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+
+        const matchList =[myProfile, ...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
+        setMatchList(matchList);
       } catch (err) {
         console.error("매칭 리스트 불러오기 실패", err);
       
