@@ -81,25 +81,30 @@ const Community = ({user, onClick}) => {
     // Scrap
     const handleScrap = async (postId) => {
         try {
-          const res = await axios.post(`/api/communities/post/${postId}/scrap/`, 
-            {},
-            {
+          const res = await axios.post(`/api/communities/post/${postId}/scrap/`, {}, {
             headers: {
-                Authorization: `Bearer ${accessToken}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           });
-
-          setPosts((prevPosts) => 
+      
+          setPosts((prevPosts) =>
             prevPosts.map((post) =>
-                post.id === postId
-                    ? { ...post, scraps: (post.scraps ?? 0) +1}
-                    : post
+              post.id === postId
+                ? {
+                    ...post,
+                    is_scrapped: !post.is_scrapped,
+                    scrap_count: post.is_scrapped
+                      ? (post.scrap_count ?? 1) - 1
+                      : (post.scrap_count ?? 0) + 1,
+                  }
+                : post
             )
-        )
+          );
         } catch (err) {
-            console.error("스크랩 실패", err);
+          console.error("스크랩 실패", err);
         }
-    };
+      };
+      
     // Like
     const handleLike = async (postId) => {
         try {
@@ -184,7 +189,7 @@ const Community = ({user, onClick}) => {
                         </M.Comment>
                         <M.Scrap onClick={() => handleScrap(post.id)}>
                             <M.IconImg src={`${process.env.PUBLIC_URL}/images/scrap.svg`} />
-                            {post.scraps ?? 0}
+                            {post.scrap_count ?? 0}
                         </M.Scrap>
                         <M.More>
                         <M.IconImg src={`${process.env.PUBLIC_URL}/images/more.svg`} />
