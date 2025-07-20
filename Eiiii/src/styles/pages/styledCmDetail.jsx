@@ -150,7 +150,7 @@ export const Content = styled.div`
     font-weight: 400;
     line-height: normal;
     margin-bottom: 40px;
-    margin-left: ${(props) => (props.variant === "cmt" ? "-5px" : "0px")};
+    margin-left: ${(props) => (props.variant === "cmt" ? "55px" : "0px")};
     margin-top: ${(props) => (props.variant === "cmt" ? "-15px" : "0px")};
 `
 
@@ -214,7 +214,7 @@ export const Comments = styled.div`
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    margin-left: 30px;
+    margin-left: 13px;
     margin-top: 11px;
 `
 

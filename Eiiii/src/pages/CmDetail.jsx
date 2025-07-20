@@ -203,7 +203,7 @@ const Detail = () => {
           <D.Infos>
             <D.Info1>
               <D.Name>{post.nickname}</D.Name>
-              <D.Time>{post.created_at}</D.Time>
+              <D.Time>{post.created_at.slice(0,10)}</D.Time>
             </D.Info1>
             <D.Info2>{post.major} {post.year}학번</D.Info2>
           </D.Infos>
@@ -250,7 +250,7 @@ const Detail = () => {
             <D.Infos>
               <D.Info1 variant="cmt">
                 <D.Name>{cmt.nickname}</D.Name>
-                <D.Time>{cmt.created_at}</D.Time>
+                <D.Time>{cmt.created_at.slice(0,10)}</D.Time>
               </D.Info1>
               <D.Info2>{cmt.major} {cmt.year}학번</D.Info2>
             </D.Infos>
