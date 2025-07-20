@@ -1,270 +1,253 @@
 import * as D from "../styles/pages/styledCmDetail";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import DetailCard from "../components/DetailCard"
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import DetailCard from "../components/DetailCard";
 import styled from "styled-components";
 import { PageContainer } from "../styles/common/styledConainer";
 import { BackgroundOverlay } from "../styles/common/styledBackground";
+import axios from "axios";
 
-
-// Button
+// Apply 버튼 컴포넌트
 const Apply = ({ user, onClick }) => {
-    return (
-        <Ex onClick={() => onClick(user)}>대화 신청</Ex>
-    )
+  return <Ex onClick={() => onClick(user)}>대화 신청</Ex>;
 };
 
 export const Ex = styled.div`
-    display: inline-flex;
-    padding: 6px 12px;
-    align-items: center;
-    border-radius: 999px;
-    background: #F99505;
-    color: var(--Font-White, #FFFFFF);
-    text-align: center;
-    font-family: "Spoqa Han Sans Neo";
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 100%; /* 12px */
-    letter-spacing: -0.12px;
-    position: absolute;
-    right: 27px;
-    cursor: pointer;
-`
+  display: inline-flex;
+  padding: 6px 12px;
+  align-items: center;
+  border-radius: 999px;
+  background: #f99505;
+  color: var(--Font-White, #ffffff);
+  text-align: center;
+  font-family: "Spoqa Han Sans Neo";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.12px;
+  position: absolute;
+  right: 27px;
+  cursor: pointer;
+`;
 
 // Header Component
 const Header = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
-        <Back onClick={() => navigate(-1)}>
-            <img
-                src={`${process.env.PUBLIC_URL}/images/back.svg`}
-                alt="back"
-            />
-        </Back>
-        <Search>
-            <img
-                src={`${process.env.PUBLIC_URL}/images/search.svg`}
-                alt="search"
-            />
-        </Search>
-        <Title>선후배 밥약
-                <img
-                src={`${process.env.PUBLIC_URL}/images/meal.svg`}
-                alt="meal"
-            />
-        </Title>
+      <Back onClick={() => navigate(-1)}>
+        <img src={`${process.env.PUBLIC_URL}/images/back.svg`} alt="back" />
+      </Back>
+      <Search>
+        <img src={`${process.env.PUBLIC_URL}/images/search.svg`} alt="search" />
+      </Search>
+      <Title>
+        선후배 밥약
+        <img src={`${process.env.PUBLIC_URL}/images/meal.svg`} alt="meal" />
+      </Title>
     </Wrapper>
-  )
-}
+  );
+};
 
 export const Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 60px 27px 17px;
-    width: 100%;
-`
+  display: flex;
+  align-items: center;
+  padding: 60px 27px 17px;
+  width: 100%;
+`;
 
 export const Back = styled.div`
-    width: 32px;
-    height: 31px;
-    flex-shrink: 0;
-    background: #F8B621;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-left: 23px;
-`
+  width: 32px;
+  height: 31px;
+  flex-shrink: 0;
+  background: #f8b621;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-left: 23px;
+`;
 
 export const Search = styled.div`
-    margin-left: 10px;
-`
+  margin-left: 10px;
+`;
+
 export const Title = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 32px;
-    flex-shrink: 0;
-    color: #F8B621;
-    text-align: center;
-    font-family: Inter;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    gap: 5px;
-    align-items: center;
-    margin-left: 69px;
-`
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  flex-shrink: 0;
+  color: #f8b621;
+  text-align: center;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  gap: 5px;
+  align-items: center;
+  margin-left: 69px;
+`;
 
-
-// Detail page
 const Detail = () => {
-    const [selectedApply, setSelectedApply] = useState(null); 
+  const { pk } = useParams();
+  const navigate = useNavigate();
+  const accessToken = localStorage.getItem("accessToken");
 
-    const handleApplyClick = (user) => {
-        setSelectedApply(user);
+  const [post, setPost] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isDetailLoading, setIsDetailLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchPostDetail = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8000/api/communities/post/${pk}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        setPost(res.data);
+      } catch (err) {
+        console.error("상세 게시글 불러오기 실패", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPostDetail();
+  }, [pk]);
+
+  const handleApplyClick = async (user) => {
+    try {
+      setIsDetailLoading(true);
+      const res = await axios.get(`/api/accounts/profile/${user.id}/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setSelectedUser(res.data);
+    } catch (err) {
+      console.error("상세 카드 불러오기 실패", err);
+    } finally {
+      setIsDetailLoading(false);
     }
+  };
 
-    const handleCloseApply = () => {
-        setSelectedApply(null)
-    }
+  const handleCloseApply = () => {
+    setSelectedUser(null);
+  };
 
-    const navigate = useNavigate()
+  if (loading) return <p>불러오는 중</p>;
+  if (!post) return <p>게시글 불러오기 실패</p>;
 
-    return (
-        <PageContainer>
-            <Header />
-            <D.Detail>
-                <D.Profile>
-                    <D.Pic>
-                        <img 
-                        src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
-                        alt="img"
-                        />
-                    </D.Pic>
-                    <D.Infos>
-                        <D.Info1>
-                            <D.Name>오리고기 먹고싶다</D.Name>
-                            <D.Time>10분 전</D.Time>
-                        </D.Info1>
-                        <D.Info2>
-                            정보통계학과 21학번 / 24살
-                        </D.Info2>
-                    </D.Infos>
-                    <Apply user={{name: "오리고기 먹고싶다"}} onClick={handleApplyClick}></Apply>
-                </D.Profile>
-                <D.Big>새로 생긴 훠궈집 같이 가실 분 4분 구해요!</D.Big>
-                <D.Content>
-                    <p>4명이서 같이 가면 개업 이벤트로 20퍼 할인 해준대요!! 그 달에 생일인 사람있는 테이블은 추가로 10퍼 할인 더 해준다는데 같이 가요~~~!!! 저 5월 생일이에요!!!! 후배 선배 상관 없이 다 좋습니다 ㅎㅎ 엄청 맛있어보이죠~~!!!</p>
-                    <D.Food>
-                    <img 
-                        src={`${process.env.PUBLIC_URL}/images/food.svg`}
-                        alt="food"
-                    />
-                    </D.Food>   
-                </D.Content>
-                <D.Bottom>
-                <D.Like>
-                    <D.IconImg src={`${process.env.PUBLIC_URL}/images/heart.svg`} alt="heart"/>
-                    좋아요 5개
-                </D.Like>
+  return (
+    <PageContainer>
+      <Header />
+      <D.Detail>
+        <D.Profile>
+          <D.Pic onClick={() => handleApplyClick({id: post.user})}>
+            <img src={`${process.env.PUBLIC_URL}/images/avatar.svg`} alt="img" />
+          </D.Pic>
+          <D.Infos>
+            <D.Info1>
+              <D.Name>{post.nickname}</D.Name>
+              <D.Time>{post.created_at}</D.Time>
+            </D.Info1>
+            <D.Info2>{post.major} {post.year}학번</D.Info2>
+          </D.Infos>
+          <Apply user={post} onClick={() => handleApplyClick({id: post.user})} />
+        </D.Profile>
+
+        <D.Big>{post.title}</D.Big>
+
+        <D.Content>
+          <p>{post.content}</p>
+          {post.image && (
+            <D.Food>
+              <img src={post.image} alt="food" />
+            </D.Food>
+          )}
+        </D.Content>
+
+        <D.Bottom>
+          <D.Like>
+            <D.IconImg src={`${process.env.PUBLIC_URL}/images/heart.svg`} alt="heart" />
+            좋아요 {post.likes ?? 0}개
+          </D.Like>
+          <D.Comment>
+            <D.IconImg src={`${process.env.PUBLIC_URL}/images/comment.svg`} />
+            댓글 {post.comments?.length ?? 0}개
+          </D.Comment>
+          <D.Share>
+            <D.IconImg src={`${process.env.PUBLIC_URL}/images/share.svg`} />
+            공유
+          </D.Share>
+        </D.Bottom>
+      </D.Detail>
+
+      <D.Line />
+
+      {/* 댓글 */}
+      <D.Comments>
+        {post.comments?.map((cmt, idx) => (
+          <D.Profile key={idx}>
+            <D.Pic>
+              <img src={`${process.env.PUBLIC_URL}/images/avatar.svg`} alt="img" />
+            </D.Pic>
+            <D.Infos>
+              <D.Info1 variant="cmt">
+                <D.Name>{cmt.nickname}</D.Name>
+                <D.Time>{cmt.created_at}</D.Time>
+              </D.Info1>
+              <D.Info2>{cmt.major} {cmt.year}학번</D.Info2>
+            </D.Infos>
+            <Apply user={cmt} onClick={handleApplyClick} />
+            <D.Content variant="cmt">
+              <p>{cmt.content}</p>
+              <D.CBtm>
+                <D.Good>
+                  <img src={`${process.env.PUBLIC_URL}/images/good.svg`} alt="good" />
+                  좋아요 {cmt.likes ?? 0}개
+                </D.Good>
                 <D.Comment>
-                    <D.IconImg src={`${process.env.PUBLIC_URL}/images/comment.svg`} />
-                    댓글 2개
+                  <img src={`${process.env.PUBLIC_URL}/images/comment.svg`} alt="comment" />
+                  답글 달기
                 </D.Comment>
-                <D.Share>
-                    <D.IconImg src={`${process.env.PUBLIC_URL}/images/share.svg`} />
-                    공유
-                </D.Share>
-                </D.Bottom>
-            </D.Detail>
-            <D.Line></D.Line>
-            <D.Comments>
-                <D.Profile>
-                    <D.Pic>
-                        <img 
-                        src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
-                        alt="img"
-                        />
-                    </D.Pic>
-                    <D.Infos>
-                        <D.Info1 variant="cmt">
-                            <D.Name>김치삼겹살</D.Name>
-                            <D.Time>5분 전</D.Time>
-                        </D.Info1>
-                        <D.Info2>
-                            성악과26
-                        </D.Info2>
-                    </D.Infos>
-                    <Apply user={{name: "김치 삼겹살"}} onClick={handleApplyClick}></Apply>
-                </D.Profile>
-                <D.Content variant="cmt">
-                    <p>
-                    헐 저요!!! 저 가보고 싶었는데 ㅎㅎㅎㅎㅎㅎㅎ <br />
-                    거기 후기가 엄청 좋던데요??? <br />
-                    새내기인데 괜찮으시면 같이 가요 선배님
-                    </p>
-                    <D.CBtm>
-                    <D.Good>
-                        <img
-                            src={`${process.env.PUBLIC_URL}/images/good.svg`}
-                            alt="good"
-                        />
-                        좋아요 1개
-                    </D.Good>
-                    <D.Comment>
-                        <img
-                            src={`${process.env.PUBLIC_URL}/images/comment.svg`}
-                            alt="comment"
-                        />
-                        답글 달기
-                    </D.Comment>
-                </D.CBtm>
-                </D.Content>
-                <D.C2>
-                <D.Profile>
-                    <D.Pic>
-                        <img 
-                        src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
-                        alt="img"
-                        />
-                    </D.Pic>
-                    <D.Infos>
-                        <D.Info1 variant="cmt">
-                            <D.Name>오리고기 먹고싶다</D.Name>
-                            <D.Time>방금</D.Time>
-                        </D.Info1>
-                        <D.Info2>
-                            정보통계학과21
-                        </D.Info2>
-                    </D.Infos>
-                    <Apply user={{name: "오리고기 먹고싶다"}} onClick={handleApplyClick}></Apply>
-                </D.Profile>
-                <D.Content variant="cmt">
-                    <p>오 대박! 너무 좋죠 !!!!!!!! 대화 신청 걸게요!!!</p>
-                <D.CBtm>
-                    <D.Good>
-                        <img
-                            src={`${process.env.PUBLIC_URL}/images/good.svg`}
-                            alt="good"
-                        />
-                        좋아요
-                    </D.Good>
-                </D.CBtm>
-                </D.Content>
-                </D.C2>
-            </D.Comments>
-            <D.Line2></D.Line2>
-            <D.Write>
-                <D.Cam>
-                <img 
-                    src={`${process.env.PUBLIC_URL}/images/cam.svg`}
-                    alt="cam"
-                />
-                </D.Cam>
-                <D.Here placeholder="댓글을 입력해 주세요."></D.Here>
-                <D.Btn>등록</D.Btn>
-            </D.Write>
+              </D.CBtm>
+            </D.Content>
+          </D.Profile>
+        ))}
+      </D.Comments>
 
-            {selectedApply && (
-             <>
-                <BackgroundOverlay></BackgroundOverlay>
-                <DetailCard user={selectedApply}></DetailCard>
-                <D.BtnGroup>
-                    <D.Send>대화 신청</D.Send>
-                    <D.Cancle onClick={handleCloseApply}>나가기</D.Cancle>
-                </D.BtnGroup>
-            </>
-            )}
-        </PageContainer>
+      <D.Line2 />
 
-    );
+      <D.Write>
+        <D.Cam>
+          <img src={`${process.env.PUBLIC_URL}/images/cam.svg`} alt="cam" />
+        </D.Cam>
+        <D.Here placeholder="댓글을 입력해 주세요." />
+        <D.Btn>등록</D.Btn>
+      </D.Write>
+
+      {/* 상세 카드 모달 */}
+      {selectedUser && (
+        <>
+          <BackgroundOverlay />
+          <DetailCard user={selectedUser} />
+          <D.BtnGroup>
+            <D.Send>대화 신청</D.Send>
+            <D.Cancle onClick={handleCloseApply}>나가기</D.Cancle>
+          </D.BtnGroup>
+        </>
+      )}
+
+      {isDetailLoading && <p>불러오는 중...</p>}
+    </PageContainer>
+  );
 };
 
 export default Detail;
