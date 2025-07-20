@@ -11,7 +11,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const accessToken = localStorage.getItem("accessToken");
-  const myUserId = Number(localStorage.getItem("userId"));
+  const myUserId = Number(localStorage.getItem("userId") || 0);
   const formatTime = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleTimeString("ko-KR", {
@@ -41,6 +41,8 @@ const Chat = () => {
 
   const handleSend = async () => {
     if (!input.trim()) return;
+    console.log("보내는 사람 ID:", myUserId);
+    console.log("보내는 채팅방 ID:", chatroomId);
     try {
       const res = await axios.post(
         `/api/dmessages/chatrooms/${chatroomId}/messages/send/`,
