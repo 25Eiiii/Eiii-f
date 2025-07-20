@@ -41,32 +41,33 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/match" element={<Match dataList={dataList} />} />
-        <Route path="/chat-list" element={<ChatList />}/>
-        <Route path="/chat-request" element={<Request />}/>
-        <Route path="/notice" element={<Notice />}/>
-        <Route path="/community/:category" element={<Community />}/>
-        <Route path="/community-write" element={<Write />}/>
-        <Route path="/community-detail" element={<Detail />}/>
-        <Route path="/plan" element={<Plan />}/>
-        <Route path="/scrap" element={<Scrap />}/>
-        <Route path="/like" element={<Like />}/>
-        <Route path="/my-comments" element={<MComments />}/>
-        <Route path="/test" element={<Test/>}/>
-        <Route path="/test/step3" element={<Test3/>}/>
-        <Route path="/test/step2" element={<Test2/>}/>
-        <Route path="/home" element={<Home/>}/>
-        <Route path="/test/step5" element={<Test5/>}/>
-        <Route path="/test/step4" element={<Test4/>}/>
-        <Route path="/test/step6" element={<Test6/>}/>
-        <Route path="/test/step7" element={<Test7/>}/>
-        <Route path="/test/step8" element={<Test8/>}/>
-        <Route path="/test/complete" element={<TestComplete/>}/>
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/profileEdit" element={<ProfileEdit/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/test/step1" element={<Test1/>}/>
+        <Route path="/chat-list" element={<ChatList />} />
+        <Route path="/chat-request" element={<Request />} />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/community/:category" element={<Community />} />
+        <Route path="/community-write" element={<Write />} />
+        <Route path="/community-detail" element={<Detail />} />
+        <Route path="/plan" element={<Plan />} />
+        <Route path="/scrap" element={<Scrap />} />
+        <Route path="/like" element={<Like />} />
+        <Route path="/my-comments" element={<MComments />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/test/step3" element={<Test3 />} />
+        <Route path="/test/step2" element={<Test2 />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/test/step5" element={<Test5 />} />
+        <Route path="/test/step4" element={<Test4 />} />
+        <Route path="/test/step6" element={<Test6 />} />
+        <Route path="/test/step7" element={<Test7 />} />
+        <Route path="/test/step8" element={<Test8 />} />
+        <Route path="/test/complete" element={<TestComplete />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profileEdit" element={<ProfileEdit />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/test/step1" element={<Test1 />} />
         <Route path="/chat" element={<Chat />}></Route>
-        <Route path="/" element={<Main/>}/>
+        <Route path="/chat/:chatroomId" element={<Chat />} />
+        <Route path="/" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );
