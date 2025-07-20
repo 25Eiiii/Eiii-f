@@ -27,7 +27,7 @@ const Match = ({ dataList }) => {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
 
-        const matchList =[...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+        const matchList = [...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
 
         setMatchList(matchList);
@@ -40,8 +40,8 @@ const Match = ({ dataList }) => {
     fetchMatchList();
   }, [accessToken]);
 
-  // 매칭 상세 카드 불러오기 
-  const handleCardClick = async (user, image) => {
+  // 매칭 상세 카드 불러오기
+  /*const handleCardClick = async (user, image) => {
     try {
       // debugging code
       console.log(user);
@@ -53,6 +53,23 @@ const Match = ({ dataList }) => {
       });
       setSelectedUser(res.data)
       setSelectedImg(image)
+    } catch (err) {
+      console.error("상세 카드 불러오기 실패", err);
+    } finally {
+      setIsDetailLoading(false);
+    }
+  };*/
+  const handleCardClick = async (user, image) => {
+    try {
+      setIsDetailLoading(true);
+      setSelectedUser(null);  // 이전 값 초기화!
+      const res = await axios.get(`/api/accounts/profile/${user.id}/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setSelectedUser(res.data);
+      setSelectedImg(image);
     } catch (err) {
       console.error("상세 카드 불러오기 실패", err);
     } finally {
@@ -101,7 +118,11 @@ const Match = ({ dataList }) => {
       />
       <M.CardWrapper>
         {matchList.map((user) => (
-          <MatchCard user={user} onClick={handleCardClick} />
+          <MatchCard
+            key={user.id}         // 꼭 넣어야 함!
+            user={user}
+            onClick={handleCardClick}
+          />
         ))}
       </M.CardWrapper>
       <NavBar></NavBar>
