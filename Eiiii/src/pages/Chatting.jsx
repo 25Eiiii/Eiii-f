@@ -1,30 +1,65 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import * as C from "../styles/pages/styledChatting";
 import { PageContainer } from "../styles/common/styledConainer";
+import axios from "axios";
 
 const Chat = () => {
-  const [messages, setMessages] = useState([
-    {
-      from: "other",
-      text: "안녕하세요 마라탕이랑 꿔바로우 같이 먹고 싶은데 오늘 저녁으로 드시는 거 어떠세요?",
-      time: "00:12",
-    },
-  ]);
-  const [input, setInput] = useState("");
-
+  const { chatroomId } = useParams(); // URL에서 /chat/:chatroomId
   const navigate = useNavigate();
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const accessToken = localStorage.getItem("accessToken");
+  const myUserId = Number(localStorage.getItem("userId"));
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString("ko-KR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
 
-  const handleSend = () => {
-    if (!input.trim()) return;
-    const newMessage = {
-      from: "me",
-      text: input,
-      time: "00:17",
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const res = await axios.get(`/api/dmessages/chatrooms/${chatroomId}/messages/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        console.log("내 ID:", myUserId);
+        console.log("채팅 메시지 응답:", res.data);
+        setMessages(res.data);
+      } catch (error) {
+        console.error("채팅 메시지 조회 실패", error);
+      }
     };
-    setMessages([...messages, newMessage]);
-    setInput("");
+    fetchMessages();
+  }, [chatroomId]);
+
+
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    try {
+      const res = await axios.post(
+        `/api/dmessages/chatrooms/${chatroomId}/messages/send/`,
+        {
+          content: input.trim(),
+          is_request: false,
+
+        },
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      );
+      console.log("보내는 메시지 내용:", input.trim());
+      console.log("보내는 chatroomId:", chatroomId);
+      setMessages((prev) => [...prev, res.data]);
+      setInput("");
+    } catch (error) {
+      console.error("쪽지 전송 실패", error);
+    }
   };
 
   return (
@@ -47,41 +82,49 @@ const Chat = () => {
       </C.ChatDateRow>
 
       {/* 메시지 목록 */}
+      {/* 메시지 목록 */}
       <C.MessageList>
-  {messages.map((msg, idx) => (
-    <C.MessageRow key={idx} from={msg.from}>
-      {msg.from === "other" ? (
-        <>
-          <C.Profile>
-            <img src={`${process.env.PUBLIC_URL}/images/search.svg`} alt="profile" />
-          </C.Profile>
-          <C.MessageBubble>
-            <span>{msg.text}</span>
-          </C.MessageBubble>
-          <C.MessageTime>{msg.time}</C.MessageTime>
-        </>
-      ) : (
-        <>
-          <C.MessageTime>{msg.time}</C.MessageTime>
-          <C.MessageBubble>
-            <span>{msg.text}</span>
-          </C.MessageBubble>
-          <C.Profile>
-            <img src={`${process.env.PUBLIC_URL}/images/search.svg`} alt="profile" />
-          </C.Profile>
-        </>
-      )}
-    </C.MessageRow>
-  ))}
-</C.MessageList>
+        {messages.map((msg, idx) => (
+          <C.MessageRow
+            key={idx}
+            from={msg.sender === myUserId ? "me" : "other"}
+          >
+            {msg.sender === myUserId ? (
+              <>
+                <C.MessageTime>{formatTime(msg.timestamp)}</C.MessageTime>
+                <C.MessageBubble>
+                  <span>{msg.content}</span>
+                </C.MessageBubble>
+                <C.Profile>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/profile_me.svg`}
+                    alt={msg.sender_nickname}
+                  />
+                </C.Profile>
+              </>
+            ) : (
+              <>
+                <C.Profile>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/profile_other.svg`}
+                    alt={msg.sender_nickname}
+                  />
+                </C.Profile>
+                <C.MessageBubble>
+                  <span>{msg.content}</span>
+                </C.MessageBubble>
+                <C.MessageTime>{formatTime(msg.timestamp)}</C.MessageTime>
+              </>
+            )}
+          </C.MessageRow>
+        ))}
+      </C.MessageList>
 
 
       {/* 입력창 */}
       <C.ChatInputRow>
         <C.CameraButton>
-            <img 
-            src={`${process.env.PUBLIC_URL}/images/cam.svg`} alt="cam"
-            />
+          <img src={`${process.env.PUBLIC_URL}/images/cam.svg`} alt="cam" />
         </C.CameraButton>
         <C.ChatInput
           type="text"
@@ -90,9 +133,7 @@ const Chat = () => {
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
         />
         <C.SendButton onClick={handleSend}>
-        <img 
-            src={`${process.env.PUBLIC_URL}/images/send.svg`} alt="send"
-            />
+          <img src={`${process.env.PUBLIC_URL}/images/send.svg`} alt="send" />
         </C.SendButton>
       </C.ChatInputRow>
     </PageContainer>

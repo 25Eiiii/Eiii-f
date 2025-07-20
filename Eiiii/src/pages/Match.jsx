@@ -23,16 +23,31 @@ const Match = ({ dataList }) => {
   useEffect(() => {
     const fetchMatchList = async () => {
       try {
+
+        const res = await axios.get("/api/accounts/match/", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+
+        const myRes = await axios.get(`/api/accounts/profile/me`, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+
+        const myProfile = { ...myRes.data, isMe: true }
+
         const matchRes = await axios.get("/api/accounts/match/", {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
 
+
+        const matchList = [myProfile, ...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
         const matchList =[...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
 
         setMatchList(matchList);
       } catch (err) {
         console.error("매칭 리스트 불러오기 실패", err);
-      
+
       }
     };
 
@@ -52,16 +67,42 @@ const Match = ({ dataList }) => {
       });
       setSelectedUser(res.data)
       setSelectedImg(image)
-    } catch(err) {
+    } catch (err) {
       console.error("상세 카드 불러오기 실패", err);
     } finally {
       setIsDetailLoading(false);
     }
   };
-    
+
   const handleCloseDetail = () => {
     setSelectedUser(null);
   };
+
+  const handleApplyChat = async () => {
+    if (!selectedUser || !selectedUser.user_id) {
+      console.error("유효한 사용자 정보가 없습니다.");
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        "/api/dmessages/request/",
+        { receiver: selectedUser.user_id },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      alert("대화 신청이 완료되었습니다!");
+      setSelectedUser(null); // 상세 카드 닫기
+    } catch (err) {
+      console.error("대화 신청 실패", err);
+      alert("대화 신청에 실패했습니다.");
+    }
+  };
+
 
   return (
     <PageContainer>
@@ -72,32 +113,32 @@ const Match = ({ dataList }) => {
         onClickLeft={() => navigate(-1)}
         onClickRight={() => navigate("/notice")}
       />
-        <M.CardWrapper>
-          {matchList.map((user) => (
-            <MatchCard user={user} onClick={handleCardClick} />
-          ))}
-        </M.CardWrapper>
-        <NavBar></NavBar>
-        <>
-      {/* 배경 흐리게 */}
+      <M.CardWrapper>
+        {matchList.map((user) => (
+          <MatchCard user={user} onClick={handleCardClick} />
+        ))}
+      </M.CardWrapper>
+      <NavBar></NavBar>
+      <>
+        {/* 배경 흐리게 */}
         {selectedUser && <BackgroundOverlay></BackgroundOverlay>}
 
-        
-      {/* 상세 프로필 카드 모달 창 */}
-      {selectedUser && ! isDetailLoading && (
-        <DetailCard user={selectedUser}  img={selectedImg}/>
-      )} 
 
-      {isDetailLoading && <M.LoadingText>불러오는 중</M.LoadingText>}
+        {/* 상세 프로필 카드 모달 창 */}
+        {selectedUser && !isDetailLoading && (
+          <DetailCard user={selectedUser} img={selectedImg} />
+        )}
 
-      {selectedUser && (
-      <M.ButtonGroup>
-        <M.ApplyBtn onClick={handleCloseDetail}>대화 신청</M.ApplyBtn>
-        <M.ExtBtn onClick={handleCloseDetail}>나가기</M.ExtBtn>
-      </M.ButtonGroup>
-      )}
+        {isDetailLoading && <M.LoadingText>불러오는 중</M.LoadingText>}
 
-    </>
+        {selectedUser && (
+          <M.ButtonGroup>
+            <M.ApplyBtn onClick={handleApplyChat}>대화 신청</M.ApplyBtn>
+            <M.ExtBtn onClick={handleCloseDetail}>나가기</M.ExtBtn>
+          </M.ButtonGroup>
+        )}
+
+      </>
     </PageContainer>
   );
 };

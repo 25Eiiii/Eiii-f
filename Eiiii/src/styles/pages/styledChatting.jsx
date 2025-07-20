@@ -151,6 +151,7 @@ justify-content: center;
 padding-left: 12px;
 `;
 
-export const Profile= styled.div`
+export const Profile = styled.div`
 margin-top: 54px;
 `
+

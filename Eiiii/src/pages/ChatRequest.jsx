@@ -1,48 +1,101 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import * as R from "../styles/pages/styledChatRequest"
+import * as R from "../styles/pages/styledChatRequest";
+import * as S from "../styles/pages/styledChatRequest";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import DetailCard from "../components/DetailCard";
 import { PageContainer } from "../styles/common/styledConainer";
 import { BackgroundOverlay } from "../styles/common/styledBackground";
-
-const requests = Array(9).fill({
-    nickname: "김치찌개 원숭이",
-    major: "컴퓨터 공학과",
-    grade: "21",
-    img: `${process.env.PUBLIC_URL}/images/avatar.svg`,
-    userId: "ajyslsbx",
-    gender: "같은 성별만",
-    mealType: "가벼운 수다",
-    type: "천천히 먹는 편",
-    goal: "친목/친구 사귀기",
-    fav: "한식",
-    msg: "꼭 함께 하고 싶음",
-    type2: "채식/비건"
-  });
+import axios from "axios";
 
 const Request = () => {
-    const [selectedUser, setSelectedUser] = useState(null); 
+    const navigate = useNavigate();
+    const [selectedUser, setSelectedUser] = useState(null);        // 프로필 정보
+    const [selectedRequest, setSelectedRequest] = useState(null);  // 요청 정보 (id)
+    const [requests, setRequests] = useState([]);
+    const accessToken = localStorage.getItem("accessToken");
 
-    const handleCardClick = (user) => {
-        setSelectedUser(user);
-    }
+    const handleCardClick = async (req) => {
+        console.log("user 객체:", req);
+
+        if (!req.sender_id) {
+            console.error("sender_id 없음");
+            return;
+        }
+
+        try {
+            const res = await axios.get(`/api/accounts/profile/${req.sender_id}/`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+            setSelectedUser(res.data);
+            setSelectedRequest(req); // 요청 정보 저장
+        } catch (err) {
+            console.error("프로필 상세 조회 실패", err);
+        }
+    };
+
+    const handleRespond = async (isAccepted) => {
+        if (!selectedRequest || !selectedRequest.id) {
+            console.error("선택된 쪽지 요청 ID가 없습니다.");
+            return;
+        }
+
+        try {
+            await axios.patch(
+                `/api/dmessages/request/${selectedRequest.id}/respond/`,
+                { is_accepted: isAccepted },
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }
+            );
+            alert(isAccepted ? "요청을 수락했습니다!" : "요청을 거절했습니다.");
+            setSelectedUser(null);
+            setSelectedRequest(null);
+
+            // 수락/거절 후 리스트 갱신
+            setRequests(prev => prev.filter(r => r.id !== selectedRequest.id));
+        } catch (err) {
+            console.error("응답 처리 실패", err);
+            alert("요청 처리 중 문제가 발생했습니다.");
+        }
+    };
 
     const handleCloseDetail = () => {
-        setSelectedUser(null)
-    }
+        setSelectedUser(null);
+        setSelectedRequest(null);
+    };
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        const fetchRequests = async () => {
+            try {
+                const res = await axios.get("/api/dmessages/request/received/", {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+                console.log("쪽지 요청 목록 응답:", res.data);
+                setRequests(res.data);
+            } catch (err) {
+                console.error("쪽지 요청 목록 불러오기 실패", err);
+            }
+        };
+
+        fetchRequests();
+    }, []);
 
     return (
         <PageContainer>
-            <Header 
+            <Header
                 titleText="쪽지 요청"
                 leftIcon="back"
                 rightIcon="ring"
                 onClickLeft={() => navigate(-1)}
-                onClickRight={() => navigate('/notice')}
+                onClickRight={() => navigate("/notice")}
             />
             <R.SearchBar>
                 <img
@@ -53,55 +106,55 @@ const Request = () => {
             </R.SearchBar>
             <R.Tabs>
                 <R.TabWrapper>
-                    <R.Tab active="false" onClick={() => navigate('/chat-list')}>
-                        보관함 <R.Badge></R.Badge>
+                    <R.Tab active="false" onClick={() => navigate("/chat-list")}>
+                        보관함 <R.Badge />
                     </R.Tab>
                 </R.TabWrapper>
                 <R.TabWrapper>
                     <R.Tab active="true">
-                        요청 <R.Badge></R.Badge>
+                        요청 <R.Badge />
                     </R.Tab>
                 </R.TabWrapper>
             </R.Tabs>
             <R.ReqWrapper>
-            {requests.map((req, index) => (
-                <R.Item key={index}
-                        {...req}
-                        >
-                    <R.ProfileImg>
-                        <img 
-                            src={req.img}
-                            alt="pic"
-                        />
-                    </R.ProfileImg>
-                    <R.Content>
-                        <R.Info onClick={() => handleCardClick(req)}>{req.nickname} /{req.major} {req.grade}</R.Info>
-                        <R.Del>
-                            <img 
-                            id="del"
-                            src={`${process.env.PUBLIC_URL}/images/trash.svg`}
-                            alt="delete"
+                {requests.map((req, index) => (
+                    <R.Item key={req.id || index}>
+                        <R.ProfileImg>
+                            <img
+                                src={`${process.env.PUBLIC_URL}/images/avatar.svg`}
+                                alt="avatar"
                             />
-                        </R.Del>
-                    </R.Content>
-                </R.Item>
-            ))}
+                        </R.ProfileImg>
+                        <R.Content>
+                            <R.Info onClick={() => handleCardClick(req)}>
+                                {req.sender_nickname} / {req.sender_major} {req.sender_year}
+                            </R.Info>
+                            <R.Del>
+                                <img
+                                    id="del"
+                                    src={`${process.env.PUBLIC_URL}/images/trash.svg`}
+                                    alt="delete"
+                                />
+                            </R.Del>
+                        </R.Content>
+                    </R.Item>
+                ))}
             </R.ReqWrapper>
-            <NavBar></NavBar>
 
-        {selectedUser && <BackgroundOverlay />}
-        {selectedUser && ( 
-            <DetailCard user={selectedUser}/>
-        )}
-        {selectedUser && (
-        <R.ButtonGroup>
-            <R.Ok onClick={handleCloseDetail}>수락</R.Ok>
-            <R.Rej onClick={handleCloseDetail}>거절</R.Rej>
-        </R.ButtonGroup>
-        )
-        }
+            <NavBar />
+
+            {selectedUser && (
+                <>
+                    <S.BackgroundOverlay />
+                    <DetailCard user={selectedUser} />
+                    <S.ButtonGroup>
+                        <S.Ok onClick={() => handleRespond(true)}>수락</S.Ok>
+                        <S.Rej onClick={() => handleRespond(false)}>거절</S.Rej>
+                    </S.ButtonGroup>
+                </>
+            )}
         </PageContainer>
     );
 };
 
-export default Request
+export default Request;

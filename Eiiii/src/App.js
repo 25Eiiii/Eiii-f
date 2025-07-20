@@ -66,7 +66,8 @@ function App() {
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/test/step1" element={<Test1/>}/>
         <Route path="/chat" element={<Chat />}></Route>
-        <Route path="/" element={<Main/>}/>
+        <Route path="/chat/:chatroomId" element={<Chat />} />
+        <Route path="/" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );
