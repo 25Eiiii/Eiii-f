@@ -155,7 +155,8 @@ export const ButtonGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    margin-bottom: 100px;
+    position: absolute;
+    bottom: 100px;
 `;
 
 export const ApplyBtn = styled.button`

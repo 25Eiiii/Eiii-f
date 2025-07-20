@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import * as S from "../styles/pages/styledScrap"
 import NavBar from "../components/NavBar"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { PageContainer } from "../styles/common/styledConainer"
+import axios from "axios"
 
 // Header Component
 const Header = () => {
@@ -61,31 +62,30 @@ export const Center = styled.div`
 `
 
 // Item Component (스크랩 상태 토글 가능)
-const Item = ({ initialScrapped = false }) => {
-  const [scrapped, setScrapped] = useState(initialScrapped)
+const Item = ({ post }) => {
+  const [scrapped, setScrapped] = useState(true); // 스크랩 목록이므로 기본 true
 
   const handleToggleScrap = () => {
-    setScrapped((prev) => !prev)
-  }
+    // 필요시 스크랩 취소 로직 추가
+    setScrapped((prev) => !prev);
+  };
 
   return (
     <Box>
       <Icon onClick={handleToggleScrap}>
         <img
           src={`${process.env.PUBLIC_URL}/images/${scrapped ? "star2.svg" : "star-gray.svg"}`}
-          alt={scrapped ? "스크랩된 별" : "스크랩되지 않은 별"}
+          alt={scrapped ? "스크랩됨" : "스크랩 안됨"}
         />
       </Icon>
       <Content>
-        <Title>0993학번 있나요?</Title>
-        <Detail>
-          가나다라마바사 아자차카 타파아 글을써보십다 <br />
-          두줄까진 허용입니다. 더이상 보고싶으면 더보기를 클릭DSADASD
-        </Detail>
+        <Title>{post.title}</Title>
+        <Detail>{post.content}</Detail>
       </Content>
     </Box>
-  )
-}
+  );
+};
+
 
 export const Box = styled.div`
   display: flex;
@@ -170,6 +170,23 @@ export const Btn = styled.button`
 
 // Scrap Page
 const Scrap = () => {
+  const [scrapList, setScrapList] = useState([]);
+  const accessToken = localStorage.getItem("accessToken");
+
+  useEffect(() => {
+    const fetchScraps = async () => {
+      try {
+        const res = await axios.get("/api/communities/post/scrapped/", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        setScrapList(res.data);
+      } catch (err) {
+        console.error("스크랩 목록 조회 실패", err);
+      }
+    };
+    fetchScraps();
+  }, []);
+
   return (
     <PageContainer>
       <Header />
@@ -186,24 +203,11 @@ const Scrap = () => {
       </S.Top>
       <S.Line>어제</S.Line>
       <S.ScrapWrapper>
-        <Item initialScrapped={false} />
-        <S.Line2 />
-        <Item initialScrapped={true} />
-        <S.Line2 />
-        <Item initialScrapped={false} />
+        {scrapList.map((post) => (
+          <Item key={post.id} post={post} />
+        ))}
       </S.ScrapWrapper>
       <S.Line>05/08</S.Line>
-      <S.ScrapWrapper>
-        <Item initialScrapped={true} />
-        <S.Line2 />
-        <Item initialScrapped={false} />
-        <S.Line2 />
-        <Item initialScrapped={true} />
-        <S.Line2 />
-        <Item initialScrapped={false} />
-        <S.Line2 />
-        <Item initialScrapped={true} />
-      </S.ScrapWrapper>
       <NavBar />
     </PageContainer>
   )

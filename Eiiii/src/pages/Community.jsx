@@ -106,6 +106,7 @@ const Community = ({user, onClick}) => {
         fetchPosts();
       }
     }, [category]);
+
     // 매칭 상세 카드 불러오기 
     const handleCardClick = async (user, image) => {
         try {
@@ -141,6 +142,51 @@ const Community = ({user, onClick}) => {
         setSelectedUser(null);
       };
 
+    // Scrap
+    const handleScrap = async (postId) => {
+        try {
+          const res = await axios.post(`/api/communities/post/${postId}/scrap/`, 
+            {},
+            {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+          });
+
+          setPosts((prevPosts) => 
+            prevPosts.map((post) =>
+                post.id === postId
+                    ? { ...post, scraps: (post.scraps ?? 0) +1}
+                    : post
+            )
+        )
+        } catch (err) {
+            console.error("스크랩 실패", err);
+        }
+    };
+    // Like
+    const handleLike = async (postId) => {
+        try {
+          const res = await axios.post(`/api/communities/post/${postId}/like/`, 
+            {},
+            {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+          });
+
+          setPosts((prevPosts) => 
+            prevPosts.map((post) =>
+                post.id === postId
+                    ? { ...post, likes: (post.likes ?? 0) +1}
+                    : post
+            )
+        )
+        } catch (err) {
+            console.error("스크랩 실패", err);
+        }
+    };
+
     return (
         <PageContainer>
             <Header />
@@ -151,12 +197,12 @@ const Community = ({user, onClick}) => {
                     <M.Post>
                     <M.Item key={post.id}>
                     <M.Profile>
-                        <M.Pic onClick={() => handleCardClick({id: post.user-1}, randomImg)}>
+                        <M.Pic onClick={() => handleCardClick({id: post.user}, randomImg)}>
                         <img src={randomImg} alt="profile" />
                         </M.Pic>
                         <M.Infos>
                         <M.Info1>
-                            <M.Name>{post.nickname || "익명"}</M.Name>
+                            <M.Name>{post.nickname}</M.Name>
                             <M.Time>{post.created_at || "방금"}</M.Time>
                         </M.Info1>
                         <M.Info2>
@@ -172,7 +218,7 @@ const Community = ({user, onClick}) => {
                     </M.Content>
 
                     <M.Bottom>
-                        <M.Like>
+                        <M.Like  onClick={() => handleLike(post.id)}>
                         <M.IconImg src={`${process.env.PUBLIC_URL}/images/heart.svg`} />
                         {post.likes ?? 0}
                         </M.Like>
@@ -180,9 +226,9 @@ const Community = ({user, onClick}) => {
                         <M.IconImg src={`${process.env.PUBLIC_URL}/images/comment.svg`} />
                         {post.comments ?? 0}
                         </M.Comment>
-                        <M.Scrap>
-                        <M.IconImg src={`${process.env.PUBLIC_URL}/images/scrap.svg`} />
-                        {post.scraps ?? 0}
+                        <M.Scrap onClick={() => handleScrap(post.id)}>
+                            <M.IconImg src={`${process.env.PUBLIC_URL}/images/scrap.svg`} />
+                            {post.scraps ?? 0}
                         </M.Scrap>
                         <M.More>
                         <M.IconImg src={`${process.env.PUBLIC_URL}/images/more.svg`} />
