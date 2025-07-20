@@ -19,13 +19,13 @@ const Request = () => {
     const handleCardClick = async (req) => {
         console.log("user 객체:", req);
 
-        if (!req.sender_id) {
-            console.error("sender_id 없음");
+        if (!req.sender) {
+            console.error("sender 없음");
             return;
         }
 
         try {
-            const res = await axios.get(`/api/accounts/profile/${req.sender_id}/`, {
+            const res = await axios.get(`/api/accounts/profile/${req.sender}/`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
