@@ -25,7 +25,7 @@ const Request = () => {
         }
 
         try {
-            const res = await axios.get(`/api/accounts/profile/${req.sender}/`, {
+            const res = await axios.get(`/api/accounts/profile/user/${req.sender}/`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
