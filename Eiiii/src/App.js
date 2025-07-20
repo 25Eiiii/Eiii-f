@@ -46,7 +46,7 @@ function App() {
         <Route path="/notice" element={<Notice />}/>
         <Route path="/community/:category" element={<Community />}/>
         <Route path="/community-write" element={<Write />}/>
-        <Route path="/community-detail" element={<Detail />}/>
+        <Route path="/community-detail/:pk" element={<Detail />}/>
         <Route path="/plan" element={<Plan />}/>
         <Route path="/scrap" element={<Scrap />}/>
         <Route path="/like" element={<Like />}/>
