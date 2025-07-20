@@ -94,15 +94,15 @@ export const Title = styled.div`
 `;
 
 const Detail = () => {
-  const { pk } = useParams();
-  const navigate = useNavigate();
+  const { pk } = useParams(); // 게시글 id 추출 
   const accessToken = localStorage.getItem("accessToken");
-
   const [post, setPost] = useState(null);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null); // 프로필 상세 카드 유저 정보
   const [loading, setLoading] = useState(true);
-  const [isDetailLoading, setIsDetailLoading] = useState(false);
+  const [isDetailLoading, setIsDetailLoading] = useState(false); // 프로필 상세 카드 모달 로딩
+  const [content, setContent] = useState(""); // 댓글 내용
 
+  // 상세 게시글, 댓글 목록 조회 
   const fetchPostDetail = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/api/communities/post/${pk}`, {
@@ -122,30 +122,28 @@ const Detail = () => {
     fetchPostDetail();
   }, [pk]);
 
+  // 좋아요 요청 
   const handleLike = async () => {
     try {
       await axios.post(
         `/api/communities/post/${pk}/like/`,
         {},
         {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+          headers: { Authorization: `Bearer ${accessToken}` },
         }
       );
-      fetchPostDetail(); // 좋아요 반영을 위해 다시 요청
+      fetchPostDetail(); // 최신 좋아요 개수 반영
     } catch (err) {
       console.error("좋아요 실패", err);
     }
   };
 
+  // 대화 요청 버튼
   const handleApplyClick = async (user) => {
     try {
       setIsDetailLoading(true);
       const res = await axios.get(`/api/accounts/profile/${user.id}/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+        headers: { Authorization: `Bearer ${accessToken}` },
       });
       setSelectedUser(res.data);
     } catch (err) {
@@ -155,6 +153,7 @@ const Detail = () => {
     }
   };
 
+  // 대화 요청 나가기
   const handleCloseApply = () => {
     setSelectedUser(null);
   };
@@ -162,12 +161,46 @@ const Detail = () => {
   if (loading) return <p>불러오는 중</p>;
   if (!post) return <p>게시글 불러오기 실패</p>;
 
+  // 댓글 작성 
+  const handleSubmit = async () => {
+    if (!content.trim()) {
+      alert("댓글을 입력해주세요.");
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        `http://localhost:8000/api/communities/${pk}/comments/`,
+        { post: pk, content },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      await fetchPostDetail();
+
+      const newComment = res.data;
+
+      // 댓글 추가
+      setPost(prev => ({
+        ...prev, // 이전 상태 복사 
+        comments: [...(prev.comments || []), newComment] // 새  댓글 추가
+      }));
+
+      setContent("");
+    } catch (err) {
+      console.error("댓글 등록 실패", err);
+    }
+  };
+
   return (
     <PageContainer>
       <Header />
       <D.Detail>
         <D.Profile>
-          <D.Pic onClick={() => handleApplyClick({ id: post.user })}>
+          <D.Pic onClick={() => handleApplyClick({ id: post.user-1 })}>
             <img src={`${process.env.PUBLIC_URL}/images/avatar.svg`} alt="img" />
           </D.Pic>
           <D.Infos>
@@ -177,7 +210,7 @@ const Detail = () => {
             </D.Info1>
             <D.Info2>{post.major} {post.year}학번</D.Info2>
           </D.Infos>
-          <Apply user={post} onClick={() => handleApplyClick({ id: post.user })} />
+          <Apply user={post} onClick={() => handleApplyClick({ id: post.user-1 })} />
         </D.Profile>
 
         <D.Big>{post.title}</D.Big>
@@ -209,11 +242,12 @@ const Detail = () => {
 
       <D.Line />
 
-      {/* 댓글 */}
+      {/* 댓글 목록 */}
       <D.Comments>
-        {post.comments?.map((cmt, idx) => (
-          <D.Profile key={idx}>
-            <D.Pic>
+        {post.comments?.map((cmt) => (
+          <D.CmtProfile>
+            <D.Profile>
+            <D.Pic onClick={() => handleApplyClick({ id: cmt.user-1 })}>
               <img src={`${process.env.PUBLIC_URL}/images/avatar.svg`} alt="img" />
             </D.Pic>
             <D.Infos>
@@ -223,7 +257,9 @@ const Detail = () => {
               </D.Info1>
               <D.Info2>{cmt.major} {cmt.year}학번</D.Info2>
             </D.Infos>
-            <Apply user={cmt} onClick={handleApplyClick} />
+            <Apply user={cmt} onClick={() => handleApplyClick({ id: cmt.user-1 })} />
+            </D.Profile>
+            
             <D.Content variant="cmt">
               <p>{cmt.content}</p>
               <D.CBtm>
@@ -237,21 +273,26 @@ const Detail = () => {
                 </D.Comment>
               </D.CBtm>
             </D.Content>
-          </D.Profile>
+          </D.CmtProfile>
         ))}
       </D.Comments>
 
       <D.Line2 />
 
+      {/* ✅ 댓글 입력창 */}
       <D.Write>
         <D.Cam>
           <img src={`${process.env.PUBLIC_URL}/images/cam.svg`} alt="cam" />
         </D.Cam>
-        <D.Here placeholder="댓글을 입력해 주세요." />
-        <D.Btn>등록</D.Btn>
+        <D.Here
+          placeholder="댓글을 입력해 주세요."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <D.Btn onClick={handleSubmit}>등록</D.Btn>
       </D.Write>
 
-      {/* 상세 카드 모달 */}
+      {/* ✅ 상세 카드 모달 */}
       {selectedUser && (
         <>
           <BackgroundOverlay />

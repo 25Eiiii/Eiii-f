@@ -61,6 +61,13 @@ export const Profile = styled.div`
     gap: 6.77px;
     align-items: center;
 `
+
+export const CmtProfile = styled.div`
+    display: flex;
+    gap: 6.77px;
+    align-items: center;
+    flex-direction: column;
+`
 export const Pic = styled.div`
     width: 36px;
     height: 36px;
@@ -143,8 +150,8 @@ export const Content = styled.div`
     font-weight: 400;
     line-height: normal;
     margin-bottom: 40px;
-    margin-left: ${(props) => (props.variant === "cmt" ? "41px" : "0px")};
-    margin-top: ${(props) => (props.variant === "cmt" ? "-8px" : "0px")};
+    margin-left: ${(props) => (props.variant === "cmt" ? "-5px" : "0px")};
+    margin-top: ${(props) => (props.variant === "cmt" ? "-15px" : "0px")};
 `
 
 export const Big = styled.div`
@@ -207,7 +214,7 @@ export const Comments = styled.div`
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    margin-left: 13px;
+    margin-left: 30px;
     margin-top: 11px;
 `
 
@@ -291,7 +298,8 @@ export const BtnGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    margin-top: 450px;
+    position: fixed;
+    bottom: 500px;
 `;
 
 export const Send = styled.div`
@@ -308,6 +316,7 @@ export const Send = styled.div`
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    text-align: center;
     cursor: pointer;
         &:active {
         background: #F99505;
