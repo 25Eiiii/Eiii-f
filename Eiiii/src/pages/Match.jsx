@@ -23,6 +23,7 @@ const Match = ({ dataList }) => {
   useEffect(() => {
     const fetchMatchList = async () => {
       try {
+
         const res = await axios.get("/api/accounts/match/", {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
@@ -37,7 +38,11 @@ const Match = ({ dataList }) => {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
 
+
         const matchList = [myProfile, ...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
+        const matchList =[...matchRes.data].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
 
         setMatchList(matchList);
       } catch (err) {
