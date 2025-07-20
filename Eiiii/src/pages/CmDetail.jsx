@@ -103,23 +103,41 @@ const Detail = () => {
   const [loading, setLoading] = useState(true);
   const [isDetailLoading, setIsDetailLoading] = useState(false);
 
+  const fetchPostDetail = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8000/api/communities/post/${pk}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setPost(res.data);
+    } catch (err) {
+      console.error("상세 게시글 불러오기 실패", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchPostDetail = async () => {
-      try {
-        const res = await axios.get(`http://localhost:8000/api/communities/post/${pk}`, {
+    fetchPostDetail();
+  }, [pk]);
+
+  const handleLike = async () => {
+    try {
+      await axios.post(
+        `/api/communities/post/${pk}/like/`,
+        {},
+        {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        });
-        setPost(res.data);
-      } catch (err) {
-        console.error("상세 게시글 불러오기 실패", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPostDetail();
-  }, [pk]);
+        }
+      );
+      fetchPostDetail(); // 좋아요 반영을 위해 다시 요청
+    } catch (err) {
+      console.error("좋아요 실패", err);
+    }
+  };
 
   const handleApplyClick = async (user) => {
     try {
@@ -149,7 +167,7 @@ const Detail = () => {
       <Header />
       <D.Detail>
         <D.Profile>
-          <D.Pic onClick={() => handleApplyClick({id: post.user})}>
+          <D.Pic onClick={() => handleApplyClick({ id: post.user })}>
             <img src={`${process.env.PUBLIC_URL}/images/avatar.svg`} alt="img" />
           </D.Pic>
           <D.Infos>
@@ -159,7 +177,7 @@ const Detail = () => {
             </D.Info1>
             <D.Info2>{post.major} {post.year}학번</D.Info2>
           </D.Infos>
-          <Apply user={post} onClick={() => handleApplyClick({id: post.user})} />
+          <Apply user={post} onClick={() => handleApplyClick({ id: post.user })} />
         </D.Profile>
 
         <D.Big>{post.title}</D.Big>
@@ -174,7 +192,7 @@ const Detail = () => {
         </D.Content>
 
         <D.Bottom>
-          <D.Like>
+          <D.Like onClick={handleLike} style={{ cursor: "pointer" }}>
             <D.IconImg src={`${process.env.PUBLIC_URL}/images/heart.svg`} alt="heart" />
             좋아요 {post.likes ?? 0}개
           </D.Like>

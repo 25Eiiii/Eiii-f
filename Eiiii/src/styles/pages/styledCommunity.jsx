@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    height: 680px;
+    height: 750px;
     width: 100%;
     overflow-y: auto;
     &::-webkit-scrollbar {
@@ -219,6 +219,7 @@ export const ButtonGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
+    margin-bottom: 100px;
 `;
 
 export const ApplyBtn = styled.button`
