@@ -35,12 +35,12 @@ const ChatList = () => {
             <C.Tabs>
                 <C.TabWrapper>
                     <C.Tab active="true">
-                        보관함 <C.Badge>15</C.Badge>
+                        보관함 <C.Badge></C.Badge>
                     </C.Tab>
                 </C.TabWrapper>
             <C.TabWrapper>
                     <C.Tab active="false" onClick={() => navigate('/chat-request')}>
-                        요청 <C.Badge>3</C.Badge>
+                        요청 <C.Badge></C.Badge>
                     </C.Tab>
             </C.TabWrapper>
             </C.Tabs>

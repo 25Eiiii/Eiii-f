@@ -54,12 +54,12 @@ const Request = () => {
             <R.Tabs>
                 <R.TabWrapper>
                     <R.Tab active="false" onClick={() => navigate('/chat-list')}>
-                        보관함 <R.Badge>15</R.Badge>
+                        보관함 <R.Badge></R.Badge>
                     </R.Tab>
                 </R.TabWrapper>
                 <R.TabWrapper>
                     <R.Tab active="true">
-                        요청 <R.Badge>3</R.Badge>
+                        요청 <R.Badge></R.Badge>
                     </R.Tab>
                 </R.TabWrapper>
             </R.Tabs>

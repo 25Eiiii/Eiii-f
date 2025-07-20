@@ -1,15 +1,11 @@
 import React from "react";
 import * as M from "../styles/components/styledDetailCard";
 
-const DetailCard = ({ text, user, onClose }) => {
+const DetailCard = ({ user, onClose }) => {
   return (
     <M.DetailCard>
-      <M.Text>{text}</M.Text>
+      <M.Text></M.Text>
       <M.ProfileImg>
-        <img
-          src={user.img} 
-          alt="profile"
-        />
       </M.ProfileImg>
       <M.Profile1>
         <M.Nickname>{user.nickname}</M.Nickname>
