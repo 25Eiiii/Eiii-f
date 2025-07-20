@@ -298,8 +298,8 @@ export const BtnGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    position: fixed;
-    bottom: 500px;
+        position: fixed;
+    bottom: 530px;
 `;
 
 export const Send = styled.div`
@@ -316,7 +316,6 @@ export const Send = styled.div`
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    text-align: center;
     cursor: pointer;
         &:active {
         background: #F99505;

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import * as M from "../styles/components/styledDetailCard";
 
-const DetailCard = ({ user, onClose }) => {
+const DetailCard = ({ user }) => {
 
   // 프로필을 랜덤 이미지로 설정
   const randomImg = useMemo(() => {

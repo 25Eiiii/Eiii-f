@@ -178,9 +178,6 @@ const Detail = () => {
           },
         }
       );
-
-      await fetchPostDetail();
-
       const newComment = res.data;
 
       // 댓글 추가
