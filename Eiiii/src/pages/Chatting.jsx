@@ -79,48 +79,58 @@ const Chat = () => {
 
       {/* 날짜 + 약속잡기 */}
       <C.ChatDateRow>
-        <C.ChatDate>2025.04.01</C.ChatDate>
-        <C.AppointmentButton>약속잡기</C.AppointmentButton>
-      </C.ChatDateRow>
+  <C.ChatDate>
+    {messages.length > 0 &&
+      new Date(messages[0].timestamp).toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
+  </C.ChatDate>
+  <C.AppointmentButton>약속잡기</C.AppointmentButton>
+</C.ChatDateRow>
 
       {/* 메시지 목록 */}
-      {/* 메시지 목록 */}
       <C.MessageList>
-        {messages.map((msg, idx) => (
-          <C.MessageRow
-            key={idx}
-            from={msg.sender === myUserId ? "me" : "other"}
-          >
-            {msg.sender === myUserId ? (
-              <>
-                <C.MessageTime>{formatTime(msg.timestamp)}</C.MessageTime>
-                <C.MessageBubble>
-                  <span>{msg.content}</span>
-                </C.MessageBubble>
-                <C.Profile>
-                  <img
-                    src={`${process.env.PUBLIC_URL}/images/profile_me.svg`}
-                    alt={msg.sender_nickname}
-                  />
-                </C.Profile>
-              </>
-            ) : (
-              <>
-                <C.Profile>
-                  <img
-                    src={`${process.env.PUBLIC_URL}/images/profile_other.svg`}
-                    alt={msg.sender_nickname}
-                  />
-                </C.Profile>
-                <C.MessageBubble>
-                  <span>{msg.content}</span>
-                </C.MessageBubble>
-                <C.MessageTime>{formatTime(msg.timestamp)}</C.MessageTime>
-              </>
-            )}
-          </C.MessageRow>
-        ))}
+        {messages.map((msg, idx) => {
+          const isMine = msg.sender === myUserId;
+
+          return (
+            <C.MessageRow key={idx} from={isMine ? "me" : "other"}>
+              {isMine ? (
+                <>
+                  {/* 내 메시지 */}
+                  <C.MessageTime>{formatTime(msg.timestamp)}</C.MessageTime>
+                  <C.MessageBubble>
+                    <span>{msg.content}</span>
+                  </C.MessageBubble>
+                  <C.Profile>
+                    <img
+                      src={`${process.env.PUBLIC_URL}/images/profile2.svg`}
+                      alt={msg.sender_nickname}
+                    />
+                  </C.Profile>
+                </>
+              ) : (
+                <>
+                  {/* 상대 메시지 */}
+                  <C.Profile>
+                    <img
+                      src={`${process.env.PUBLIC_URL}/images/profile1.svg`}
+                      alt={msg.sender_nickname}
+                    />
+                  </C.Profile>
+                  <C.MessageBubble>
+                    <span>{msg.content}</span>
+                  </C.MessageBubble>
+                  <C.MessageTime>{formatTime(msg.timestamp)}</C.MessageTime>
+                </>
+              )}
+            </C.MessageRow>
+          );
+        })}
       </C.MessageList>
+
 
 
       {/* 입력창 */}

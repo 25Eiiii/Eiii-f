@@ -9,6 +9,7 @@ import axios from "axios";
 const ChatList = () => {
     const navigate = useNavigate()
     const [messages, setMessages] = useState([]);
+    const [requests, setRequests] = useState([]);
     const accessToken = localStorage.getItem("accessToken");
 
     const formatDate = (timestamp) => {
@@ -43,6 +44,24 @@ const ChatList = () => {
         fetchMessages();
     }, []);
 
+    useEffect(() => {
+        const fetchRequests = async () => {
+            try {
+                const res = await axios.get("/api/dmessages/request/received/", {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+                console.log("쪽지 요청 목록 응답:", res.data);
+                setRequests(res.data);
+            } catch (err) {
+                console.error("쪽지 요청 목록 불러오기 실패", err);
+            }
+        };
+
+        fetchRequests();
+    }, []);
+
     return (
         <PageContainer>
             <Header
@@ -62,12 +81,12 @@ const ChatList = () => {
             <C.Tabs>
                 <C.TabWrapper>
                     <C.Tab active="true">
-                        보관함 <C.Badge></C.Badge>
+                        보관함 <C.Badge>{messages.length}</C.Badge>
                     </C.Tab>
                 </C.TabWrapper>
                 <C.TabWrapper>
                     <C.Tab active="false" onClick={() => navigate('/chat-request')}>
-                        요청 <C.Badge></C.Badge>
+                        요청 <C.Badge>{requests.length}</C.Badge>
                     </C.Tab>
                 </C.TabWrapper>
             </C.Tabs>

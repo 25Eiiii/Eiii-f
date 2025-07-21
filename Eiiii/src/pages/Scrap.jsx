@@ -77,8 +77,6 @@ const Item = ({ post }) => {
 
       setScrapped((prev) => !prev); // 상태 업데이트 (UI 토글)
 
-      // 🔄 선택사항: 페이지에서 아예 삭제하려면 아래처럼 구현 가능
-      // scrapList에서 제거하는 로직도 반영해야 함 (부모 컴포넌트에서 관리)
     } catch (err) {
       console.error("스크랩 해제 실패", err);
     }

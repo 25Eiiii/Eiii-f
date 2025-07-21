@@ -150,11 +150,9 @@ export const ButtonGroup = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
-    z-index: 20;
-    position: fixed;  // 고정 위치
-    bottom: 50px;      // 하단에서 띄우기
-    left: 50%;
-    transform: translateX(-50%);
+    z-index: 11;
+    position: absolute;
+    bottom: 100px;
 `;
 
 export const Ok = styled.button`

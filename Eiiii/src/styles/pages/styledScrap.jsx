@@ -75,10 +75,6 @@ flex-direction: column;
 width: 100%;
 `
 export const Line2 = styled.div`
-width: 440px;
-height: 1px;
-background: #EFBE78;
-margin: 7.8px 0 15px;
 `
 export const Post = styled.div`
 display: flex;
@@ -90,43 +86,3 @@ border-bottom: none;
 }
 `
 
-export const Header = styled.div`
-display: flex;
-align-items: center;
-padding: 60px 27px 17px;
-width: 100%;
-`
-
-export const Back = styled.div`
-width: 32px;
-height: 31px;
-flex-shrink: 0;
-background: #F8B621;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 5px;
-border: none;
-cursor: pointer;
-margin-left: 23px;
-`
-
-export const Search = styled.div`
-margin-left: 10px;
-`
-export const Title = styled.div`
-display: flex;
-justify-content: center;
-height: 32px;
-flex-shrink: 0;
-color: #F8B621;
-text-align: center;
-font-family: Inter;
-font-size: 21px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-gap: 5px;
-align-items: center;
-margin-left: 69px;
-`

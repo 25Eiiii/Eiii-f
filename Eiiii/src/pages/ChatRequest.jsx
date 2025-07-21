@@ -14,6 +14,7 @@ const Request = () => {
     const [selectedUser, setSelectedUser] = useState(null);        // 프로필 정보
     const [selectedRequest, setSelectedRequest] = useState(null);  // 요청 정보 (id)
     const [requests, setRequests] = useState([]);
+    const [messages, setMessages] = useState([]);
     const accessToken = localStorage.getItem("accessToken");
 
     const handleCardClick = async (req) => {
@@ -88,6 +89,24 @@ const Request = () => {
         fetchRequests();
     }, []);
 
+    useEffect(() => {
+        const fetchMessages = async () => {
+            try {
+                const res = await axios.get("/api/dmessages/accepted/", {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+                console.log("쪽지 보관함 응답:", res.data);
+                setMessages(res.data);
+            } catch (err) {
+                console.error("보관함 목록 불러오기 실패", err);
+            }
+        };
+
+        fetchMessages();
+    }, []);
+
     return (
         <PageContainer>
             <Header
@@ -107,12 +126,12 @@ const Request = () => {
             <R.Tabs>
                 <R.TabWrapper>
                     <R.Tab active="false" onClick={() => navigate("/chat-list")}>
-                        보관함 <R.Badge />
+                        보관함 <R.Badge>{messages.length}</R.Badge>
                     </R.Tab>
                 </R.TabWrapper>
                 <R.TabWrapper>
                     <R.Tab active="true">
-                        요청 <R.Badge />
+                        요청 <R.Badge>{requests.length}</R.Badge>
                     </R.Tab>
                 </R.TabWrapper>
             </R.Tabs>

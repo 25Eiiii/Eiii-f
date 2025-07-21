@@ -164,7 +164,7 @@ const Community = ({user, onClick}) => {
                         <M.Infos>
                         <M.Info1>
                             <M.Name>{post.nickname}</M.Name>
-                            <M.Time>{post.created_at || "방금"}</M.Time>
+                            <M.Time>{post.created_at.slice(0,10) || "방금"}</M.Time>
                         </M.Info1>
                         <M.Info2>
                             {post.major} {post.year}학번
