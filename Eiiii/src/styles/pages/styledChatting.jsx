@@ -29,7 +29,6 @@ export const ChatDate = styled.span`
     font-size: 0.75rem;
     border-radius: 17px;
     background: #FEE790;
-    width: 92px;
     height: 18px;
     flex-shrink: 0;
     display: flex;
@@ -48,7 +47,6 @@ export const AppointmentButton = styled.span`
     color: white;
     padding: 4px 8px;
     width: 64px;
-    height: 25px;
     flex-shrink: 0;
     border-radius: 17px;
     background: #4CCA9E;
@@ -66,17 +64,22 @@ export const AppointmentButton = styled.span`
 export const MessageList = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 12px;
   margin-left: 10px;
   margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  &::-webkit-scrollbar {
+    display: none;
 `;
 
 export const MessageRow = styled.div`
   display: flex;
   justify-content: ${(props) =>
     props.from === "me" ? "flex-end" : "flex-start"};
-  margin-bottom: 8px;
   gap: 10px;
+  width: 400px;
+  align-items: center;
+  margin-bottom: -50px;
 `;
 
 export const MessageBubble = styled.div`
@@ -85,10 +88,7 @@ export const MessageBubble = styled.div`
   background: #FEE790;
   max-width: 70%;
   font-size: 0.875rem;
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   border: 3px solid #F8B621;
 `;
 
@@ -99,8 +99,10 @@ font-size: 13px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
-  margin-top: 54px;
+  margin-top: 25px;
   margin-left: 5px;
+display: flex;
+align-items: center;
 `;
 
 export const ChatInputRow = styled.div`
@@ -153,5 +155,12 @@ padding-left: 12px;
 
 export const Profile = styled.div`
 margin-top: 54px;
+img {
+width: 46px;
+height: 46px;
+}
+display: flex;
+align-items: center;
+margin-bottom: 55px;
 `
 
