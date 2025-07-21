@@ -75,8 +75,14 @@ flex-direction: column;
 width: 100%;
 `
 export const Line2 = styled.div`
-width: 440px;
-height: 1px;
-background: #EFBE78;
-margin: 7.8px 0 15px;
 `
+export const Post = styled.div`
+display: flex;
+flex-direction: column;
+border-bottom: 1px solid #EFBE78;
+padding: 10px 0;
+&:last-child {
+border-bottom: none;
+}
+`
+

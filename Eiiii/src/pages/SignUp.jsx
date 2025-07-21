@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import * as S from "../styles/pages/styledSignUp";
+import axios from "axios";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const SignUp = () => {
     
     const [errors,setErrors] = useState({});
 
-    const goSignUp = () =>{
+    const goSignUp = async() =>{
         const newErrors={};
 
         if(!id) newErrors.id = "필수 입력 사항입니다.";
@@ -25,9 +26,59 @@ const SignUp = () => {
         if(!phoneNum) newErrors.phoneNum = "필수 입력 사항입니다.";
 
         setErrors(newErrors);
+        
 
-        if(Object.keys(newErrors).length===0){
-            navigate(`/login`);
+        if(Object.keys(newErrors).length>0) return;
+
+        try{
+            const response = await axios.post(
+                "/api/accounts/signup/",
+                {
+                    "username": id,
+                    "nickname": nickname,
+                    "password":password,
+                    "password2": passwordCheck,
+                    "email": email,
+                    "phone": phoneNum
+                },
+                {
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                }
+            
+            );
+
+            alert(response.data.message);
+            navigate(`/`);
+
+        }catch(error){
+            if(error.response && error.response.data){
+                const serverErrors = error.response.data;
+                const newErrors = {};
+
+                if(serverErrors.username){
+                    const usernameMsg = serverErrors.username;
+
+                    if(usernameMsg.includes("custom user with this username already exists.")){
+                        newErrors.id = "이 사용자 아이디는 이미 존재합니다."
+                    }
+                } 
+                if(serverErrors.password) newErrors.password = serverErrors.password;
+                if(serverErrors.password2) newErrors.passwordCheck = serverErrors.password2[0];
+                if(serverErrors.email) {
+                    const emailMsg = serverErrors.email;
+
+                    if(emailMsg.includes("custom user with this email already exists.")){
+                        newErrors.email = "이미 가입된 이메일입니다.";
+                    }else{
+                        newErrors.email = "이메일 형식이 올바르지 않습니다."
+                    }
+                }
+   
+
+                setErrors(newErrors);
+            }
         }
         
     }
@@ -56,6 +107,7 @@ const SignUp = () => {
             onChange={(e)=>setPassword(e.target.value)}
             placeholder="영어,숫자를 포함한 8~20자리를 입력해주세요."
             error={errors.password}
+            type="password"
         />
         <S.Error>{errors.password}</S.Error>
         <S.Input
@@ -63,6 +115,7 @@ const SignUp = () => {
             onChange={(e)=>setPasswordCheck(e.target.value)}
             placeholder="비밀번호를 다시 입력해주세요."
             error={errors.passwordCheck}
+            type="password"
         />
         <S.Error>{errors.passwordCheck}</S.Error>
         <S.Label>이메일</S.Label>

@@ -24,7 +24,7 @@ margin-top: 101px;
 `;
 
 export const Progressbar = styled.div`
-width: 334px;
+width: 96px;
 height: 8px;
 flex-shrink: 0;
 border-radius: 3px;
@@ -73,6 +73,10 @@ flex-shrink: 0;
 border-radius: 11px;
 border: 2px solid #FFB100;
 color: #606060;
+font-family: "Spoqa Han Sans Neo";
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
 &::placeholder{
 color: #A0A0A0;
 font-family: "Spoqa Han Sans Neo";

@@ -1,18 +1,82 @@
 import React,{useState} from "react";
 import {useNavigate} from "react-router-dom";
 import * as T from "../styles/pages/styledTest8";
+import axios from "axios";
 
 const Test8 = () => {
-    const nevigate = useNavigate();
-        
+    const navigate = useNavigate();
+    const savedData = JSON.parse(sessionStorage.getItem("profileData")) || {};
+    const dietMap = {
+        1:"채식 / 비건",
+        2:"알러지 있음 ex 견과류, 해산물",
+        3:"매운 음식 기피",
+        4:"종교, 건강상 이유로 제한",
+        5:"기타",
+        6:"없음"
+    }
+    const reverseDietMap = {};
+    for(const key in dietMap){
+        const value = dietMap[key];
+        reverseDietMap[value] = parseInt(key);
+    }
     const goBack = () => {
-         nevigate(`/test/step7`)
+         navigate(`/test/step7`)
     }
-    const goNext = () => {
-        nevigate(`/test/complete`)
+    const goNext = async() => {
+        const dietary_restrictions =[];
+
+        for(let i=0;i<selected.length;i++){
+            const text = dietMap[selected[i]];
+            dietary_restrictions.push(text);
+        }
+
+        const newData = {};
+        for(const key in savedData){
+            newData[key] = savedData[key];
+        }
+        newData.dietary_restrictions = dietary_restrictions;
+        console.log("보낼 newData: ",newData);
+        sessionStorage.setItem("profileData",JSON.stringify(newData))
+
+        try{
+            const accessToken = localStorage.getItem("accessToken");
+            const response = await axios.post(
+                "/api/accounts/profile/create/",
+                newData,
+                {
+                    headers:{
+                        Authorization: `Bearer ${accessToken}`,
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+    
+            if(response.status===201){
+                sessionStorage.removeItem("profileData");
+                console.log("삭제 후 sessionStorage:", sessionStorage.getItem("profileData"));
+                navigate(`/test/complete`);
+            } 
+        }catch(error){
+            if(error.response.status===401){
+                alert("로그인 인증이 만료되었습니다 다시 로그인해주세요.");
+                navigate("/");
+            }
+                
+            else{
+                console.error("서버 오류: ",error);
+                alert("필수사항이 누락되었습니다.")
+            }
+                
+        }
+        
     }
         
-    const [selected,setSelected] = useState([]);
+    const [selected,setSelected] = useState(()=>{
+        if(savedData.dietary_restrictions){
+            return savedData.dietary_restrictions.map(item=>reverseDietMap[item]);
+        }
+        return [];
+    });
     const selectOption = (num) => {
         if(selected.includes(num)){
             const newSelected = [];

@@ -134,6 +134,7 @@ margin-right: 20px;
 display: flex;
 align-items: center;
 justify-content: center;
+cursor: default;
 `;
 
 export const Preview = styled.button`
@@ -218,6 +219,7 @@ bottom: 10px;
 export const Box = styled.div`
 width: 100%;
 height: 100%;
+min-height: 100vh;
 background: rgba(136, 131, 118, 0.7);
 position: absolute;
 top: 0px;
@@ -241,6 +243,7 @@ flex-shrink: 0;
 border-radius: 18px;
 border: 4px solid #FFF;
 background: linear-gradient(180deg, #FFE8AA 0%, #FCBD14 100%);
+position: relative;
 `;
 
 export const Text = styled.div`
@@ -275,7 +278,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: absolute;
-bottom: 540px;
+top: 250px;
 `;
 
 export const PreviewId = styled.div`

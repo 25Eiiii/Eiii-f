@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Title = styled.div`
 margin-top: 97px;
 margin-bottom: 27px;
- width: 382px;
+width: 382px;
 height: 34px;
 flex-shrink: 0;
 color: #383838;
@@ -47,7 +47,7 @@ flex-shrink: 0;
 border-radius: 11px;
 border: 2px solid ${({error})=> (error ? "#FF8000": "#F8B621")};
 padding-left: 10px;
-color: #B1B1B1;
+color: #000;
 font-family: "Spoqa Han Sans Neo";
 font-size: 15px;
 font-style: normal;
@@ -83,6 +83,8 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 align-self: start;
-margin-left: 20px;
+margin-left: 22px;
 min-height: 10px;
+margin-top:2px;
+margin-bottom:2px;
 `;

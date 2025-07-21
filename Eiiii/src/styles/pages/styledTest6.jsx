@@ -24,7 +24,7 @@ margin-top: 101px;
 `;
 
 export const Progressbar = styled.div`
-width: 164px;
+width: 266px;
 height: 8px;
 flex-shrink: 0;
 border-radius: 3px;

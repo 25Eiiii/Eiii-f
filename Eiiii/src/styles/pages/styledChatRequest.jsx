@@ -151,7 +151,8 @@ export const ButtonGroup = styled.div`
     flex-direction: column;
     gap: 12px;
     z-index: 11;
-    margin-top: -105px;
+    position: absolute;
+    bottom: 100px;
 `;
 
 export const Ok = styled.button`
@@ -191,7 +192,6 @@ export const Rej = styled.button`
     };
 
 `
-
 export const PreviewBox = styled.div`
 margin-left: 40px;
 margin-top: 130px;

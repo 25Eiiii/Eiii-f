@@ -21,14 +21,24 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
     gap: 15px;
+    height: 750px;
+    width: 100%;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+    display: none;
+}
+
 `
 export const Item  = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 18px;
     cursor: pointer;
+    margin-bottom: 10px;
+`
+export const Post = styled.div`
+    border-bottom: 1px solid #EFBE78;
 `
 export const Profile = styled.div`
     display: flex;
@@ -44,6 +54,10 @@ export const Pic = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    img {
+        width: 24px;
+        height: 24px;
+    }
 `
 export const Infos = styled.div`
     display: flex;
@@ -189,4 +203,105 @@ export const Line = styled.div`
     width: 440px;
     height: 1px;
     background: #EFBE78;
+`
+
+
+export const EmptyText = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+`
+export const ButtonGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 11;
+    position: fixed;
+    bottom: 500px;
+`;
+
+export const ApplyBtn = styled.button`
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F8B621;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+    border: none;
+     &:active {
+        background: #F99505;
+    };
+`
+
+export const ExtBtn = styled.button`
+    width: 305px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #F8B621;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+    border: none;
+     &:active {
+        background: #F99505;
+    };
+`
+
+export const Header = styled.div`
+display: flex;
+align-items: center;
+padding: 60px 27px 17px;
+width: 100%;
+`
+
+export const Back = styled.div`
+width: 32px;
+height: 31px;
+flex-shrink: 0;
+background: #F8B621;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 5px;
+border: none;
+cursor: pointer;
+margin-left: 23px;
+`
+
+export const Search = styled.div`
+margin-left: 10px;
+`
+export const Title = styled.div`
+display: flex;
+justify-content: center;
+height: 32px;
+flex-shrink: 0;
+color: #F8B621;
+text-align: center;
+font-family: Inter;
+font-size: 21px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+gap: 5px;
+align-items: center;
+margin-left: 69px;
 `
