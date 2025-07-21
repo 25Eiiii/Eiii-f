@@ -165,13 +165,11 @@ export const Info = styled.div`
     font-weight: 500;
     line-height: 100%; /* 11px */
 `
-
 export const SubInfo = styled.div`
   font-size: 12px;
   color: #888;
   margin-bottom: 2px;
 `;
-
 
 export const Msg = styled.div`
     color: #BAAEA5;

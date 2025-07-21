@@ -159,7 +159,6 @@ const Request = () => {
                     </R.Item>
                 ))}
             </R.ReqWrapper>
-
             <NavBar />
 
             {selectedUser && (
